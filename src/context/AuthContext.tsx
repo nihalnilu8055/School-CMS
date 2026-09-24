@@ -13,7 +13,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('school_cms_v2_user');
+    const savedUser = localStorage.getItem('school_cms_v3_user');
     return savedUser ? JSON.parse(savedUser) : {
       id: 1,
       name: 'Alexander Wright',
@@ -27,19 +27,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return !!localStorage.getItem('school_cms_v2_token') || true;
+    return !!localStorage.getItem('school_cms_v3_token') || true;
   });
 
   const login = (token: string, loggedInUser: User) => {
-    localStorage.setItem('school_cms_v2_token', token);
-    localStorage.setItem('school_cms_v2_user', JSON.stringify(loggedInUser));
+    localStorage.setItem('school_cms_v3_token', token);
+    localStorage.setItem('school_cms_v3_user', JSON.stringify(loggedInUser));
     setUser(loggedInUser);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('school_cms_v2_token');
-    localStorage.removeItem('school_cms_v2_user');
+    localStorage.removeItem('school_cms_v3_token');
+    localStorage.removeItem('school_cms_v3_user');
     setUser(null);
     setIsAuthenticated(false);
   };
@@ -48,7 +48,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user) {
       const newUser = { ...user, ...updated };
       setUser(newUser);
-      localStorage.setItem('school_cms_v2_user', JSON.stringify(newUser));
+      localStorage.setItem('school_cms_v3_user', JSON.stringify(newUser));
     }
   };
 

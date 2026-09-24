@@ -101,12 +101,12 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Helper to init state with localStorage persistence
   const usePersistentState = <T,>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
     const [state, setState] = useState<T>(() => {
-      const saved = localStorage.getItem(`school_cms_v2_${key}`);
+      const saved = localStorage.getItem(`school_cms_v3_${key}`);
       return saved ? JSON.parse(saved) : initial;
     });
 
     useEffect(() => {
-      localStorage.setItem(`school_cms_v2_${key}`, JSON.stringify(state));
+      localStorage.setItem(`school_cms_v3_${key}`, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];

@@ -18,10 +18,14 @@ export const MediaManager: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const [mediaList, setMediaList] = useState<MediaItem[]>([
-    { id: 1, name: 'Robotics_Expo_2026.jpg', url: '/images/lab.jpg', type: 'image', folder: 'news', size: '2.4 MB' },
+    { id: 1, name: 'Science_Lab.jpg', url: '/images/lab.jpg', type: 'image', folder: 'news', size: '980 KB' },
     { id: 2, name: 'Academic_Prospectus_2026.pdf', url: '#', type: 'pdf', folder: 'documents', size: '4.2 MB' },
-    { id: 3, name: 'Main_Plaza_Architecture.jpg', url: '/images/campus.jpg', type: 'image', folder: 'gallery', size: '1.8 MB' },
-    { id: 4, name: 'Faculty_Dr_Vance.jpg', url: '/images/staff1.jpg', type: 'image', folder: 'staff', size: '950 KB' },
+    { id: 3, name: 'School_Campus.jpg', url: '/images/campus.jpg', type: 'image', folder: 'gallery', size: '1.2 MB' },
+    { id: 4, name: 'Classroom_Lesson.jpg', url: '/images/classroom.jpg', type: 'image', folder: 'gallery', size: '850 KB' },
+    { id: 5, name: 'Students_Learning.jpg', url: '/images/students.jpg', type: 'image', folder: 'gallery', size: '900 KB' },
+    { id: 6, name: 'School_Library.jpg', url: '/images/library.jpg', type: 'image', folder: 'gallery', size: '1.1 MB' },
+    { id: 7, name: 'Sports_Day.jpg', url: '/images/sports.jpg', type: 'image', folder: 'gallery', size: '1.4 MB' },
+    { id: 8, name: 'Faculty_Teacher.jpg', url: '/images/staff1.jpg', type: 'image', folder: 'staff', size: '750 KB' },
   ]);
 
   const filteredMedia = mediaList.filter(m => currentFolder === 'all' || m.folder === currentFolder);

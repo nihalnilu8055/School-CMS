@@ -11,10 +11,10 @@ export const AboutUsPage: React.FC = () => {
   const principal = staff.find(s => s.designation.toLowerCase().includes('principal')) || staff[0];
 
   const facilities = [
-    { title: "Advanced STEM & Biotech Labs", desc: "Equipped with PCR thermocyclers, 3D printers, and robotics testing rigs.", image: "/images/lab.jpg" },
-    { title: "Central Digital Library", desc: "Over 40,000 physical volumes and unlimited online academic journals.", image: "/images/library.jpg" },
-    { title: "Olympic Aquatic & Sports Complex", desc: "Heated 50m swimming pool, indoor basketball courts, and FIFA track.", image: "/images/sports.jpg" },
-    { title: "600-Seat Symphony Auditorium", desc: "Acoustically tuned concert hall hosting annual orchestra and theater plays.", image: "/images/concert.jpg" }
+    { title: "Science & Computer Labs", desc: "Hands-on experiments, coding lessons, and robotics practice for every grade.", image: "/images/lab.jpg" },
+    { title: "School Library", desc: "Quiet reading rooms and study tables for homework and research.", image: "/images/library.jpg" },
+    { title: "Sports Field & Playground", desc: "Soccer, athletics, and outdoor recess on the school grounds.", image: "/images/sports.jpg" },
+    { title: "Classrooms & Hallways", desc: "Bright classrooms and corridors where students learn every day.", image: "/images/classroom.jpg" }
   ];
 
   const timeline = [

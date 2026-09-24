@@ -56,7 +56,7 @@ ON CONFLICT (id) DO NOTHING;
 
 -- 7. News Items
 INSERT INTO news (id, title, slug, content, excerpt, category_id, featured_image, is_featured, status, publish_date) VALUES
-(1, 'Apex Academy Wins International STEM Innovation Challenge 2026', 'apex-wins-international-stem-2026', '<p>Our high school robotics team secured the <strong>First Place Trophy</strong> at the Global Youth Innovation Summit held in Geneva. The team built an AI-powered solar micro-grid prototype that impressed international judges with its efficiency and practical application for rural electrification.</p><p>Principal Dr. Robert Vance commended the students for their tireless dedication, late-night lab sessions, and collaborative spirit.</p>', 'Our high school robotics team secured 1st place in Geneva with an AI solar micro-grid invention.', 1, '/images/lab.jpg', TRUE, 'published', NOW()),
+(1, 'Apex Academy Wins International STEM Innovation Challenge 2026', 'apex-wins-international-stem-2026', '<p>Our high school robotics team secured the <strong>First Place Trophy</strong> at the Global Youth Innovation Summit held in Geneva. The team built an AI-powered solar micro-grid prototype that impressed international judges with its efficiency and practical application for rural electrification.</p><p>Principal Dr. Robert Vance commended the students for their tireless dedication, late-night lab sessions, and collaborative spirit.</p>', 'Our high school robotics team secured 1st place in Geneva with an AI solar micro-grid invention.', 1, '/images/students.jpg', TRUE, 'published', NOW()),
 (2, 'Annual Cultural Arts Gala Highlights Student Talent', 'annual-cultural-arts-gala-2026', '<p>The Apex Auditorium came alive with vibrant colors, classical orchestrations, and contemporary dance performances during our annual Cultural Gala. Over 600 parents and community members attended the evening showcase.</p><p>Highlights included the Senior Drama Club performance of <i>The Tempest</i> and the orchestra ensemble performance of Vivaldi’s Four Seasons.</p>', 'Over 600 attendees gathered for an unforgettable evening of orchestra, theater, and visual arts.', 3, '/images/concert.jpg', TRUE, 'published', NOW()),
 (3, 'Apex Varsity Soccer Team Advances to State Finals', 'apex-varsity-soccer-state-finals', '<p>In an edge-of-the-seat semifinal match against Oakridge High, Apex Academy secured a 3-2 victory with a stunning stoppage-time goal by team captain Liam Carter.</p><p>The finals will take place next Saturday at the Central Athletic Stadium. We invite all parents and alumni to come support our Eagles!</p>', 'A thrilling 3-2 victory propels Apex Eagles into the State Championship finals this coming weekend.', 2, '/images/soccer.jpg', FALSE, 'published', NOW()),
 (4, 'New Modern Biotech Lab Opened for Advanced Placement Students', 'new-biotech-lab-opening', '<p>We are excited to announce the opening of our state-of-the-art Biotech Research Lab equipped with PCR thermal cyclers, fluorescence microscopes, and laminar flow hoods.</p><p>This lab will empower students taking AP Biology and Biotechnology research electives.</p>', 'State-of-the-art laboratory facility installed to support advanced genetic and biochemical research.', 1, '/images/lab.jpg', FALSE, 'published', NOW()),
@@ -67,14 +67,14 @@ ON CONFLICT (id) DO NOTHING;
 INSERT INTO banners (id, title, subtitle, button_text, button_url, image_url, order_index, is_active) VALUES
 (1, 'Inspiring Excellence, Empowering Leaders', 'Fostering intellectual curiosity, moral integrity, and global leadership in a modern 21st-century learning environment.', 'Explore Programs', '/academics', '/images/campus.jpg', 1, TRUE),
 (2, 'State-of-the-Art Science & Tech Labs', 'Giving students hands-on experience with artificial intelligence, robotics, and molecular biology.', 'Discover Facilities', '/about', '/images/lab.jpg', 2, TRUE),
-(3, 'Champion Sports & Holistic Development', 'Building resilience, teamwork, and athletic mastery through top-tier sports training and facilities.', 'View Sports', '/academics', '/images/classroom.jpg', 3, TRUE)
+(3, 'Champion Sports & Holistic Development', 'Building resilience, teamwork, and athletic mastery through top-tier sports training and facilities.', 'View Sports', '/academics', '/images/sports.jpg', 3, TRUE)
 ON CONFLICT (id) DO NOTHING;
 
 -- 9. Events
 INSERT INTO events (id, title, slug, description, location, event_date, start_time, end_time, banner_image, is_featured) VALUES
 (1, 'Annual International Science & Tech Expo 2026', 'science-tech-expo-2026', 'Over 100 student projects showcasing AI models, renewable energy devices, and biomedical innovations.', 'Main Auditorium & STEM Atrium', '2026-10-18', '09:00 AM', '04:30 PM', '/images/auditorium.jpg', TRUE),
 (2, 'Fall Music Ensemble Concert', 'fall-music-concert', 'An extraordinary evening of symphony, choir harmony, and jazz performances by Apex Music Department.', 'Apex Symphony Hall', '2026-10-25', '06:00 PM', '09:00 PM', '/images/concert.jpg', TRUE),
-(3, 'Open House Admission Orientation 2027-28', 'open-house-orientation', 'Interactive campus tours, faculty Q&A session, and curriculum overview for prospective parents and students.', 'Campus Center Hall', '2026-11-05', '10:00 AM', '01:00 PM', '/images/classroom.jpg', FALSE)
+(3, 'Open House Admission Orientation 2027-28', 'open-house-orientation', 'Interactive campus tours, faculty Q&A session, and curriculum overview for prospective parents and students.', 'Campus Center Hall', '2026-11-05', '10:00 AM', '01:00 PM', '/images/hallway.jpg', FALSE)
 ON CONFLICT (id) DO NOTHING;
 
 -- 10. Gallery Albums & Items
@@ -85,10 +85,16 @@ INSERT INTO gallery_albums (id, title, slug, cover_image, description) VALUES
 ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO gallery_items (id, album_id, type, url, thumbnail_url, title, caption) VALUES
-(1, 1, 'image', '/images/campus.jpg', '/images/campus.jpg', 'Main Academic Building', 'Iconic front plaza and clock tower'),
-(2, 1, 'image', '/images/library.jpg', '/images/library.jpg', 'Central Digital Library', 'Over 40,000 digital & physical titles with silent study pods'),
-(3, 2, 'image', '/images/lab.jpg', '/images/lab.jpg', 'Robotics Testing Rig', 'High school seniors calibrating autonomous sensor drones'),
-(4, 3, 'image', '/images/sports.jpg', '/images/sports.jpg', 'Track & Field 100m Sprint', 'Athletes crossing the finish line in record time')
+(1, 1, 'image', '/images/campus.jpg', '/images/campus.jpg', 'Main Academic Building', 'School campus and main entrance'),
+(2, 1, 'image', '/images/hallway.jpg', '/images/hallway.jpg', 'School Corridor', 'Bright hallways connecting classrooms'),
+(3, 1, 'image', '/images/classroom.jpg', '/images/classroom.jpg', 'Primary Classroom', 'Students learning with their teacher'),
+(4, 1, 'image', '/images/library.jpg', '/images/library.jpg', 'School Library', 'Quiet reading and study space'),
+(5, 2, 'image', '/images/lab.jpg', '/images/lab.jpg', 'Science Laboratory', 'Hands-on experiments in the school lab'),
+(6, 2, 'image', '/images/computers.jpg', '/images/computers.jpg', 'Computer Classroom', 'Digital learning and coding lessons'),
+(7, 2, 'image', '/images/students.jpg', '/images/students.jpg', 'Active Classroom', 'Students raising hands during a lesson'),
+(8, 3, 'image', '/images/sports.jpg', '/images/sports.jpg', 'School Sports Day', 'Team sports on the school field'),
+(9, 3, 'image', '/images/soccer.jpg', '/images/soccer.jpg', 'Soccer Practice', 'Eagles training after school'),
+(10, 3, 'image', '/images/playground.jpg', '/images/playground.jpg', 'Playground & Recess', 'Students enjoying outdoor break time')
 ON CONFLICT (id) DO NOTHING;
 
 -- 11. Downloads

@@ -15,14 +15,14 @@ export const TestimonialsSection: React.FC = () => {
       quote: "The debate club and AP Literature courses at Apex honed my critical writing skills and gave me the confidence to secure admission to Harvard University.",
       name: "Julian Rodriguez",
       role: "Alumni (Class of 2024)",
-      avatar: "/images/staff5.jpg",
+      avatar: "/images/parent2.jpg",
       stars: 5
     },
     {
       quote: "The athletic program and swimming facilities allowed me to balance academic excellence with competitive state championships. Best 4 years!",
       name: "Sophia Chen",
       role: "Senior Varsity Athlete",
-      avatar: "/images/staff3.jpg",
+      avatar: "/images/student1.jpg",
       stars: 5
     }
   ];

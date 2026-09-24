@@ -62,7 +62,7 @@ export const INITIAL_BANNERS: BannerSlide[] = [
     subtitle: "Building resilience, teamwork, and artistic mastery through top-tier sports training and music academies.",
     button_text: "View Gallery",
     button_url: "/gallery",
-    image_url: "/images/classroom.jpg",
+    image_url: "/images/sports.jpg",
     order_index: 3,
     is_active: true
   }
@@ -170,10 +170,10 @@ export const INITIAL_NEWS: NewsItem[] = [
     content: "<p>Our high school robotics team secured the <strong>First Place Trophy</strong> at the Global Youth Innovation Summit held in Geneva. The team built an AI-powered solar micro-grid prototype that impressed international judges with its energy efficiency and practical application for rural electrification.</p><p>Principal Dr. Robert Vance commended the students for their tireless dedication, late-night lab sessions, and collaborative spirit.</p>",
     category_id: 1,
     category_name: "Academics & Science",
-    featured_image: "/images/lab.jpg",
+    featured_image: "/images/students.jpg",
     gallery_images: [
       "/images/lab.jpg",
-      "/images/lab.jpg"
+      "/images/computers.jpg"
     ],
     tags: ["STEM", "Robotics", "Geneva", "Awards"],
     is_featured: true,
@@ -234,7 +234,7 @@ export const INITIAL_NEWS: NewsItem[] = [
     content: "<p>The Fall Semester Parent-Teacher Conference is scheduled for October 15-16, 2026. Parents can book 15-minute one-on-one consultation slots with subject teachers via the online parent portal.</p>",
     category_id: 4,
     category_name: "Campus Life",
-    featured_image: "/images/classroom.jpg",
+    featured_image: "/images/students.jpg",
     tags: ["Notice", "Parents", "Conference"],
     is_featured: false,
     status: "published",
@@ -277,7 +277,7 @@ export const INITIAL_EVENTS: EventItem[] = [
     event_date: "2026-11-05",
     start_time: "10:00 AM",
     end_time: "01:00 PM",
-    banner_image: "/images/classroom.jpg",
+    banner_image: "/images/hallway.jpg",
     is_featured: false
   }
 ];
@@ -290,7 +290,7 @@ export const INITIAL_GALLERY_ALBUMS: GalleryAlbum[] = [
     cover_image: "/images/campus.jpg",
     description: "Modern classrooms, digital libraries, sports arena, and eco-friendly campus grounds.",
     created_at: "2026-08-01T10:00:00.000Z",
-    items_count: 6
+    items_count: 4
   },
   {
     id: 2,
@@ -299,7 +299,7 @@ export const INITIAL_GALLERY_ALBUMS: GalleryAlbum[] = [
     cover_image: "/images/lab.jpg",
     description: "Students presenting working prototypes and automated systems at the annual tech fair.",
     created_at: "2026-08-15T10:00:00.000Z",
-    items_count: 5
+    items_count: 3
   },
   {
     id: 3,
@@ -308,17 +308,21 @@ export const INITIAL_GALLERY_ALBUMS: GalleryAlbum[] = [
     cover_image: "/images/sports.jpg",
     description: "High-octane action shots from track & field, soccer finals, and swimming tournaments.",
     created_at: "2026-09-01T10:00:00.000Z",
-    items_count: 8
+    items_count: 3
   }
 ];
 
 export const INITIAL_GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, album_id: 1, type: "image", url: "/images/campus.jpg", title: "Main Academic Building", caption: "Iconic front plaza and clock tower" },
-  { id: 2, album_id: 1, type: "image", url: "/images/library.jpg", title: "Central Digital Library", caption: "Over 40,000 digital & physical titles with silent study pods" },
-  { id: 3, album_id: 2, type: "image", url: "/images/lab.jpg", title: "Robotics Testing Rig", caption: "High school seniors calibrating autonomous sensor drones" },
-  { id: 4, album_id: 3, type: "image", url: "/images/sports.jpg", title: "Track & Field Sprint", caption: "Athletes crossing the finish line in record time" },
-  { id: 5, album_id: 1, type: "image", url: "/images/lab.jpg", title: "Chemistry Discovery Lab", caption: "Advanced research workstations for chemistry experiments" },
-  { id: 6, album_id: 3, type: "image", url: "/images/soccer.jpg", title: "Varsity Football Match", caption: "Eagles competing under Friday night lights" }
+  { id: 1, album_id: 1, type: "image", url: "/images/campus.jpg", title: "Main Academic Building", caption: "School campus and main entrance" },
+  { id: 2, album_id: 1, type: "image", url: "/images/hallway.jpg", title: "School Corridor", caption: "Bright hallways connecting classrooms" },
+  { id: 3, album_id: 1, type: "image", url: "/images/classroom.jpg", title: "Primary Classroom", caption: "Students learning with their teacher" },
+  { id: 4, album_id: 1, type: "image", url: "/images/library.jpg", title: "School Library", caption: "Quiet reading and study space" },
+  { id: 5, album_id: 2, type: "image", url: "/images/lab.jpg", title: "Science Laboratory", caption: "Hands-on experiments in the school lab" },
+  { id: 6, album_id: 2, type: "image", url: "/images/computers.jpg", title: "Computer Classroom", caption: "Digital learning and coding lessons" },
+  { id: 7, album_id: 2, type: "image", url: "/images/students.jpg", title: "Active Classroom", caption: "Students raising hands during a lesson" },
+  { id: 8, album_id: 3, type: "image", url: "/images/sports.jpg", title: "School Sports Day", caption: "Team sports on the school field" },
+  { id: 9, album_id: 3, type: "image", url: "/images/soccer.jpg", title: "Soccer Practice", caption: "Eagles training after school" },
+  { id: 10, album_id: 3, type: "image", url: "/images/playground.jpg", title: "Playground & Recess", caption: "Students enjoying outdoor break time" }
 ];
 
 export const INITIAL_PROGRAMS: AcademicProgram[] = [
