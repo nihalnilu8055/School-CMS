@@ -8,10 +8,10 @@ interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const LOCAL_FALLBACKS = {
-  academic: '/fallbacks/academic.svg',
-  person: '/fallbacks/person.svg',
-  building: '/fallbacks/building.svg',
-  news: '/fallbacks/news.svg',
+  academic: '/images/classroom.jpg',
+  person: '/images/staff1.jpg',
+  building: '/images/campus.jpg',
+  news: '/images/lab.jpg',
 };
 
 export const SafeImage: React.FC<SafeImageProps> = ({

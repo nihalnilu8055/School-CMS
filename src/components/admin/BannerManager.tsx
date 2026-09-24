@@ -16,7 +16,7 @@ export const BannerManager: React.FC = () => {
     subtitle: '',
     button_text: 'Explore Academics',
     button_url: '/academics',
-    image_url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80',
+    image_url: '/images/campus.jpg',
     order_index: 1,
     is_active: true
   });
@@ -28,7 +28,7 @@ export const BannerManager: React.FC = () => {
       subtitle: '',
       button_text: 'Explore Academics',
       button_url: '/academics',
-      image_url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80',
+      image_url: '/images/campus.jpg',
       order_index: banners.length + 1,
       is_active: true
     });

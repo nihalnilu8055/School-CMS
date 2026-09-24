@@ -13,14 +13,14 @@ export const GalleryManager: React.FC = () => {
   const [albumForm, setAlbumForm] = useState({
     title: '',
     slug: '',
-    cover_image: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80',
+    cover_image: '/images/campus.jpg',
     description: ''
   });
 
   const [photoForm, setPhotoForm] = useState({
     album_id: 1,
     type: 'image' as 'image' | 'video',
-    url: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/campus.jpg',
     title: '',
     caption: ''
   });

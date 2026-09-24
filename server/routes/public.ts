@@ -23,7 +23,7 @@ router.get('/settings', async (req, res) => {
     res.json({
       school_name: 'Apex Academy & International School',
       tagline: 'Nurturing Minds, Building Future Leaders',
-      logo_url: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=200&q=80',
+      logo_url: '/images/campus.jpg',
       address: '100 Academy Boulevard, Innovation District, CA 94016',
       phone: '+1 (555) 234-5678 / +1 (555) 987-6543',
       email: 'admissions@apexacademy.edu',

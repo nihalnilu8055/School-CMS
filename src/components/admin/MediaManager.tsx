@@ -18,10 +18,10 @@ export const MediaManager: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const [mediaList, setMediaList] = useState<MediaItem[]>([
-    { id: 1, name: 'Robotics_Expo_2026.jpg', url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80', type: 'image', folder: 'news', size: '2.4 MB' },
+    { id: 1, name: 'Robotics_Expo_2026.jpg', url: '/images/lab.jpg', type: 'image', folder: 'news', size: '2.4 MB' },
     { id: 2, name: 'Academic_Prospectus_2026.pdf', url: '#', type: 'pdf', folder: 'documents', size: '4.2 MB' },
-    { id: 3, name: 'Main_Plaza_Architecture.jpg', url: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80', type: 'image', folder: 'gallery', size: '1.8 MB' },
-    { id: 4, name: 'Faculty_Dr_Vance.jpg', url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80', type: 'image', folder: 'staff', size: '950 KB' },
+    { id: 3, name: 'Main_Plaza_Architecture.jpg', url: '/images/campus.jpg', type: 'image', folder: 'gallery', size: '1.8 MB' },
+    { id: 4, name: 'Faculty_Dr_Vance.jpg', url: '/images/staff1.jpg', type: 'image', folder: 'staff', size: '950 KB' },
   ]);
 
   const filteredMedia = mediaList.filter(m => currentFolder === 'all' || m.folder === currentFolder);

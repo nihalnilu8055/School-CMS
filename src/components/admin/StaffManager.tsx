@@ -14,7 +14,7 @@ export const StaffManager: React.FC = () => {
 
   const [formData, setFormData] = useState({
     name: '',
-    photo_url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80',
+    photo_url: '/images/staff1.jpg',
     designation: 'Senior Faculty',
     department_id: 1,
     qualification: 'M.Sc. Education',
@@ -35,7 +35,7 @@ export const StaffManager: React.FC = () => {
     setEditingStaff(null);
     setFormData({
       name: '',
-      photo_url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80',
+      photo_url: '/images/staff1.jpg',
       designation: 'Senior Faculty',
       department_id: 1,
       qualification: 'M.Sc. Education',

@@ -11,10 +11,10 @@ export const AboutUsPage: React.FC = () => {
   const principal = staff.find(s => s.designation.toLowerCase().includes('principal')) || staff[0];
 
   const facilities = [
-    { title: "Advanced STEM & Biotech Labs", desc: "Equipped with PCR thermocyclers, 3D printers, and robotics testing rigs.", image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" },
-    { title: "Central Digital Library", desc: "Over 40,000 physical volumes and unlimited online academic journals.", image: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" },
-    { title: "Olympic Aquatic & Sports Complex", desc: "Heated 50m swimming pool, indoor basketball courts, and FIFA track.", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80" },
-    { title: "600-Seat Symphony Auditorium", desc: "Acoustically tuned concert hall hosting annual orchestra and theater plays.", image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" }
+    { title: "Advanced STEM & Biotech Labs", desc: "Equipped with PCR thermocyclers, 3D printers, and robotics testing rigs.", image: "/images/lab.jpg" },
+    { title: "Central Digital Library", desc: "Over 40,000 physical volumes and unlimited online academic journals.", image: "/images/library.jpg" },
+    { title: "Olympic Aquatic & Sports Complex", desc: "Heated 50m swimming pool, indoor basketball courts, and FIFA track.", image: "/images/sports.jpg" },
+    { title: "600-Seat Symphony Auditorium", desc: "Acoustically tuned concert hall hosting annual orchestra and theater plays.", image: "/images/concert.jpg" }
   ];
 
   const timeline = [
@@ -31,7 +31,7 @@ export const AboutUsPage: React.FC = () => {
       {/* Banner - Deep Academic Navy */}
       <section className="relative bg-[#12355B] text-white py-20 overflow-hidden border-b border-[#0D2A47]">
         <div className="absolute inset-0 opacity-15">
-          <SafeImage src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1920&q=80" alt="About" type="building" className="w-full h-full object-cover" />
+          <SafeImage src="/images/campus.jpg" alt="About" type="building" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F5F8B] border border-[#C9A227]/40 text-white text-xs font-semibold uppercase tracking-wider">
@@ -81,7 +81,7 @@ export const AboutUsPage: React.FC = () => {
             
             <div className="lg:col-span-4">
               <div className="rounded-2xl overflow-hidden shadow-sm aspect-square bg-[#F5F8FC] border border-[#E2E8F0]">
-                <SafeImage src={principal?.photo_url || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"} alt="Principal" type="person" className="w-full h-full object-cover" />
+                <SafeImage src={principal?.photo_url || "/images/staff1.jpg"} alt="Principal" type="person" className="w-full h-full object-cover" />
               </div>
               <div className="mt-4 text-center">
                 <h3 className="text-lg font-bold font-heading text-[#12355B]">{principal?.name || "Dr. Robert Vance"}</h3>

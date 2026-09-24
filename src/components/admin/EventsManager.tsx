@@ -19,7 +19,7 @@ export const EventsManager: React.FC = () => {
     event_date: '2026-10-30',
     start_time: '09:00 AM',
     end_time: '04:00 PM',
-    banner_image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+    banner_image: '/images/auditorium.jpg',
     is_featured: true
   });
 
@@ -33,7 +33,7 @@ export const EventsManager: React.FC = () => {
       event_date: '2026-10-30',
       start_time: '09:00 AM',
       end_time: '04:00 PM',
-      banner_image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+      banner_image: '/images/auditorium.jpg',
       is_featured: true
     });
     setShowModal(true);

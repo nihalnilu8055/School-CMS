@@ -67,7 +67,7 @@ router.post('/login', async (req, res) => {
         name: 'Alexander Wright',
         email: 'admin@apexacademy.edu',
         role: 'Super Admin',
-        avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'
+        avatar_url: '/images/staff3.jpg'
       }
     });
   }

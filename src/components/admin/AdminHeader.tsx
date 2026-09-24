@@ -97,7 +97,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
             className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
             <SafeImage
-              src={user?.avatar_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"}
+              src={user?.avatar_url || "/images/staff3.jpg"}
               alt="Avatar"
               type="person"
               className="w-8 h-8 rounded-full object-cover border border-school-500"

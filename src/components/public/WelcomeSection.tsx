@@ -21,7 +21,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ setCurrentTab })
             <div className="relative z-10 bg-white p-4 rounded-3xl shadow-card border border-[#E2E8F0]">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-[#F5F8FC]">
                 <SafeImage
-                  src={principal?.photo_url || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"}
+                  src={principal?.photo_url || "/images/staff1.jpg"}
                   alt={principal?.name || "Principal"}
                   fallbackType="person"
                   className="w-full h-full object-cover object-top"

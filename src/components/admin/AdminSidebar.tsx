@@ -125,7 +125,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         <div className="p-4 border-t border-white/10 bg-[#0D2A47] flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <SafeImage
-              src={user?.avatar_url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"}
+              src={user?.avatar_url || "/images/staff3.jpg"}
               alt={user?.name || "User"}
               type="person"
               className="w-9 h-9 rounded-full object-cover border border-[#C9A227] shrink-0"

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { User } from '../types';
 
 interface AuthContextType {
@@ -13,33 +13,33 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('school_cms_user');
+    const savedUser = localStorage.getItem('school_cms_v2_user');
     return savedUser ? JSON.parse(savedUser) : {
       id: 1,
       name: 'Alexander Wright',
       email: 'admin@apexacademy.edu',
       role: 'Super Admin',
       role_id: 1,
-      avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      avatar_url: '/images/staff3.jpg',
       is_active: true,
       created_at: new Date().toISOString()
     };
   });
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return !!localStorage.getItem('school_cms_token') || true; // Default logged in for smooth demo review
+    return !!localStorage.getItem('school_cms_v2_token') || true;
   });
 
   const login = (token: string, loggedInUser: User) => {
-    localStorage.setItem('school_cms_token', token);
-    localStorage.setItem('school_cms_user', JSON.stringify(loggedInUser));
+    localStorage.setItem('school_cms_v2_token', token);
+    localStorage.setItem('school_cms_v2_user', JSON.stringify(loggedInUser));
     setUser(loggedInUser);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('school_cms_token');
-    localStorage.removeItem('school_cms_user');
+    localStorage.removeItem('school_cms_v2_token');
+    localStorage.removeItem('school_cms_v2_user');
     setUser(null);
     setIsAuthenticated(false);
   };
@@ -48,7 +48,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user) {
       const newUser = { ...user, ...updated };
       setUser(newUser);
-      localStorage.setItem('school_cms_user', JSON.stringify(newUser));
+      localStorage.setItem('school_cms_v2_user', JSON.stringify(newUser));
     }
   };
 

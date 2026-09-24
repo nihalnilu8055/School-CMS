@@ -8,21 +8,21 @@ export const TestimonialsSection: React.FC = () => {
       quote: "Apex Academy provided my son with the STEM environment he needed to thrive. The faculty is deeply supportive, and the robotics lab is world-class!",
       name: "Elizabeth Montgomery",
       role: "Parent of Grade 11 AP Student",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+      avatar: "/images/parent1.jpg",
       stars: 5
     },
     {
       quote: "The debate club and AP Literature courses at Apex honed my critical writing skills and gave me the confidence to secure admission to Harvard University.",
       name: "Julian Rodriguez",
       role: "Alumni (Class of 2024)",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      avatar: "/images/staff5.jpg",
       stars: 5
     },
     {
       quote: "The athletic program and swimming facilities allowed me to balance academic excellence with competitive state championships. Best 4 years!",
       name: "Sophia Chen",
       role: "Senior Varsity Athlete",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      avatar: "/images/staff3.jpg",
       stars: 5
     }
   ];
