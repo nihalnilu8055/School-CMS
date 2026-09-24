@@ -11,35 +11,34 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('school_cms_v3_user');
-    return savedUser ? JSON.parse(savedUser) : {
-      id: 1,
-      name: 'Alexander Wright',
-      email: 'admin@apexacademy.edu',
-      role: 'Super Admin',
-      role_id: 1,
-      avatar_url: '/images/staff3.jpg',
-      is_active: true,
-      created_at: new Date().toISOString()
-    };
-  });
+const AUTH_TOKEN_KEY = 'school_cms_v4_token';
+const AUTH_USER_KEY = 'school_cms_v4_user';
 
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return !!localStorage.getItem('school_cms_v3_token') || true;
-  });
+const readSavedUser = (): User | null => {
+  try {
+    const savedUser = localStorage.getItem(AUTH_USER_KEY);
+    const savedToken = localStorage.getItem(AUTH_TOKEN_KEY);
+    if (!savedUser || !savedToken) return null;
+    return JSON.parse(savedUser) as User;
+  } catch {
+    return null;
+  }
+};
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(() => readSavedUser());
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => !!readSavedUser());
 
   const login = (token: string, loggedInUser: User) => {
-    localStorage.setItem('school_cms_v3_token', token);
-    localStorage.setItem('school_cms_v3_user', JSON.stringify(loggedInUser));
+    localStorage.setItem(AUTH_TOKEN_KEY, token);
+    localStorage.setItem(AUTH_USER_KEY, JSON.stringify(loggedInUser));
     setUser(loggedInUser);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('school_cms_v3_token');
-    localStorage.removeItem('school_cms_v3_user');
+    localStorage.removeItem(AUTH_TOKEN_KEY);
+    localStorage.removeItem(AUTH_USER_KEY);
     setUser(null);
     setIsAuthenticated(false);
   };
@@ -48,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user) {
       const newUser = { ...user, ...updated };
       setUser(newUser);
-      localStorage.setItem('school_cms_v3_user', JSON.stringify(newUser));
+      localStorage.setItem(AUTH_USER_KEY, JSON.stringify(newUser));
     }
   };
 
