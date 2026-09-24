@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { pool } from '../db';
+import { supabase } from '../supabase';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -24,6 +25,26 @@ const upload = multer({ storage });
 // GET /api/admin/dashboard-stats
 router.get('/dashboard-stats', async (req, res) => {
   try {
+    if (supabase) {
+      const [newsRes, staffRes, msgRes, pendingMsgRes] = await Promise.all([
+        supabase.from('news').select('*', { count: 'exact', head: true }).eq('status', 'published'),
+        supabase.from('staff').select('*', { count: 'exact', head: true }).eq('is_active', true),
+        supabase.from('contact_messages').select('*', { count: 'exact', head: true }),
+        supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('reply_status', 'pending'),
+      ]);
+
+      if (newsRes.error || staffRes.error || msgRes.error || pendingMsgRes.error) {
+        throw newsRes.error || staffRes.error || msgRes.error || pendingMsgRes.error;
+      }
+
+      return res.json({
+        publishedNews: newsRes.count || 0,
+        activeStaff: staffRes.count || 0,
+        totalMessages: msgRes.count || 0,
+        pendingMessages: pendingMsgRes.count || 0,
+      });
+    }
+
     const newsRes = await pool.query('SELECT COUNT(*) FROM news WHERE status = $1', ['published']);
     const staffRes = await pool.query('SELECT COUNT(*) FROM staff WHERE is_active = true');
     const msgRes = await pool.query('SELECT COUNT(*) FROM contact_messages');

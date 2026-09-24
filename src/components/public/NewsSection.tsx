@@ -2,6 +2,7 @@ import React from 'react';
 import { useSite } from '../../context/SiteContext';
 import { NewsItem } from '../../types';
 import { Newspaper, Calendar, ArrowRight } from 'lucide-react';
+import { SafeImage } from '../common/SafeImage';
 
 interface NewsSectionProps {
   setCurrentTab: (tab: string) => void;
@@ -46,9 +47,10 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ setCurrentTab, onSelec
               className="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 group cursor-pointer flex flex-col"
             >
               <div className="relative h-72 sm:h-80 overflow-hidden bg-[#F5F8FC]">
-                <img 
+                <SafeImage 
                   src={latestNews[0].featured_image} 
                   alt={latestNews[0].title}
+                  type="news"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4 bg-[#12355B] text-white text-xs font-semibold px-3.5 py-1 rounded-full border border-[#C9A227]/40 shadow-sm">
@@ -86,9 +88,10 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ setCurrentTab, onSelec
                 className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 flex items-center gap-4 group cursor-pointer"
               >
                 <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-[#F5F8FC]">
-                  <img
+                  <SafeImage
                     src={item.featured_image}
                     alt={item.title}
+                    type="news"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

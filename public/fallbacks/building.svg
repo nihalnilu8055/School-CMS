@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Campus placeholder">
+  <rect width="1600" height="900" fill="#12355B"/>
+  <rect x="220" y="280" width="360" height="420" fill="#1F5F8B"/>
+  <rect x="640" y="180" width="320" height="520" fill="#16486E"/>
+  <rect x="1020" y="320" width="340" height="380" fill="#1F5F8B"/>
+  <rect x="0" y="700" width="1600" height="200" fill="#0D2A47"/>
+  <rect x="300" y="340" width="40" height="40" fill="#C9A227"/>
+  <rect x="380" y="340" width="40" height="40" fill="#C9A227"/>
+  <rect x="300" y="420" width="40" height="40" fill="#C9A227"/>
+  <rect x="380" y="420" width="40" height="40" fill="#C9A227"/>
+  <rect x="740" y="240" width="48" height="48" fill="#C9A227"/>
+  <rect x="840" y="240" width="48" height="48" fill="#C9A227"/>
+  <rect x="740" y="340" width="48" height="48" fill="#C9A227"/>
+  <rect x="840" y="340" width="48" height="48" fill="#C9A227"/>
+</svg>

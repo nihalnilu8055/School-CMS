@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { GraduationCap, ShieldCheck, Lock, Mail, ArrowRight, KeyRound, AlertCircle } from 'lucide-react';
+import { GraduationCap, ShieldCheck, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
 
 interface AdminLoginPageProps {
   onSuccessLogin: () => void;

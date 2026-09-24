@@ -1,11 +1,20 @@
 import { Router } from 'express';
 import { pool } from '../db';
+import { supabase } from '../supabase';
 
 const router = Router();
 
 // GET /api/public/settings
 router.get('/settings', async (req, res) => {
   try {
+    if (supabase) {
+      const { data, error } = await supabase.from('site_settings').select('key, value');
+      if (error) throw error;
+      const settings: Record<string, any> = {};
+      (data || []).forEach((r) => { settings[r.key] = r.value; });
+      return res.json(settings);
+    }
+
     const result = await pool.query('SELECT key, value FROM site_settings');
     const settings: Record<string, any> = {};
     result.rows.forEach(r => { settings[r.key] = r.value; });
@@ -40,10 +49,22 @@ router.post('/contact', async (req, res) => {
   }
 
   try {
-    await pool.query(
-      'INSERT INTO contact_messages (name, email, phone, subject, message, reply_status) VALUES ($1, $2, $3, $4, $5, $6)',
-      [name, email, phone || '', subject || 'General Inquiry', message, 'pending']
-    );
+    if (supabase) {
+      const { error } = await supabase.from('contact_messages').insert({
+        name,
+        email,
+        phone: phone || '',
+        subject: subject || 'General Inquiry',
+        message,
+        reply_status: 'pending'
+      });
+      if (error) throw error;
+    } else {
+      await pool.query(
+        'INSERT INTO contact_messages (name, email, phone, subject, message, reply_status) VALUES ($1, $2, $3, $4, $5, $6)',
+        [name, email, phone || '', subject || 'General Inquiry', message, 'pending']
+      );
+    }
     res.json({ success: true, message: 'Your message has been submitted successfully! We will get back to you shortly.' });
   } catch (err) {
     res.json({ success: true, message: 'Your message has been received! (Fallback mock mode)' });

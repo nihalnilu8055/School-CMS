@@ -1,7 +1,7 @@
 import React from 'react';
 import { NewsItem } from '../types';
 import { SafeImage } from '../components/common/SafeImage';
-import { ArrowLeft, Calendar, Tag, Share2, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag, User } from 'lucide-react';
 
 interface NewsDetailPageProps {
   newsItem: NewsItem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSite } from '../../context/SiteContext';
 import { Calendar, Clock, MapPin, Sparkles, ArrowRight } from 'lucide-react';
+import { SafeImage } from '../common/SafeImage';
 
 interface EventsSectionProps {
   setCurrentTab: (tab: string) => void;
@@ -41,12 +42,13 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ setCurrentTab }) =
             return (
               <div 
                 key={evt.id}
-                className="bg-[#F5F8FC] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col group"
+                className="bg-[#F5F8FC] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col group cursor-pointer"
               >
                 <div className="relative h-48 overflow-hidden bg-[#E2E8F0]">
-                  <img
+                  <SafeImage
                     src={evt.banner_image}
                     alt={evt.title}
+                    type="building"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Date Badge Overlay */}

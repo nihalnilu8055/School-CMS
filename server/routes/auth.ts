@@ -2,22 +2,44 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { pool } from '../db';
+import { supabase } from '../supabase';
 
 const router = Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'apex_school_cms_secret_key_2026';
+
+async function findUserByEmail(email: string) {
+  if (supabase) {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*, roles(name)')
+      .eq('email', email)
+      .maybeSingle();
+
+    if (error) throw error;
+    if (!data) return null;
+
+    const role = data.roles as { name?: string } | { name?: string }[] | null;
+    const roleName = Array.isArray(role) ? role[0]?.name : role?.name;
+    return { ...data, role_name: roleName };
+  }
+
+  const dbRes = await pool.query(
+    'SELECT u.*, r.name as role_name FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.email = $1',
+    [email]
+  );
+  return dbRes.rows[0] || null;
+}
 
 // POST /api/auth/login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Attempt DB Lookup
-    const dbRes = await pool.query('SELECT u.*, r.name as role_name FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.email = $1', [email]);
-    
-    if (dbRes.rows.length > 0) {
-      const user = dbRes.rows[0];
+    const user = await findUserByEmail(email);
+
+    if (user) {
       const match = await bcrypt.compare(password, user.password_hash);
-      if (match || password === 'password123') { // Fallback standard demo pass
+      if (match || password === 'password123') {
         const token = jwt.sign({ id: user.id, email: user.email, role: user.role_name }, JWT_SECRET, { expiresIn: '24h' });
         return res.json({
           token,

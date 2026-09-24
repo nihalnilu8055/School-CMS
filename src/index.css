@@ -53,11 +53,14 @@
     font-family: 'Inter', sans-serif;
     color: #17202A;
     background-color: #FFFFFF;
+    overflow-x: hidden;
   }
 
   body {
     color: #17202A;
     background-color: #FFFFFF;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   button, 
@@ -67,7 +70,8 @@
   summary, 
   input[type="submit"], 
   input[type="reset"], 
-  input[type="button"] {
+  input[type="button"],
+  [onclick] {
     cursor: pointer;
   }
 

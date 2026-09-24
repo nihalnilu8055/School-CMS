@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSite } from '../context/SiteContext';
 import { Search, Filter, Mail, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { SafeImage } from '../components/common/SafeImage';
 
 export const StaffPage: React.FC = () => {
   const { staff, departments } = useSite();
@@ -85,9 +86,10 @@ export const StaffPage: React.FC = () => {
                   className="bg-white rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col group"
                 >
                   <div className="relative h-64 overflow-hidden bg-[#F5F8FC]">
-                    <img
+                    <SafeImage
                       src={member.photo_url}
                       alt={member.name}
+                      type="person"
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 bg-[#12355B] text-white text-xs font-semibold px-3 py-1 rounded-full border border-[#C9A227]/50 shadow-sm">

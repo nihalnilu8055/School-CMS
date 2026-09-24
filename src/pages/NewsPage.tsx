@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSite } from '../context/SiteContext';
 import { NewsItem } from '../types';
-import { Search, Calendar, Tag, Newspaper, ArrowRight, Filter } from 'lucide-react';
+import { Search, Calendar, Newspaper, ArrowRight, Filter } from 'lucide-react';
+import { SafeImage } from '../components/common/SafeImage';
 
 interface NewsPageProps {
   onSelectNewsItem: (item: NewsItem) => void;
@@ -88,9 +89,10 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onSelectNewsItem }) => {
                 className="bg-white rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col group cursor-pointer"
               >
                 <div className="relative h-56 overflow-hidden bg-[#F5F8FC]">
-                  <img
+                  <SafeImage
                     src={item.featured_image}
                     alt={item.title}
+                    type="news"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-[#12355B] text-white text-xs font-semibold px-3 py-1 rounded-full border border-[#C9A227]/40 shadow-sm">

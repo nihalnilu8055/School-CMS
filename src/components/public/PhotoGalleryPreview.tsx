@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
-import { Image as ImageIcon, Maximize2, X, ArrowRight, Camera } from 'lucide-react';
+import { Maximize2, X, ArrowRight, Camera } from 'lucide-react';
 import { GalleryItem } from '../../types';
+import { SafeImage } from '../common/SafeImage';
 
 interface PhotoGalleryPreviewProps {
   setCurrentTab: (tab: string) => void;
@@ -44,9 +45,10 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
               onClick={() => setActiveLightbox(item)}
               className="group relative h-64 rounded-2xl overflow-hidden cursor-pointer shadow-card border border-[#E2E8F0] bg-white"
             >
-              <img
+              <SafeImage
                 src={item.url}
                 alt={item.title}
+                type="academic"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#12355B]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -77,9 +79,10 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
               <X className="w-5 h-5" />
             </button>
             <div className="max-h-[75vh] overflow-hidden bg-black flex items-center justify-center">
-              <img
+              <SafeImage
                 src={activeLightbox.url}
                 alt={activeLightbox.title}
+                type="academic"
                 className="max-h-[75vh] w-auto object-contain"
               />
             </div>

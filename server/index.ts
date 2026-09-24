@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth';
 import publicRoutes from './routes/public';
 import adminRoutes from './routes/admin';
+import { isSupabaseConfigured, supabase } from './supabase';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5174';
 
 // Middleware
 app.use(cors());
@@ -34,11 +36,18 @@ app.use('/api/public', publicRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Health Check
-app.get('/api/health', (req, res) => {
+app.get('/api/health', async (req, res) => {
+  let database = 'mock';
+  if (isSupabaseConfigured() && supabase) {
+    const { error } = await supabase.from('roles').select('id').limit(1);
+    database = error ? `supabase-configured (${error.message})` : 'supabase';
+  }
+
   res.json({
     status: 'online',
     timestamp: new Date().toISOString(),
-    service: 'School Management CMS API Server'
+    service: 'School Management CMS API Server',
+    database
   });
 });
 
@@ -48,7 +57,9 @@ app.get('/', (req, res) => {
   res.status(200).json({
     status: 'online',
     service: 'School Management CMS API Server',
-    message: 'This is the API server, not the website. Open the site at http://localhost:5174',
+    message: 'This is the API server, not the website.',
+    website: FRONTEND_URL,
+    admin_portal: `${FRONTEND_URL}/admin-portal`,
     endpoints: {
       health: '/api/health',
       auth: '/api/auth',
@@ -58,6 +69,22 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+app.get(['/admin', '/admin-portal'], (req, res) => {
+  res.redirect(302, `${FRONTEND_URL}/admin-portal`);
+});
+
+app.listen(PORT, async () => {
   console.log(`🚀 School Management CMS Backend Server running on http://localhost:${PORT}`);
+  if (!isSupabaseConfigured() || !supabase) {
+    console.warn('⚠️ Supabase keys are missing. Operating in Memory/Mock API fallback mode.');
+    return;
+  }
+
+  const { error } = await supabase.from('roles').select('id').limit(1);
+  if (error) {
+    console.warn('⚠️ Connected to Supabase, but tables are missing. Run database/schema.sql and database/seed.sql in the SQL Editor.');
+    console.warn(`   ${error.message}`);
+  } else {
+    console.log('✅ Successfully connected to Supabase!');
+  }
 });

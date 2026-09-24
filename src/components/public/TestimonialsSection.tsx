@@ -1,5 +1,6 @@
 import React from 'react';
 import { Quote, Star } from 'lucide-react';
+import { SafeImage } from '../common/SafeImage';
 
 export const TestimonialsSection: React.FC = () => {
   const testimonials = [
@@ -58,9 +59,10 @@ export const TestimonialsSection: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-3 pt-6 mt-6 border-t border-[#E2E8F0]">
-                <img
+                <SafeImage
                   src={t.avatar}
                   alt={t.name}
+                  type="person"
                   className="w-11 h-11 rounded-full object-cover border-2 border-[#C9A227]"
                 />
                 <div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSite } from '../context/SiteContext';
 import { GalleryItem } from '../types';
 import { SafeImage } from '../components/common/SafeImage';
-import { Camera, Maximize2, X, Filter } from 'lucide-react';
+import { Camera, Maximize2, X } from 'lucide-react';
 
 export const GalleryPage: React.FC = () => {
   const { albums, galleryItems } = useSite();
