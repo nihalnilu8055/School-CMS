@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
 import { 
   GraduationCap, MapPin, Phone, Mail, Clock, ExternalLink, 
-  ShieldCheck, FileText 
+  FileText 
 } from 'lucide-react';
 
 interface FooterProps {
@@ -140,10 +140,6 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#D8E2EC] gap-4">
           <p>© {new Date().getFullYear()} {settings.school_name}. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <button onClick={() => handleNav('admin')} className="hover:text-[#C9A227] transition cursor-pointer flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Staff Login
-            </button>
             <button onClick={() => setShowPrivacyModal(true)} className="hover:text-[#C9A227] transition cursor-pointer">
               Privacy Policy
             </button>

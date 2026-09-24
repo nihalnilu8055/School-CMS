@@ -3,7 +3,7 @@ import { useSite } from '../../context/SiteContext';
 import { useTheme } from '../../context/ThemeContext';
 import { 
   Phone, Mail, MapPin, Clock, Search, Menu, X, 
-  GraduationCap, UserCheck, ShieldCheck, ChevronRight, Sparkles, Sun, Moon 
+  GraduationCap, ChevronRight, Sparkles, Sun, Moon 
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -45,14 +45,6 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
             </span>
           </div>
           <div className="flex items-center gap-3 ml-auto">
-            <button
-              onClick={() => handleNavClick('admin')}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0D2A47] text-[#C9A227] hover:bg-[#C9A227] hover:text-[#12355B] transition font-semibold text-[11px] cursor-pointer"
-              title="Open staff admin portal"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Staff Login</span>
-            </button>
             <button
               onClick={toggleDarkMode}
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1F5F8B] text-white hover:bg-[#0D2A47] transition font-medium text-[11px] cursor-pointer"
