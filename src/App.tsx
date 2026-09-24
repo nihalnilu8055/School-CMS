@@ -38,7 +38,7 @@ const MainAppContent: React.FC = () => {
   const navigateTab = (tab: string) => {
     setCurrentTabState(tab);
     let targetPath = '/';
-    if (tab === 'admin') targetPath = '/admin-portal';
+    if (tab === 'admin') targetPath = '/admin';
     else if (tab !== 'home' && tab !== 'news_detail') targetPath = `/${tab}`;
     if (window.location.pathname !== targetPath) {
       window.history.pushState({}, '', targetPath);
