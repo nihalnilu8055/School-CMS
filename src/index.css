@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #12355B;
+  --primary-hover: #0D2A47;
+  --secondary: #1F5F8B;
+  --accent: #C9A227;
+  --background: #FFFFFF;
+  --surface: #F5F8FC;
+  --text-primary: #17202A;
+  --text-secondary: #5B6775;
+  --border: #E2E8F0;
+  --success: #2E7D5B;
+  --warning: #C58A1C;
+  --error: #C0392B;
+}
+
+@theme {
+  --color-school-50: #F5F8FC;
+  --color-school-100: #E8F0F8;
+  --color-school-200: #CBE0F0;
+  --color-school-300: #94C0E0;
+  --color-school-400: #4A90C2;
+  --color-school-500: #1F5F8B;
+  --color-school-600: #16486E;
+  --color-school-700: #12355B;
+  --color-school-800: #0D2A47;
+  --color-school-900: #091E33;
+  --color-school-950: #051220;
+
+  --color-primary: #12355B;
+  --color-primary-hover: #0D2A47;
+  --color-secondary: #1F5F8B;
+  --color-gold-400: #D4B342;
+  --color-gold-500: #C9A227;
+  --color-gold-600: #B08C1E;
+
+  --color-surface: #F5F8FC;
+  --color-charcoal: #17202A;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+
+  --shadow-subtle: 0 4px 12px 0 rgba(18, 53, 91, 0.05);
+  --shadow-card: 0 6px 16px 0 rgba(18, 53, 91, 0.08);
+  --shadow-card-hover: 0 12px 24px 0 rgba(18, 53, 91, 0.12);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    color: #17202A;
+    background-color: #FFFFFF;
+  }
+
+  body {
+    color: #17202A;
+    background-color: #FFFFFF;
+  }
+
+  button, 
+  [role="button"], 
+  a, 
+  select, 
+  summary, 
+  input[type="submit"], 
+  input[type="reset"], 
+  input[type="button"] {
+    cursor: pointer;
+  }
+
+  button:disabled, 
+  input:disabled, 
+  .disabled {
+    cursor: not-allowed !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F8FC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #12355B;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E2E8F0;
+}
+
+.dark .glass-panel {
+  background: rgba(18, 53, 91, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
