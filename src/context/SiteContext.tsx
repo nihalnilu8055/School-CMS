@@ -3,14 +3,14 @@ import {
   User, Role, MenuItem, Page, NewsCategory, NewsItem, 
   Department, StaffMember, GalleryAlbum, GalleryItem, EventItem, 
   AcademicProgram, DownloadItem, BannerSlide, ContactMessage, 
-  SiteSettings, SeoSettings, AuditLog 
+  SiteSettings, SeoSettings, AuditLog, Notice, FrontendContent 
 } from '../types';
 import { 
   INITIAL_SETTINGS, INITIAL_SEO, INITIAL_BANNERS, INITIAL_DEPARTMENTS, 
   INITIAL_STAFF, INITIAL_CATEGORIES, INITIAL_NEWS, INITIAL_EVENTS, 
   INITIAL_GALLERY_ALBUMS, INITIAL_GALLERY_ITEMS, INITIAL_PROGRAMS, 
   INITIAL_DOWNLOADS, INITIAL_MESSAGES, INITIAL_AUDIT_LOGS, INITIAL_USERS, 
-  INITIAL_ROLES, INITIAL_PAGES, INITIAL_MENUS 
+  INITIAL_ROLES, INITIAL_PAGES, INITIAL_MENUS, INITIAL_NOTICES, INITIAL_CONTENT 
 } from '../services/api';
 
 interface SiteContextType {
@@ -32,6 +32,8 @@ interface SiteContextType {
   roles: Role[];
   pages: Page[];
   menus: MenuItem[];
+  notices: Notice[];
+  content: FrontendContent;
 
   // CRUD Operations
   updateSettings: (newSettings: Partial<SiteSettings>) => void;
@@ -53,6 +55,8 @@ interface SiteContextType {
   updateStaff: (id: number, member: Partial<StaffMember>) => void;
   deleteStaff: (id: number) => void;
   addDepartment: (dept: Omit<Department, 'id'>) => void;
+  updateDepartment: (id: number, dept: Partial<Department>) => void;
+  deleteDepartment: (id: number) => void;
 
   // Gallery
   addAlbum: (album: Omit<GalleryAlbum, 'id' | 'created_at'>) => void;
@@ -85,11 +89,16 @@ interface SiteContextType {
   addMenu: (menu: Omit<MenuItem, 'id'>) => void;
   updateMenu: (id: number, menu: Partial<MenuItem>) => void;
   deleteMenu: (id: number) => void;
+  updateContent: (content: Partial<FrontendContent>) => void;
 
   // Users & Roles
   addUser: (user: Omit<User, 'id' | 'created_at'>) => void;
   updateUser: (id: number, user: Partial<User>) => void;
   deleteUser: (id: number) => void;
+
+  addNotice: (notice: Omit<Notice, 'id' | 'created_at'>) => void;
+  updateNotice: (id: number, notice: Partial<Notice>) => void;
+  deleteNotice: (id: number) => void;
 
   // Audit Logs
   logAction: (action: string, module: string, details: string) => void;
@@ -101,12 +110,12 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Helper to init state with localStorage persistence
   const usePersistentState = <T,>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
     const [state, setState] = useState<T>(() => {
-      const saved = localStorage.getItem(`school_cms_v3_${key}`);
+      const saved = localStorage.getItem(`school_cms_v11_${key}`);
       return saved ? JSON.parse(saved) : initial;
     });
 
     useEffect(() => {
-      localStorage.setItem(`school_cms_v3_${key}`, JSON.stringify(state));
+      localStorage.setItem(`school_cms_v11_${key}`, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];
@@ -130,6 +139,39 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [roles] = usePersistentState<Role[]>('roles', INITIAL_ROLES);
   const [pages, setPages] = usePersistentState<Page[]>('pages', INITIAL_PAGES);
   const [menus, setMenus] = usePersistentState<MenuItem[]>('menus', INITIAL_MENUS);
+  const [notices, setNotices] = usePersistentState<Notice[]>('notices', INITIAL_NOTICES);
+  const [content, setContent] = usePersistentState<FrontendContent>('frontend_content', INITIAL_CONTENT);
+
+  useEffect(() => {
+    setPages((prev) => {
+      const bySlug = new Map(prev.map((page) => [page.slug, page]));
+      let changed = false;
+      let maxId = prev.length > 0 ? Math.max(...prev.map((page) => page.id)) : 0;
+      const next = [...prev];
+
+      INITIAL_PAGES.forEach((seed) => {
+        const existing = bySlug.get(seed.slug);
+        if (!existing) {
+          maxId += 1;
+          next.push({ ...seed, id: maxId });
+          changed = true;
+          return;
+        }
+        const isStub = !existing.intro && (!existing.content || existing.content.length < 220);
+        if (isStub) {
+          const index = next.findIndex((page) => page.id === existing.id);
+          next[index] = { ...existing, ...seed, id: existing.id };
+          changed = true;
+        }
+      });
+
+      return changed ? next : prev;
+    });
+    setMenus((prev) => {
+      if (prev.some((item) => item.parent_id)) return prev;
+      return INITIAL_MENUS;
+    });
+  }, []);
 
   const logAction = (action: string, module: string, details: string) => {
     const newLog: AuditLog = {
@@ -219,6 +261,14 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const addDepartment = (dept: Omit<Department, 'id'>) => {
     const newId = departments.length > 0 ? Math.max(...departments.map(d => d.id)) + 1 : 1;
     setDepartments(prev => [...prev, { id: newId, ...dept }]);
+  };
+
+  const updateDepartment = (id: number, dept: Partial<Department>) => {
+    setDepartments(prev => prev.map(d => d.id === id ? { ...d, ...dept } : d));
+  };
+
+  const deleteDepartment = (id: number) => {
+    setDepartments(prev => prev.filter(d => d.id !== id));
   };
 
   // Gallery
@@ -330,7 +380,12 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const deleteMenu = (id: number) => {
-    setMenus(prev => prev.filter(m => m.id !== id));
+    setMenus(prev => prev.filter(m => m.id !== id && m.parent_id !== id));
+  };
+
+  const updateContent = (next: Partial<FrontendContent>) => {
+    setContent(prev => ({ ...prev, ...next }));
+    logAction('UPDATE_CONTENT', 'Frontend Content', 'Updated public website copy and homepage sections');
   };
 
   // Users
@@ -350,15 +405,31 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     logAction('DELETE_USER', 'User Management', `Deleted user account #${id}`);
   };
 
+  const addNotice = (notice: Omit<Notice, 'id' | 'created_at'>) => {
+    const newId = notices.length > 0 ? Math.max(...notices.map(n => n.id)) + 1 : 1;
+    setNotices(prev => [...prev, { id: newId, ...notice, created_at: new Date().toISOString() }]);
+    logAction('CREATE_NOTICE', 'Notices', `Created notice: ${notice.title}`);
+  };
+
+  const updateNotice = (id: number, notice: Partial<Notice>) => {
+    setNotices(prev => prev.map(n => n.id === id ? { ...n, ...notice } : n));
+    logAction('UPDATE_NOTICE', 'Notices', `Updated notice #${id}`);
+  };
+
+  const deleteNotice = (id: number) => {
+    setNotices(prev => prev.filter(n => n.id !== id));
+    logAction('DELETE_NOTICE', 'Notices', `Deleted notice #${id}`);
+  };
+
   return (
     <SiteContext.Provider value={{
       settings, seo, banners, departments, staff, newsCategories, news, events,
-      albums, galleryItems, programs, downloads, messages, auditLogs, users, roles, pages, menus,
+      albums, galleryItems, programs, downloads, messages, auditLogs, users, roles, pages, menus, notices, content,
       updateSettings, updateSeo, addBanner, updateBanner, deleteBanner, addNews, updateNews, deleteNews, addNewsCategory,
-      addStaff, updateStaff, deleteStaff, addDepartment, addAlbum, deleteAlbum, addGalleryItem, deleteGalleryItem,
+      addStaff, updateStaff, deleteStaff, addDepartment, updateDepartment, deleteDepartment, addAlbum, deleteAlbum, addGalleryItem, deleteGalleryItem,
       addEvent, updateEvent, deleteEvent, addProgram, updateProgram, deleteProgram, addDownload, deleteDownload,
-      submitContactForm, updateMessageStatus, deleteMessage, addPage, updatePage, deletePage, addMenu, updateMenu, deleteMenu,
-      addUser, updateUser, deleteUser, logAction
+      submitContactForm, updateMessageStatus, deleteMessage, addPage, updatePage, deletePage, addMenu, updateMenu, deleteMenu, updateContent,
+      addUser, updateUser, deleteUser, addNotice, updateNotice, deleteNotice, logAction
     }}>
       {children}
     </SiteContext.Provider>

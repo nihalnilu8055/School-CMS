@@ -1,50 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+/* Light-only: ignore OS dark mode so dark: utilities never override the emerald theme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --primary: #12355B;
-  --primary-hover: #0D2A47;
-  --secondary: #1F5F8B;
-  --accent: #C9A227;
+  --primary: #0a5c47;
+  --primary-hover: #054433;
+  --secondary: #054433;
+  --accent: #10b981;
   --background: #FFFFFF;
-  --surface: #F5F8FC;
+  --surface: #e8f0ed;
   --text-primary: #17202A;
   --text-secondary: #5B6775;
-  --border: #E2E8F0;
-  --success: #2E7D5B;
+  --border: #c5d5ce;
+  --success: #0a5c47;
   --warning: #C58A1C;
   --error: #C0392B;
 }
 
 @theme {
-  --color-school-50: #F5F8FC;
-  --color-school-100: #E8F0F8;
-  --color-school-200: #CBE0F0;
-  --color-school-300: #94C0E0;
-  --color-school-400: #4A90C2;
-  --color-school-500: #1F5F8B;
-  --color-school-600: #16486E;
-  --color-school-700: #12355B;
-  --color-school-800: #0D2A47;
-  --color-school-900: #091E33;
-  --color-school-950: #051220;
+  --color-school-50: #e8f0ed;
+  --color-school-100: #d4e3dd;
+  --color-school-200: #a8c4b8;
+  --color-school-300: #6f9a89;
+  --color-school-400: #3d7362;
+  --color-school-500: #0a5c47;
+  --color-school-600: #032f23;
+  --color-school-700: #054433;
+  --color-school-800: #032f23;
+  --color-school-900: #021f18;
+  --color-school-950: #021910;
 
-  --color-primary: #12355B;
-  --color-primary-hover: #0D2A47;
-  --color-secondary: #1F5F8B;
-  --color-gold-400: #D4B342;
-  --color-gold-500: #C9A227;
-  --color-gold-600: #B08C1E;
+  --color-primary: #0a5c47;
+  --color-primary-hover: #054433;
+  --color-secondary: #054433;
+  --color-gold-400: #34d399;
+  --color-gold-500: #0a5c47;
+  --color-gold-600: #054433;
 
-  --color-surface: #F5F8FC;
+  --color-surface: #e8f0ed;
   --color-charcoal: #17202A;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', 'Inter', sans-serif;
 
-  --shadow-subtle: 0 4px 12px 0 rgba(18, 53, 91, 0.05);
-  --shadow-card: 0 6px 16px 0 rgba(18, 53, 91, 0.08);
-  --shadow-card-hover: 0 12px 24px 0 rgba(18, 53, 91, 0.12);
+  --shadow-subtle: 0 4px 12px 0 rgba(3, 47, 35, 0.06);
+  --shadow-card: 0 6px 16px 0 rgba(3, 47, 35, 0.08);
+  --shadow-card-hover: 0 12px 24px 0 rgba(3, 47, 35, 0.12);
 }
 
 @layer base {
@@ -54,12 +57,17 @@
     color: #17202A;
     background-color: #FFFFFF;
     overflow-x: hidden;
+    color-scheme: light;
   }
 
   body {
     color: #17202A;
     background-color: #FFFFFF;
     overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  img, video, iframe {
     max-width: 100%;
   }
 
@@ -89,16 +97,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F8FC;
+  background: #e8f0ed;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #a8c4b8;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #12355B;
+  background: #032f23;
 }
 
 /* Glassmorphism Panel */
@@ -109,9 +117,11 @@
   border: 1px solid #E2E8F0;
 }
 
-.dark .glass-panel {
-  background: rgba(18, 53, 91, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.animate-fadeIn {
+  animation: fadeIn 0.45s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }

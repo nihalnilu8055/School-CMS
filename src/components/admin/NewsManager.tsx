@@ -92,10 +92,10 @@ export const NewsManager: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">
+          <h2 className="text-2xl font-bold font-heading text-[#032f23]">
             News & Press Article Management
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-600 mt-1">
             Publish school news, announcements, press releases, and manage categories & tags.
           </p>
         </div>
@@ -148,7 +148,7 @@ export const NewsManager: React.FC = () => {
                   </td>
                   <td className="p-4">
                     <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
-                      item.status === 'published' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-amber-100 text-amber-800'
+                      item.status === 'published' ? 'bg-[#e8f0ed] text-[#032f23] dark:bg-emerald-950 dark:text-[#9bb8ad]' : 'bg-amber-100 text-amber-800'
                     }`}>
                       {item.status}
                     </span>
@@ -156,19 +156,21 @@ export const NewsManager: React.FC = () => {
                   <td className="p-4 text-slate-500">
                     {new Date(item.publish_date).toLocaleDateString()}
                   </td>
-                  <td className="p-4 text-right space-x-2">
-                    <button
-                      onClick={() => handleOpenEdit(item)}
-                      className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-school-50 text-slate-600 dark:text-slate-300 transition"
-                    >
-                      <Edit2 className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setDeleteId(item.id)}
-                      className="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 text-red-600 hover:bg-red-100 transition"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                  <td className="p-4">
+                    <div className="flex items-center justify-end gap-2 whitespace-nowrap">
+                      <button
+                        onClick={() => handleOpenEdit(item)}
+                        className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]"
+                      >
+                        <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setDeleteId(item.id)}
+                        className="p-2 rounded-xl bg-red-50 text-red-600 border border-red-100 hover:bg-red-100"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

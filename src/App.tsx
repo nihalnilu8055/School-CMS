@@ -15,18 +15,19 @@ import { ContactPage } from './pages/ContactPage';
 import { AdminLoginPage } from './pages/AdminLoginPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { AdmissionModal } from './components/public/AdmissionModal';
+import { InfoPage } from './pages/InfoPage';
+import { NoticesPage } from './pages/NoticesPage';
+import { FacilitiesPage } from './pages/FacilitiesPage';
+import { PAGE_CONTENT } from './data/pageContent';
 import { NewsItem } from './types';
+import { useSite } from './context/SiteContext';
+import { SeoHead } from './components/common/SeoHead';
 
 const getTabFromPath = (): string => {
-  const path = window.location.pathname.toLowerCase();
+  const path = window.location.pathname.toLowerCase().replace(/^\//, '');
   if (path.includes('admin')) return 'admin';
-  if (path.includes('about')) return 'about';
-  if (path.includes('academics')) return 'academics';
-  if (path.includes('staff')) return 'staff';
-  if (path.includes('news')) return 'news';
-  if (path.includes('gallery')) return 'gallery';
-  if (path.includes('contact')) return 'contact';
-  return 'home';
+  if (!path) return 'home';
+  return path;
 };
 
 const MainAppContent: React.FC = () => {
@@ -34,6 +35,7 @@ const MainAppContent: React.FC = () => {
   const [selectedNewsItem, setSelectedNewsItem] = useState<NewsItem | null>(null);
   const [isAdmissionModalOpen, setIsAdmissionModalOpen] = useState<boolean>(false);
   const { isAuthenticated } = useAuth();
+  const { pages } = useSite();
 
   const navigateTab = (tab: string) => {
     setCurrentTabState(tab);
@@ -74,6 +76,22 @@ const MainAppContent: React.FC = () => {
         );
       case 'about':
         return <AboutUsPage />;
+      case 'about/facilities':
+        return <FacilitiesPage />;
+      case 'admissions':
+        return <InfoPage slug="admissions" />;
+      case 'information':
+        return <InfoPage slug="information" />;
+      case 'fees':
+        return <InfoPage slug="fees" />;
+      case 'alumni':
+        return <InfoPage slug="alumni" />;
+      case 'notices':
+        return <NoticesPage />;
+      case 'notices/general':
+        return <NoticesPage initialFilter="General" />;
+      case 'notices/fee':
+        return <NoticesPage initialFilter="Fee" />;
       case 'academics':
         return <AcademicsPage />;
       case 'staff':
@@ -104,6 +122,9 @@ const MainAppContent: React.FC = () => {
           />
         );
       default:
+        if (pages.some((page) => page.slug === currentTab) || PAGE_CONTENT[currentTab]) {
+          return <InfoPage slug={currentTab} />;
+        }
         return (
           <HomePage
             setCurrentTab={navigateTab}
@@ -117,8 +138,7 @@ const MainAppContent: React.FC = () => {
   const isFullAdminView = currentTab === 'admin' && isAuthenticated;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-      
+    <div className="min-h-screen flex flex-col bg-white text-slate-900">
       {!isFullAdminView && (
         <Header
           currentTab={currentTab}
@@ -139,7 +159,6 @@ const MainAppContent: React.FC = () => {
         isOpen={isAdmissionModalOpen}
         onClose={() => setIsAdmissionModalOpen(false)}
       />
-
     </div>
   );
 };
@@ -149,6 +168,7 @@ export const App: React.FC = () => {
     <ThemeProvider>
       <AuthProvider>
         <SiteProvider>
+          <SeoHead />
           <MainAppContent />
         </SiteProvider>
       </AuthProvider>

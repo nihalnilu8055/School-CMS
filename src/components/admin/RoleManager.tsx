@@ -61,10 +61,10 @@ export const RoleManager: React.FC = () => {
             {permissionsMatrix.map((item, idx) => (
               <tr key={idx}>
                 <td className="p-3 font-semibold text-slate-900 dark:text-white">{item.module}</td>
-                <td className="p-3"><CheckCircle2 className="w-4 h-4 text-emerald-500" /></td>
-                <td className="p-3">{idx > 0 ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
-                <td className="p-3">{[1, 2, 4, 5].includes(idx) ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
-                <td className="p-3">{[3, 7].includes(idx) ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
+                <td className="p-3"><CheckCircle2 className="w-4 h-4 text-white/900" /></td>
+                <td className="p-3">{idx > 0 ? <CheckCircle2 className="w-4 h-4 text-white/900" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
+                <td className="p-3">{[1, 2, 4, 5].includes(idx) ? <CheckCircle2 className="w-4 h-4 text-white/900" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
+                <td className="p-3">{[3, 7].includes(idx) ? <CheckCircle2 className="w-4 h-4 text-white/900" /> : <Lock className="w-4 h-4 text-slate-300" />}</td>
               </tr>
             ))}
           </tbody>

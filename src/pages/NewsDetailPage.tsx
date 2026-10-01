@@ -15,36 +15,36 @@ export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ newsItem, onBack
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="inline-flex items-center gap-2 text-sm font-semibold text-[#12355B] hover:text-[#1F5F8B] bg-[#F5F8FC] border border-[#E2E8F0] px-4 py-2 rounded-xl transition"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-[#032f23] hover:text-[#054433] bg-[#e8f0ed] border border-[#E2E8F0] px-4 py-2 rounded-xl transition"
       >
-        <ArrowLeft className="w-4 h-4 text-[#C9A227]" />
+        <ArrowLeft className="w-4 h-4 text-[#0a5c47]" />
         Back to All News Articles
       </button>
 
       {/* Article Header */}
       <div className="space-y-4">
-        <span className="inline-block bg-[#12355B] text-white text-xs font-semibold px-3.5 py-1 rounded-full uppercase tracking-wider border border-[#C9A227]/40 shadow-sm">
+        <span className="inline-block bg-[#032f23] text-white text-xs font-semibold px-3.5 py-1 rounded-full uppercase tracking-wider border border-[#0a5c47]/40 shadow-sm">
           {newsItem.category_name || 'School News'}
         </span>
         
-        <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-[#12355B] leading-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-[#032f23] leading-tight">
           {newsItem.title}
         </h1>
 
         <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-[#5B6775] pt-2 border-b border-[#E2E8F0] pb-4">
-          <div className="flex items-center gap-1.5 text-[#C9A227]">
-            <Calendar className="w-4 h-4 text-[#C9A227]" />
+          <div className="flex items-center gap-1.5 text-[#0a5c47]">
+            <Calendar className="w-4 h-4 text-[#0a5c47]" />
             <span>{new Date(newsItem.publish_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-[#1F5F8B]">
-            <User className="w-4 h-4 text-[#1F5F8B]" />
-            <span>Apex Press Office</span>
+          <div className="flex items-center gap-1.5 text-[#054433]">
+            <User className="w-4 h-4 text-[#054433]" />
+            <span>{newsItem.author_name || 'School News Desk'}</span>
           </div>
         </div>
       </div>
 
       {/* Featured Main Image */}
-      <div className="rounded-3xl overflow-hidden shadow-card max-h-[450px] bg-[#F5F8FC] border border-[#E2E8F0]">
+      <div className="rounded-3xl overflow-hidden shadow-card max-h-[450px] bg-[#e8f0ed] border border-[#E2E8F0]">
         <SafeImage
           src={newsItem.featured_image}
           alt={newsItem.title}
@@ -62,7 +62,7 @@ export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ newsItem, onBack
       {/* Gallery Images if any */}
       {newsItem.gallery_images && newsItem.gallery_images.length > 0 && (
         <div className="space-y-4 pt-6 border-t border-[#E2E8F0]">
-          <h3 className="text-lg font-bold font-heading text-[#12355B]">Article Media Gallery</h3>
+          <h3 className="text-lg font-bold font-heading text-[#032f23]">Article Media Gallery</h3>
           <div className="grid grid-cols-2 gap-4">
             {newsItem.gallery_images.map((img, idx) => (
               <SafeImage key={idx} src={img} alt={`Gallery ${idx}`} type="news" className="rounded-2xl h-48 w-full object-cover shadow-sm border border-[#E2E8F0]" />
@@ -74,9 +74,9 @@ export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({ newsItem, onBack
       {/* Tags */}
       {newsItem.tags && newsItem.tags.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#E2E8F0]">
-          <Tag className="w-4 h-4 text-[#C9A227]" />
+          <Tag className="w-4 h-4 text-[#0a5c47]" />
           {newsItem.tags.map((tag, idx) => (
-            <span key={idx} className="bg-[#F5F8FC] border border-[#E2E8F0] text-[#12355B] font-semibold text-xs px-3 py-1 rounded-lg">
+            <span key={idx} className="bg-[#e8f0ed] border border-[#E2E8F0] text-[#032f23] font-semibold text-xs px-3 py-1 rounded-lg">
               #{tag}
             </span>
           ))}

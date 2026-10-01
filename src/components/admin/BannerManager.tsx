@@ -91,7 +91,7 @@ export const BannerManager: React.FC = () => {
                 Slide #{slide.order_index}
               </div>
               <div className={`absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${
-                slide.is_active ? 'bg-emerald-500 text-white' : 'bg-slate-500 text-white'
+                slide.is_active ? 'bg-[#e8f0ed]0 text-white' : 'bg-slate-500 text-white'
               }`}>
                 {slide.is_active ? 'Active' : 'Disabled'}
               </div>

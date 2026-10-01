@@ -18,6 +18,8 @@ import { RoleManager } from '../components/admin/RoleManager';
 import { AuditLogsView } from '../components/admin/AuditLogsView';
 import { MenuManager } from '../components/admin/MenuManager';
 import { PageManager } from '../components/admin/PageManager';
+import { ContentManager } from '../components/admin/ContentManager';
+import { NoticesManager } from '../components/admin/NoticesManager';
 import { useAuth } from '../context/AuthContext';
 
 interface AdminDashboardPageProps {
@@ -37,6 +39,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
         return <BannerManager />;
       case 'news':
         return <NewsManager />;
+      case 'notices':
+        return <NoticesManager />;
       case 'staff':
         return <StaffManager />;
       case 'gallery':
@@ -63,6 +67,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
         return <AuditLogsView />;
       case 'menus':
         return <MenuManager />;
+      case 'content':
+        return <ContentManager />;
       case 'pages':
         return <PageManager />;
       default:
@@ -71,7 +77,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 flex transition-colors">
+    <div className="min-h-screen bg-[#e8f0ed] flex">
       
       {/* Admin Sidebar */}
       <AdminSidebar
@@ -89,9 +95,10 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
           onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
           onNavigatePublic={onNavigatePublic}
           onOpenProfile={() => setActiveModule('users')}
+          onNavigateModule={setActiveModule}
         />
 
-        <main className="p-6 sm:p-8 flex-1">
+        <main className="p-4 sm:p-6 lg:p-8 flex-1 min-w-0">
           {renderModule()}
         </main>
 

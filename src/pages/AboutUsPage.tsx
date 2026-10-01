@@ -1,170 +1,145 @@
 import React from 'react';
 import { useSite } from '../context/SiteContext';
+import { PAGE_CONTENT } from '../data/pageContent';
+import { relatedNavForSlug } from '../data/navigation';
+import { PageHero } from '../components/public/PageHero';
 import { SafeImage } from '../components/common/SafeImage';
-import { 
-  History, Compass, Target, Quote, Building2, Trophy, 
-  Milestone, CheckCircle, GraduationCap, ShieldCheck, Sparkles 
-} from 'lucide-react';
+import { Compass, Target, Quote, ArrowRight } from 'lucide-react';
+import { resolveFacilities } from './FacilitiesPage';
 
 export const AboutUsPage: React.FC = () => {
-  const { staff, settings } = useSite();
-  const principal = staff.find(s => s.designation.toLowerCase().includes('principal')) || staff[0];
-
-  const facilities = [
-    { title: "Science & Computer Labs", desc: "Hands-on experiments, coding lessons, and robotics practice for every grade.", image: "/images/lab.jpg" },
-    { title: "School Library", desc: "Quiet reading rooms and study tables for homework and research.", image: "/images/library.jpg" },
-    { title: "Sports Field & Playground", desc: "Soccer, athletics, and outdoor recess on the school grounds.", image: "/images/sports.jpg" },
-    { title: "Classrooms & Hallways", desc: "Bright classrooms and corridors where students learn every day.", image: "/images/classroom.jpg" }
-  ];
-
-  const timeline = [
-    { year: "1991", title: "School Foundation", desc: "Established with 120 primary students and a vision for holistic learning." },
-    { year: "2002", title: "Campus Expansion", desc: "Constructed the High School Wing, Symphony Hall, and Central Library." },
-    { year: "2012", title: "STEM & AP Certification", desc: "Authorized College Board AP Testing Center with dedicated robotics labs." },
-    { year: "2020", title: "Eco-Smart Campus Launch", desc: "Solar-powered microgrid installation and digital smart classrooms." },
-    { year: "2026", title: "Global STEM Champions", desc: "Awarded 1st Place at the International Youth Innovation Summit in Geneva." }
-  ];
+  const { staff, settings, pages, content } = useSite();
+  const principal = staff.find((s) => s.designation.toLowerCase().includes('principal')) || staff[0];
+  const aboutPage = pages.find((page) => page.slug === 'about' && page.is_published);
+  const mission = PAGE_CONTENT['about/mission'];
+  const aboutLinks = relatedNavForSlug('about')?.children || [];
+  const facilities = resolveFacilities(content.facilities);
+  const previewFacilities = facilities.slice(0, 4);
+  const timeline = content.timeline?.length ? content.timeline : [];
+  const go = (tab: string) => {
+    window.history.pushState({}, '', `/${tab}`);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <div className="py-12 space-y-16 bg-[#FFFFFF]">
-      
-      {/* Banner - Deep Academic Navy */}
-      <section className="relative bg-[#12355B] text-white py-20 overflow-hidden border-b border-[#0D2A47]">
-        <div className="absolute inset-0 opacity-15">
-          <SafeImage src="/images/campus.jpg" alt="About" type="building" className="w-full h-full object-cover" />
+    <div className="bg-white pb-16 animate-fadeIn">
+      <PageHero
+        eyebrow={settings.school_name}
+        title="About Our School"
+        intro={aboutPage?.intro || 'Nurturing social, moral, and intellectual wisdom for the greater good.'}
+        image={content.about_banner_image}
+      />
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="rounded-3xl bg-[#032f23] text-white p-8 sm:p-10">
+          <Target className="w-8 h-8 text-white/70 mb-4" />
+          <h2 className="text-2xl font-bold font-heading">Our Mission</h2>
+          <p className="mt-3 text-white/90 leading-relaxed text-sm sm:text-base">
+            {mission?.sections.find((section) => section.heading.toLowerCase().includes('mission'))?.body || mission?.sections[0]?.body}
+          </p>
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F5F8B] border border-[#C9A227]/40 text-white text-xs font-semibold uppercase tracking-wider">
-            <GraduationCap className="w-4 h-4 text-[#C9A227]" />
-            Empowering Future Leaders Since 1991
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold font-heading tracking-tight text-white">
-            About {settings.school_name.split('&')[0]}
-          </h1>
-          <p className="max-w-2xl mx-auto text-slate-200 text-base">
-            Discover our heritage, core values, state-of-the-art facilities, and visionary leadership driving academic excellence.
+        <div className="rounded-3xl border border-[#c5d5ce] bg-[#e8f0ed] p-8 sm:p-10">
+          <Compass className="w-8 h-8 text-[#054433] mb-4" />
+          <h2 className="text-2xl font-bold font-heading text-[#032f23]">Our Vision</h2>
+          <p className="mt-3 text-slate-600 leading-relaxed text-sm sm:text-base">
+            {mission?.sections.find((section) => section.heading.toLowerCase().includes('vision'))?.body || 'Nurturing Social, Moral, and Intellectual Wisdom for the Greater Good.'}
           </p>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <div className="bg-[#12355B] text-white p-8 rounded-3xl shadow-card space-y-4 border border-[#0D2A47]">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center border border-[#C9A227]/30">
-              <Compass className="w-6 h-6 text-[#C9A227]" />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-3xl border border-slate-100 bg-white p-6 sm:p-10 shadow-subtle">
+          <div className="lg:col-span-4">
+            <div className="rounded-2xl overflow-hidden aspect-square bg-[#e8f0ed]">
+              <SafeImage src={principal?.photo_url || '/images/staff1.jpg'} alt="Principal" type="person" className="w-full h-full object-cover" />
             </div>
-            <h2 className="text-2xl font-bold font-heading text-white">Our Vision</h2>
-            <p className="text-slate-200 leading-relaxed text-sm">
-              To be a globally recognized institution that nurtures inquisitive minds, ethical leaders, and creative thinkers equipped to solve complex 21st-century challenges.
+            <div className="mt-4">
+              <h3 className="font-heading font-bold text-[#032f23]">{principal?.name}</h3>
+              <p className="text-sm text-[#054433]">{principal?.designation}</p>
+            </div>
+          </div>
+          <div className="lg:col-span-8 space-y-4">
+            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#054433]">
+              <Quote className="w-4 h-4" /> Principal’s message
             </p>
-          </div>
-
-          <div className="bg-[#1F5F8B] text-white p-8 rounded-3xl shadow-card space-y-4 border border-[#12355B]">
-            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20">
-              <Target className="w-6 h-6 text-[#C9A227]" />
-            </div>
-            <h2 className="text-2xl font-bold font-heading text-white">Our Mission</h2>
-            <p className="text-slate-100 leading-relaxed text-sm">
-              To provide a rigorous, inclusive, and technologically advanced learning ecosystem that cultivates academic mastery, athletic discipline, artistic expression, and moral integrity.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Principal & Chairman Message */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E2E8F0] shadow-card">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div className="lg:col-span-4">
-              <div className="rounded-2xl overflow-hidden shadow-sm aspect-square bg-[#F5F8FC] border border-[#E2E8F0]">
-                <SafeImage src={principal?.photo_url || "/images/staff1.jpg"} alt="Principal" type="person" className="w-full h-full object-cover" />
-              </div>
-              <div className="mt-4 text-center">
-                <h3 className="text-lg font-bold font-heading text-[#12355B]">{principal?.name || "Dr. Robert Vance"}</h3>
-                <p className="text-xs text-[#1F5F8B] font-semibold">{principal?.designation}</p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5F8FC] border border-[#E2E8F0] text-[#12355B] text-xs font-bold uppercase">
-                <Quote className="w-3.5 h-3.5 text-[#C9A227]" />
-                Message from the Desk of Principal
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#12355B]">
-                "Nurturing Curiosity and Building Character Every Day"
-              </h2>
-              <div className="text-[#5B6775] text-sm leading-relaxed space-y-3">
-                <p>
-                  Welcome to Apex Academy! For over three decades, our institution has been dedicated to cultivating an environment where young minds are encouraged to question, experiment, and excel.
-                </p>
-                <p>
-                  We blend foundational academic discipline with hands-on research in artificial intelligence, biotechnology, debate, and fine arts. Our faculty works closely with every student to unlock their unique potential.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Facilities Grid */}
-      <section className="bg-[#F5F8FC] py-16 border-y border-[#E2E8F0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#12355B] text-xs font-bold uppercase mb-3 shadow-subtle">
-              <Building2 className="w-3.5 h-3.5 text-[#C9A227]" />
-              Infrastructure & Amenities
-            </div>
-            <h2 className="text-3xl font-bold font-heading text-[#12355B]">
-              World-Class Campus Facilities
+            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#032f23] leading-tight">
+              {content.principal_message_heading}
             </h2>
+            <p className="text-slate-600 leading-relaxed">{content.welcome_quote}</p>
+            <p className="text-slate-600 leading-relaxed">{content.welcome_body}</p>
           </div>
+        </div>
+      </section>
 
+      {aboutLinks.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+          <p className="text-xs font-bold uppercase tracking-wider text-[#054433]">Explore About Us</p>
+          <h2 className="text-3xl font-bold font-heading text-[#032f23] mt-2 mb-8">School information</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {aboutLinks.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => go(item.key)}
+                className="text-left rounded-2xl border border-[#c5d5ce] bg-[#e8f0ed] p-5 hover:bg-white hover:shadow-card transition"
+              >
+                <h3 className="font-heading font-bold text-[#032f23]">{item.label}</h3>
+                <p className="text-xs text-slate-500 mt-2">Read more</p>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {previewFacilities.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#054433]">{content.facilities_eyebrow}</p>
+              <h2 className="text-3xl font-bold font-heading text-[#032f23] mt-2">{content.facilities_heading}</h2>
+            </div>
+            {facilities.length > 4 && (
+              <button
+                onClick={() => go('about/facilities')}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#032f23]"
+              >
+                See more facilities <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {facilities.map((fac, idx) => (
-              <div key={idx} className="bg-white rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-card hover:shadow-card-hover transition">
-                <div className="h-44 overflow-hidden bg-[#F5F8FC]">
-                  <SafeImage src={fac.image} alt={fac.title} type="building" className="w-full h-full object-cover hover:scale-105 transition duration-500" />
+            {previewFacilities.map((fac) => (
+              <div key={fac.id} className="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-subtle">
+                <div className="h-40 overflow-hidden bg-[#e8f0ed]">
+                  <SafeImage src={fac.image} alt={fac.title} type="building" className="w-full h-full object-cover" />
                 </div>
-                <div className="p-5 space-y-2">
-                  <h3 className="text-base font-bold font-heading text-[#12355B]">{fac.title}</h3>
-                  <p className="text-xs text-[#5B6775] leading-relaxed">{fac.desc}</p>
+                <div className="p-5">
+                  <h3 className="font-heading font-bold text-[#032f23]">{fac.title}</h3>
+                  <p className="text-sm text-slate-500 mt-1 leading-relaxed">{fac.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Historical Timeline */}
-      <section className="bg-[#12355B] text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F5F8B] text-white text-xs font-semibold uppercase mb-3 border border-[#C9A227]/40">
-              <Milestone className="w-3.5 h-3.5 text-[#C9A227]" />
-              Our Journey
+      {timeline.length > 0 && (
+        <section className="bg-[#e8f0ed] py-14">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#054433]">{content.timeline_eyebrow}</p>
+            <h2 className="text-3xl font-bold font-heading text-[#032f23] mt-2 mb-8">{content.timeline_heading}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {timeline.map((item) => (
+                <div key={item.id} className="bg-white rounded-2xl p-5 border border-[#c5d5ce]">
+                  <p className="text-2xl font-extrabold font-heading text-[#032f23]">{item.year}</p>
+                  <h3 className="font-bold text-sm mt-2 text-slate-900">{item.title}</h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
-            <h2 className="text-3xl font-bold font-heading text-white">
-              School Heritage Timeline
-            </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {timeline.map((item, idx) => (
-              <div key={idx} className="bg-[#0D2A47] p-6 rounded-2xl border border-white/10 space-y-2 relative">
-                <span className="text-2xl font-extrabold font-heading text-[#C9A227] block">{item.year}</span>
-                <h3 className="text-base font-bold font-heading text-white">{item.title}</h3>
-                <p className="text-xs text-[#D8E2EC] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+        </section>
+      )}
     </div>
   );
 };

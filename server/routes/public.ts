@@ -21,7 +21,7 @@ router.get('/settings', async (req, res) => {
     res.json(settings);
   } catch (err) {
     res.json({
-      school_name: 'Apex Academy & International School',
+      school_name: 'Ibn Seena English High School',
       tagline: 'Nurturing Minds, Building Future Leaders',
       logo_url: '/images/campus.jpg',
       address: '100 Academy Boulevard, Innovation District, CA 94016',

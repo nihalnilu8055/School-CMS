@@ -3,7 +3,7 @@ import { SafeImage } from '../common/SafeImage';
 import { 
   LayoutDashboard, Menu as MenuIcon, FileText, Image as ImageIcon, 
   Newspaper, Users, BookOpen, Download, Mail, Settings, 
-  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, GraduationCap, X, Calendar 
+  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, GraduationCap, X, Calendar, Bell 
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -31,6 +31,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         { key: 'dashboard', label: 'Dashboard Overview', icon: LayoutDashboard },
         { key: 'banners', label: 'Hero Banner Slider', icon: ImageIcon },
         { key: 'news', label: 'News Management', icon: Newspaper },
+        { key: 'notices', label: 'Notices Manager', icon: Bell },
         { key: 'events', label: 'Events Calendar', icon: Calendar },
         { key: 'gallery', label: 'Gallery & Albums', icon: ImageIcon },
       ]
@@ -48,6 +49,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       title: "Site Administration",
       items: [
         { key: 'pages', label: 'Page Management', icon: FileText },
+        { key: 'content', label: 'Frontend Content', icon: Sliders },
         { key: 'menus', label: 'Menu Management', icon: MenuIcon },
         { key: 'media', label: 'Media Manager', icon: HardDrive },
         { key: 'seo', label: 'SEO Settings', icon: Search },
@@ -65,26 +67,26 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       {isOpen && (
         <div 
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 bg-[#12355B]/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-[#032f23]/80 backdrop-blur-sm lg:hidden"
         />
       )}
 
-      <aside className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#12355B] text-white border-r border-[#0D2A47] flex flex-col transition-transform duration-300 ${
+      <aside className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#032f23] text-white border-r border-[#021f18] flex flex-col transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       }`}>
         
         {/* Brand Bar */}
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white p-0.5 shadow-md flex items-center justify-center border border-[#C9A227]">
-              <GraduationCap className="w-5 h-5 text-[#12355B]" />
+            <div className="w-10 h-10 rounded-xl bg-white p-0.5 shadow-md flex items-center justify-center border border-[#0a5c47]">
+              <GraduationCap className="w-5 h-5 text-[#032f23]" />
             </div>
             <div>
-              <h2 className="text-base font-bold font-heading text-white leading-tight">Apex Admin</h2>
-              <span className="text-[11px] text-[#C9A227] font-bold uppercase tracking-wide">CMS Control Panel</span>
+              <h2 className="text-base font-bold font-heading text-white leading-tight">Ibn Seena Admin</h2>
+              <span className="text-[11px] text-white/70 font-bold uppercase tracking-wide">CMS Control Panel</span>
             </div>
           </div>
-          <button onClick={() => setIsOpen(false)} className="lg:hidden p-1 text-[#D8E2EC] hover:text-white">
+          <button onClick={() => setIsOpen(false)} className="lg:hidden p-1 text-white hover:bg-white/15 rounded-lg">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -93,7 +95,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           {menuGroups.map((group, gIdx) => (
             <div key={gIdx} className="space-y-2">
-              <h3 className="px-3 text-[11px] font-extrabold uppercase text-[#C9A227] tracking-wider">
+              <h3 className="px-3 text-[11px] font-extrabold uppercase text-white/70 tracking-wider">
                 {group.title}
               </h3>
               <div className="space-y-1">
@@ -107,11 +109,11 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                       onClick={() => { setActiveModule(item.key); setIsOpen(false); }}
                       className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-semibold text-xs transition-all ${
                         isActive
-                          ? 'bg-[#1F5F8B] text-white shadow-sm border-l-4 border-[#C9A227]'
-                          : 'text-[#D8E2EC] hover:text-white hover:bg-white/10'
+                          ? 'bg-white text-[#032f23] shadow-sm'
+                          : 'text-white hover:bg-white/15'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#C9A227]' : 'text-[#D8E2EC]'}`} />
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#032f23]' : 'text-white'}`} />
                       <span>{item.label}</span>
                     </button>
                   );
@@ -122,22 +124,22 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         </div>
 
         {/* User Footer info & Logout */}
-        <div className="p-4 border-t border-white/10 bg-[#0D2A47] flex items-center justify-between">
+        <div className="p-4 border-t border-white/10 bg-[#021f18] flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <SafeImage
               src={user?.avatar_url || "/images/staff3.jpg"}
               alt={user?.name || "User"}
               type="person"
-              className="w-9 h-9 rounded-full object-cover border border-[#C9A227] shrink-0"
+              className="w-9 h-9 rounded-full object-cover border border-[#0a5c47] shrink-0"
             />
             <div className="min-w-0">
               <p className="text-xs font-bold text-white truncate">{user?.name || "Alexander Wright"}</p>
-              <p className="text-[10px] text-[#C9A227] font-semibold truncate">{user?.role || "Super Admin"}</p>
+              <p className="text-[10px] text-white/70 font-semibold truncate">{user?.role || "Super Admin"}</p>
             </div>
           </div>
           <button
             onClick={onLogout}
-            className="p-2 text-[#D8E2EC] hover:text-[#C9A227] hover:bg-white/10 rounded-lg transition"
+            className="p-2 text-white hover:bg-white/15 rounded-lg transition"
             title="Sign Out"
           >
             <LogOut className="w-4 h-4" />

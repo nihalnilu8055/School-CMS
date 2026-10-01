@@ -80,15 +80,15 @@ export const MessagesManager: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handleExportCSV}
-            className="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
+            className="bg-[#054433] hover:bg-[#032f23] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
           >
-            <Download className="w-4 h-4 text-school-400" />
+            <Download className="w-4 h-4 text-white" />
             <span>Export CSV</span>
           </button>
 
           <button
             onClick={handleExportExcel}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
+            className="bg-[#032f23] hover:bg-[#021f18] text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>Export Excel</span>
@@ -154,7 +154,7 @@ export const MessagesManager: React.FC = () => {
                   <td className="p-4">
                     <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
                       msg.reply_status === 'pending' ? 'bg-amber-100 text-amber-800' :
-                      msg.reply_status === 'replied' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'
+                      msg.reply_status === 'replied' ? 'bg-[#e8f0ed] text-[#032f23]' : 'bg-slate-200 text-slate-700'
                     }`}>
                       {msg.reply_status}
                     </span>
@@ -162,19 +162,21 @@ export const MessagesManager: React.FC = () => {
                   <td className="p-4 text-slate-400">
                     {new Date(msg.created_at).toLocaleDateString()}
                   </td>
-                  <td className="p-4 text-right space-x-2">
-                    <button
-                      onClick={() => { setSelectedMsg(msg); setAdminNotes(msg.admin_notes || ''); }}
-                      className="px-3 py-1.5 rounded-xl bg-school-50 text-school-600 font-semibold hover:bg-school-100 transition"
-                    >
-                      View & Reply
-                    </button>
-                    <button
-                      onClick={() => setDeleteId(msg.id)}
-                      className="p-1.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                  <td className="p-4">
+                    <div className="flex items-center justify-end gap-2 whitespace-nowrap">
+                      <button
+                        onClick={() => { setSelectedMsg(msg); setAdminNotes(msg.admin_notes || ''); }}
+                        className="px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-semibold hover:bg-[#d1fae5] border border-[#c5d5ce]"
+                      >
+                        View & Reply
+                      </button>
+                      <button
+                        onClick={() => setDeleteId(msg.id)}
+                        className="p-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 border border-red-100"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -222,7 +224,7 @@ export const MessagesManager: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => { updateMessageStatus(selectedMsg.id, 'replied', adminNotes); setSelectedMsg(null); }}
-                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow"
+                    className="px-4 py-2 rounded-xl bg-[#032f23] hover:bg-[#021f18] text-white font-semibold text-xs shadow"
                   >
                     Mark as Replied
                   </button>

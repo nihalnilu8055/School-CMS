@@ -28,7 +28,7 @@ export const SettingsManager: React.FC = () => {
         </div>
 
         {saved && (
-          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 font-bold text-xs animate-fadeIn">
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-bold text-xs animate-fadeIn">
             <CheckCircle className="w-4 h-4" /> Saved Successfully!
           </span>
         )}

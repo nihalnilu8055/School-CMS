@@ -47,9 +47,9 @@ export const SafeImage: React.FC<SafeImageProps> = ({
 
   if (showPlaceholder && failedSrc === localFallback) {
     return (
-      <div className={`bg-[#12355B] text-white flex flex-col items-center justify-center p-4 ${className}`}>
-        <GraduationCap className="w-10 h-10 text-[#C9A227] mb-1 opacity-80" />
-        <span className="text-[10px] font-semibold tracking-wider text-slate-300 uppercase">{alt || 'Apex Academy'}</span>
+      <div className={`bg-[#032f23] text-white flex flex-col items-center justify-center p-4 ${className}`}>
+        <GraduationCap className="w-10 h-10 text-[#0a5c47] mb-1 opacity-80" />
+        <span className="text-[10px] font-semibold tracking-wider text-slate-300 uppercase">{alt || 'Ibn Seena'}</span>
       </div>
     );
   }

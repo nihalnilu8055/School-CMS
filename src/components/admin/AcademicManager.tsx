@@ -5,10 +5,12 @@ import { Plus, Edit2, Trash2, BookOpen, Layers, X } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
 
 export const AcademicManager: React.FC = () => {
-  const { programs, addProgram, updateProgram, deleteProgram } = useSite();
+  const { programs, addProgram, updateProgram, deleteProgram, departments, addDepartment, updateDepartment, deleteDepartment } = useSite();
   const [showModal, setShowModal] = useState(false);
   const [editingProgram, setEditingProgram] = useState<AcademicProgram | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
+  const [deptForm, setDeptForm] = useState({ name: '', code: '', description: '', head_name: '' });
+  const [editingDeptId, setEditingDeptId] = useState<number | null>(null);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -169,6 +171,42 @@ export const AcademicManager: React.FC = () => {
         onClose={() => setDeleteId(null)}
         onConfirm={() => deleteId && deleteProgram(deleteId)}
       />
+
+      <div className="space-y-4 pt-4">
+        <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">Departments</h3>
+        <p className="text-xs text-slate-500">These appear on the Academics page and as staff filters.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {departments.map((dept) => (
+            <div key={dept.id} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-2">
+              <p className="font-bold text-slate-900 dark:text-white">{dept.name} <span className="text-xs text-school-600">{dept.code}</span></p>
+              <p className="text-xs text-slate-500">{dept.description}</p>
+              <p className="text-xs text-slate-500">Head: {dept.head_name}</p>
+              <div className="flex gap-2">
+                <button type="button" onClick={() => { setEditingDeptId(dept.id); setDeptForm({ name: dept.name, code: dept.code, description: dept.description, head_name: dept.head_name }); }} className="p-2 rounded-xl bg-slate-100"><Edit2 className="w-4 h-4" /></button>
+                <button type="button" onClick={() => deleteDepartment(dept.id)} className="p-2 rounded-xl bg-red-50 text-red-600"><Trash2 className="w-4 h-4" /></button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (editingDeptId) updateDepartment(editingDeptId, deptForm);
+            else addDepartment(deptForm);
+            setEditingDeptId(null);
+            setDeptForm({ name: '', code: '', description: '', head_name: '' });
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800"
+        >
+          <input required placeholder="Department name" value={deptForm.name} onChange={(e) => setDeptForm({ ...deptForm, name: e.target.value })} className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm" />
+          <input required placeholder="Code" value={deptForm.code} onChange={(e) => setDeptForm({ ...deptForm, code: e.target.value })} className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm" />
+          <input placeholder="Description" value={deptForm.description} onChange={(e) => setDeptForm({ ...deptForm, description: e.target.value })} className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm" />
+          <input placeholder="Head of department" value={deptForm.head_name} onChange={(e) => setDeptForm({ ...deptForm, head_name: e.target.value })} className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm" />
+          <button type="submit" className="sm:col-span-2 bg-school-600 text-white font-semibold py-2 rounded-xl text-sm">
+            {editingDeptId ? 'Update Department' : 'Add Department'}
+          </button>
+        </form>
+      </div>
 
     </div>
   );

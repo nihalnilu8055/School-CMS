@@ -4,6 +4,7 @@ export interface User {
   id: number;
   name: string;
   email: string;
+  password_hash?: string;
   role: string;
   role_id: number;
   avatar_url?: string;
@@ -42,6 +43,8 @@ export interface Page {
   title: string;
   slug: string;
   content: string;
+  eyebrow?: string;
+  intro?: string;
   template: 'default' | 'full-width' | 'contact' | 'about';
   is_published: boolean;
   meta_title?: string;
@@ -226,5 +229,120 @@ export interface AuditLog {
   module: string;
   details: string;
   ip_address: string;
+  created_at: string;
+}
+
+export type NoticeCategory = 'General Notices' | 'Fee Notices' | 'Academic Circulars' | 'Exam Notices' | 'General' | 'Fee' | 'Academic' | 'Exam';
+export type NoticePriority = 'Urgent' | 'Important' | 'General';
+export type NoticeStatus = 'published' | 'archived';
+
+export interface StatHighlight {
+  id: number;
+  label: string;
+  value: string;
+  desc: string;
+}
+
+export interface Testimonial {
+  id: number;
+  quote: string;
+  name: string;
+  role: string;
+  avatar: string;
+  stars: number;
+}
+
+export interface Partner {
+  id: number;
+  title: string;
+  desc: string;
+}
+
+export interface Facility {
+  id: number;
+  title: string;
+  desc: string;
+  image: string;
+}
+
+export interface TimelineItem {
+  id: number;
+  year: string;
+  title: string;
+  desc: string;
+}
+
+export interface FrontendContent {
+  hero_badge: string;
+  admissions_cta_label: string;
+  welcome_eyebrow: string;
+  welcome_heading: string;
+  welcome_body: string;
+  welcome_quote: string;
+  welcome_bullets: string[];
+  welcome_cta: string;
+  stats_eyebrow: string;
+  stats_heading: string;
+  stats: StatHighlight[];
+  news_home_eyebrow: string;
+  news_home_heading: string;
+  events_home_eyebrow: string;
+  events_home_heading: string;
+  gallery_home_eyebrow: string;
+  gallery_home_heading: string;
+  testimonials_eyebrow: string;
+  testimonials_heading: string;
+  testimonials: Testimonial[];
+  partners_heading: string;
+  partners: Partner[];
+  principal_message_heading: string;
+  about_banner_image: string;
+  facilities_eyebrow: string;
+  facilities_heading: string;
+  facilities: Facility[];
+  timeline_eyebrow: string;
+  timeline_heading: string;
+  timeline: TimelineItem[];
+  academics_eyebrow: string;
+  academics_heading: string;
+  academics_intro: string;
+  contact_eyebrow: string;
+  contact_heading: string;
+  contact_intro: string;
+  notices_eyebrow: string;
+  notices_heading: string;
+  notices_intro: string;
+  news_eyebrow: string;
+  news_heading: string;
+  news_intro: string;
+  staff_eyebrow: string;
+  staff_heading: string;
+  staff_intro: string;
+  gallery_page_eyebrow: string;
+  gallery_page_heading: string;
+  gallery_page_intro: string;
+  privacy_title: string;
+  privacy_body: string;
+  terms_title: string;
+  terms_body: string;
+}
+
+export interface Notice {
+  id: number;
+  title: string;
+  category: NoticeCategory;
+  excerpt: string;
+  summary?: string;
+  content: string;
+  priority: NoticePriority;
+  date?: string;
+  release_date: string;
+  expiry_date: string;
+  attachment_url?: string;
+  file_url?: string;
+  attachment_name?: string;
+  is_pinned: boolean;
+  is_urgent?: boolean;
+  status: NoticeStatus;
   created_at: string;
 }
