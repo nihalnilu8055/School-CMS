@@ -12,6 +12,7 @@ import {
   INITIAL_DOWNLOADS, INITIAL_MESSAGES, INITIAL_AUDIT_LOGS, INITIAL_USERS, 
   INITIAL_ROLES, INITIAL_PAGES, INITIAL_MENUS, INITIAL_NOTICES, INITIAL_CONTENT 
 } from '../services/api';
+import { fetchPublicContent } from '../services/backend';
 
 interface SiteContextType {
   settings: SiteSettings;
@@ -110,12 +111,12 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Helper to init state with localStorage persistence
   const usePersistentState = <T,>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
     const [state, setState] = useState<T>(() => {
-      const saved = localStorage.getItem(`school_cms_v12_${key}`);
+      const saved = localStorage.getItem(`school_cms_v13_${key}`);
       return saved ? JSON.parse(saved) : initial;
     });
 
     useEffect(() => {
-      localStorage.setItem(`school_cms_v12_${key}`, JSON.stringify(state));
+      localStorage.setItem(`school_cms_v13_${key}`, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];
@@ -171,6 +172,29 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (prev.some((item) => item.parent_id)) return prev;
       return INITIAL_MENUS;
     });
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchPublicContent()
+      .then((data) => {
+        if (cancelled || !data) return;
+        if (data.departments?.length) setDepartments(data.departments);
+        if (data.staff?.length) setStaff(data.staff);
+        if (data.newsCategories?.length) setNewsCategories(data.newsCategories);
+        if (data.news?.length) setNews(data.news);
+        if (data.events?.length) setEvents(data.events);
+        if (data.albums?.length) setAlbums(data.albums);
+        if (data.galleryItems?.length) setGalleryItems(data.galleryItems);
+        if (data.programs?.length) setPrograms(data.programs);
+        if (data.downloads?.length) setDownloads(data.downloads);
+      })
+      .catch(() => {
+        /* Keep local CMS data if the API is offline. */
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const logAction = (action: string, module: string, details: string) => {

@@ -1,8 +1,27 @@
 import { Router } from 'express';
 import { pool } from '../db';
 import { supabase } from '../supabase';
+import { fetchPublicContent } from '../publicContent';
 
 const router = Router();
+
+router.get('/content', async (_req, res) => {
+  try {
+    const data = await fetchPublicContent();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: 'Unable to load public content' });
+  }
+});
+
+router.get('/staff', async (_req, res) => {
+  try {
+    const data = await fetchPublicContent();
+    res.json(data.staff);
+  } catch {
+    res.json([]);
+  }
+});
 
 // GET /api/public/settings
 router.get('/settings', async (req, res) => {

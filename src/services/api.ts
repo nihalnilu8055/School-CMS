@@ -122,6 +122,36 @@ export const INITIAL_STAFF: StaffMember[] = [
     bio: "Creates a calm, trusted classroom where young learners feel known and ready to try.",
     order_index: 3,
     is_active: true
+  },
+  {
+    id: 4,
+    name: "Ms. Clara Thorne",
+    photo_url: "/images/staff1.jpg",
+    designation: "Fine Arts Director",
+    department_id: 4,
+    department_name: "Arts & Performing Arts",
+    qualification: "M.F.A. Fine Arts",
+    experience: "9 Years",
+    email: "c.thorne@ibnseenaschool.edu",
+    phone: "+1 (555) 345-6783",
+    bio: "Guides drawing, design, and performance so every student has a place to create.",
+    order_index: 4,
+    is_active: true
+  },
+  {
+    id: 5,
+    name: "Coach David Miller",
+    photo_url: "/images/sports.jpg",
+    designation: "Athletics & Sports Director",
+    department_id: 5,
+    department_name: "Sports & Physical Fitness",
+    qualification: "B.S. Sports Science & Physical Education",
+    experience: "14 Years",
+    email: "d.miller@ibnseenaschool.edu",
+    phone: "+1 (555) 345-6784",
+    bio: "Builds discipline, teamwork, and fair play through PE, house sports, and after-school games.",
+    order_index: 5,
+    is_active: true
   }
 ];
 
