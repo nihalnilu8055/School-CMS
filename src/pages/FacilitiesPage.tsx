@@ -4,7 +4,7 @@ import { PAGE_CONTENT } from '../data/pageContent';
 import { relatedNavForSlug } from '../data/navigation';
 import { PageHero } from '../components/public/PageHero';
 import { SafeImage } from '../components/common/SafeImage';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Facility } from '../types';
 
 const FALLBACK_FACILITIES: Facility[] = [
@@ -47,13 +47,6 @@ export const FacilitiesPage: React.FC = () => {
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <button
-          onClick={() => go('about')}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#032f23] bg-[#e8f0ed] border border-[#c5d5ce] px-4 py-2 rounded-xl mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" /> Back to About Us
-        </button>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

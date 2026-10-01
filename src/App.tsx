@@ -95,6 +95,7 @@ const MainAppContent: React.FC = () => {
       case 'academics':
         return <AcademicsPage />;
       case 'staff':
+      case 'about/staff':
         return <StaffPage />;
       case 'news':
         return <NewsPage onSelectNewsItem={handleSelectNewsItem} />;

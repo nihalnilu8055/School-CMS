@@ -72,11 +72,47 @@ export const AboutUsPage: React.FC = () => {
         </div>
       </section>
 
+      {staff.filter((member) => member.is_active).length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#054433]">{content.staff_eyebrow || 'Faculty Directory'}</p>
+              <h2 className="text-3xl font-bold font-heading text-[#032f23] mt-2">{content.staff_heading || 'Educators & Leadership'}</h2>
+            </div>
+            <button
+              onClick={() => go('about/staff')}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#032f23]"
+            >
+              See all faculty & staff <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {staff.filter((member) => member.is_active).slice(0, 3).map((member) => (
+              <button
+                key={member.id}
+                type="button"
+                onClick={() => go('about/staff')}
+                className="text-left rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-subtle hover:shadow-card transition"
+              >
+                <div className="h-56 overflow-hidden bg-[#e8f0ed]">
+                  <SafeImage src={member.photo_url} alt={member.name} type="person" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-heading font-bold text-[#032f23]">{member.name}</h3>
+                  <p className="text-sm font-semibold text-[#054433] mt-1">{member.designation}</p>
+                  {member.qualification && <p className="text-xs text-slate-500 mt-2">{member.qualification}</p>}
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       {aboutLinks.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
           <p className="text-xs font-bold uppercase tracking-wider text-[#054433]">Explore About Us</p>
           <h2 className="text-3xl font-bold font-heading text-[#032f23] mt-2 mb-8">School information</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {aboutLinks.map((item) => (
               <button
                 key={item.key}

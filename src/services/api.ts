@@ -107,6 +107,21 @@ export const INITIAL_STAFF: StaffMember[] = [
     bio: "Focused on developing analytical problem-solving skills in an approachable learning environment.",
     order_index: 2,
     is_active: true
+  },
+  {
+    id: 3,
+    name: "Ms. Amina Rahman",
+    photo_url: "/images/staff3.jpg",
+    designation: "Head of Primary",
+    department_id: 3,
+    department_name: "Primary Years",
+    qualification: "M.Ed. Early Childhood Education",
+    experience: "12 Years",
+    email: "a.rahman@ibnseenaschool.edu",
+    phone: "+1 (555) 345-6782",
+    bio: "Creates a calm, trusted classroom where young learners feel known and ready to try.",
+    order_index: 3,
+    is_active: true
   }
 ];
 
@@ -572,6 +587,7 @@ const buildInitialMenus = (): MenuItem[] => {
   });
   [
     { title: 'Mission & Vision', url: '/about/mission' },
+    { title: 'Faculty & Staff', url: '/about/staff' },
     { title: 'Admission Process', url: '/admissions/process' },
     { title: 'Academic Calendar', url: '/information/calendar' },
     { title: 'Fee Structure', url: '/fees/structure' },

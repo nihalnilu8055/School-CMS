@@ -8,6 +8,8 @@ import { ConfirmModal } from './ConfirmModal';
 const MODULE_SLUGS: Record<string, string> = {
   home: 'Use Hero Banner + Site Settings',
   notices: 'Use Notices Manager',
+  staff: 'Use Staff & Teachers',
+  'about/staff': 'Use Staff & Teachers',
   contact: 'Use Site Settings + Contact form',
 };
 

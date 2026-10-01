@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
   const baseGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
   const reservedNav = new Set([
     ...baseGroups.flatMap((group) => [group.key, ...(group.children?.map((child) => child.key) || [])]),
-    'home', 'admin', 'news', 'staff', 'gallery', 'academics', 'contact', 'news_detail', 'about/facilities', 'alumni/our-alumni',
+    'home', 'admin', 'news', 'staff', 'gallery', 'academics', 'contact', 'news_detail', 'about/facilities', 'about/staff', 'alumni/our-alumni',
   ]);
   const extraPages = pages.filter((page) => page.is_published && !reservedNav.has(page.slug));
   const navGroups = extraPages.length
@@ -246,6 +246,10 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
               <button onClick={() => { handleNavClick('about/mission'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e8f0ed]">
                 <p className="font-semibold text-[#032f23] text-sm">Mission & Vision</p>
                 <p className="text-xs text-slate-500">School philosophy</p>
+              </button>
+              <button onClick={() => { handleNavClick('about/staff'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e8f0ed]">
+                <p className="font-semibold text-[#032f23] text-sm">Faculty & Staff</p>
+                <p className="text-xs text-slate-500">Teachers and school leadership</p>
               </button>
             </div>
           </div>

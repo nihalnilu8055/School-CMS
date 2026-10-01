@@ -15,6 +15,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: 'About Us',
     children: [
       { key: 'about/mission', label: 'Mission & Vision' },
+      { key: 'about/staff', label: 'Faculty & Staff' },
       { key: 'about/timing', label: 'School Timing' },
       { key: 'about/curriculum', label: 'Our Curriculum' },
       { key: 'about/assessments', label: 'External Assessments' },
@@ -95,6 +96,7 @@ export const menusToNavGroups = (
 export const isNavActive = (currentTab: string, group: NavGroup) => {
   if (currentTab === group.key) return true;
   if (currentTab.startsWith(`${group.key}/`)) return true;
+  if (group.key === 'about' && currentTab === 'staff') return true;
   if (group.key === 'notices' && currentTab.startsWith('notices')) return true;
   return false;
 };
