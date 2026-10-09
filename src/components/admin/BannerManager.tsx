@@ -4,6 +4,7 @@ import { BannerSlide } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import { Plus, Edit2, Trash2, Eye, Check, X, Image as ImageIcon } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const BannerManager: React.FC = () => {
   const { banners, addBanner, updateBanner, deleteBanner } = useSite();
@@ -11,26 +12,23 @@ export const BannerManager: React.FC = () => {
   const [editingBanner, setEditingBanner] = useState<BannerSlide | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     title: '',
     subtitle: '',
-    button_text: 'Explore Academics',
-    button_url: '/academics',
-    image_url: '/images/campus.jpg',
+    button_text: '',
+    button_url: '',
+    image_url: '',
     order_index: 1,
     is_active: true
-  });
+  };
+
+  const [formData, setFormData] = useState(emptyForm);
 
   const handleOpenAdd = () => {
     setEditingBanner(null);
     setFormData({
-      title: '',
-      subtitle: '',
-      button_text: 'Explore Academics',
-      button_url: '/academics',
-      image_url: '/images/campus.jpg',
+      ...emptyForm,
       order_index: banners.length + 1,
-      is_active: true
     });
     setShowModal(true);
   };
@@ -181,16 +179,13 @@ export const BannerManager: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Background Image URL</label>
-                <input
-                  type="url"
-                  required
-                  value={formData.image_url}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-                />
-              </div>
+              <FileUploadField
+                label="Background image"
+                value={formData.image_url}
+                accept="image/*"
+                hint="Upload the homepage banner photo."
+                onChange={(url) => setFormData({ ...formData, image_url: url })}
+              />
 
               <div className="flex items-center gap-6 pt-2">
                 <label className="flex items-center gap-2 cursor-pointer font-bold text-slate-700 dark:text-slate-300">

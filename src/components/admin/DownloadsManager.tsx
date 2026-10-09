@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
-import { Plus, Trash2, Download, FileText, X } from 'lucide-react';
+import { Plus, Trash2, Download, FileText } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const DownloadsManager: React.FC = () => {
   const { downloads, addDownload, deleteDownload } = useSite();
@@ -10,7 +11,7 @@ export const DownloadsManager: React.FC = () => {
 
   const [formData, setFormData] = useState({
     title: '',
-    file_url: '#',
+    file_url: '',
     file_type: 'PDF Document',
     file_size: '2.5 MB',
     category: 'General' as any
@@ -18,8 +19,16 @@ export const DownloadsManager: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.file_url || formData.file_url === '#') return;
     addDownload(formData);
     setShowModal(false);
+    setFormData({
+      title: '',
+      file_url: '',
+      file_type: 'PDF Document',
+      file_size: '',
+      category: 'General' as any
+    });
   };
 
   return (
@@ -35,7 +44,16 @@ export const DownloadsManager: React.FC = () => {
           </p>
         </div>
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => {
+            setFormData({
+              title: '',
+              file_url: '',
+              file_type: 'PDF Document',
+              file_size: '',
+              category: 'General' as any
+            });
+            setShowModal(true);
+          }}
           className="bg-school-600 hover:bg-school-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 w-fit"
         >
           <Plus className="w-4 h-4" />
@@ -65,9 +83,16 @@ export const DownloadsManager: React.FC = () => {
                 <td className="p-4 text-slate-500">{dl.file_type} • {dl.file_size}</td>
                 <td className="p-4 font-bold text-slate-900 dark:text-white">{dl.downloads_count}</td>
                 <td className="p-4 text-right">
-                  <button onClick={() => setDeleteId(dl.id)} className="p-2 rounded-xl bg-red-50 text-red-600">
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center justify-end gap-2">
+                    {dl.file_url && dl.file_url !== '#' && (
+                      <a href={dl.file_url} download={dl.title} className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530]">
+                        <Download className="w-4 h-4" />
+                      </a>
+                    )}
+                    <button onClick={() => setDeleteId(dl.id)} className="p-2 rounded-xl bg-red-50 text-red-600">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -107,6 +132,19 @@ export const DownloadsManager: React.FC = () => {
                   <option value="Circular">Circular</option>
                 </select>
               </div>
+              <FileUploadField
+                label="Upload file"
+                value={formData.file_url === '#' ? '' : formData.file_url}
+                accept=".pdf,.doc,.docx,.xls,.xlsx,image/*"
+                hint="Upload the PDF or document parents will download."
+                onChange={(url, meta) => setFormData({
+                  ...formData,
+                  file_url: url,
+                  file_type: meta?.type || formData.file_type,
+                  file_size: meta?.size || formData.file_size,
+                  title: formData.title || meta?.name?.replace(/\.[^.]+$/, '') || '',
+                })}
+              />
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <button type="submit" className="px-5 py-2 bg-school-600 text-white font-semibold rounded-xl">Save Document</button>
               </div>

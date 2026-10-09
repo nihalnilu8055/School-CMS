@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
 import { Search, Save, CheckCircle, Code, FileText, Globe } from 'lucide-react';
+import { FileUploadField } from './FileUploadField';
 
 export const SeoManager: React.FC = () => {
   const { seo, updateSeo } = useSite();
@@ -82,12 +83,12 @@ export const SeoManager: React.FC = () => {
           </h3>
 
           <div>
-            <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Open Graph Image (OG Image URL)</label>
-            <input
-              type="url"
+            <FileUploadField
+              label="Open Graph image"
               value={formData.og_image}
-              onChange={(e) => setFormData({ ...formData, og_image: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
+              accept="image/*"
+              hint="Upload the image used when the site is shared on social media."
+              onChange={(url) => setFormData({ ...formData, og_image: url })}
             />
           </div>
         </div>

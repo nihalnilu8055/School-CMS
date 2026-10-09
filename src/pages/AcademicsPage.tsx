@@ -101,7 +101,7 @@ export const AcademicsPage: React.FC = () => {
                     <p className="text-xs text-slate-400 mt-0.5">{dl.file_type} · {dl.file_size}</p>
                   </div>
                 </div>
-                <a href={dl.file_url} className="bg-[#005530] text-white p-3 rounded-2xl shrink-0" title="Download">
+                <a href={dl.file_url} download={dl.title} className="bg-[#005530] text-white p-3 rounded-2xl shrink-0" title="Download">
                   <Download className="w-4 h-4" />
                 </a>
               </div>

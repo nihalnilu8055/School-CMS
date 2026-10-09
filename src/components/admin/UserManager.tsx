@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
 import { generatePassword, getPasswordStrength, hashPassword } from '../../utils/password';
+import { FileUploadField } from './FileUploadField';
 
 const emptyForm = {
   name: '',
@@ -15,7 +16,7 @@ const emptyForm = {
   role: 'Editor',
   role_id: 3,
   phone: '',
-  avatar_url: '/images/staff3.jpg',
+  avatar_url: '',
   is_active: true,
   password: '',
   confirmPassword: '',
@@ -60,7 +61,7 @@ export const UserManager: React.FC = () => {
       role: user.role,
       role_id: user.role_id,
       phone: user.phone || '',
-      avatar_url: user.avatar_url || '/images/staff3.jpg',
+      avatar_url: user.avatar_url || '',
       is_active: user.is_active,
     });
     setFormError('');
@@ -283,6 +284,15 @@ export const UserManager: React.FC = () => {
                       className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                     />
                   </label>
+
+                  <div className="sm:col-span-2">
+                    <FileUploadField
+                      label="Profile photo"
+                      value={formData.avatar_url}
+                      accept="image/*"
+                      onChange={(url) => setFormData({ ...formData, avatar_url: url })}
+                    />
+                  </div>
 
                   <label className="block space-y-1.5 sm:col-span-2">
                     <span className="text-[11px] font-bold uppercase text-slate-500">Role permission group</span>

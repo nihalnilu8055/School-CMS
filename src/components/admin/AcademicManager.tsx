@@ -14,11 +14,11 @@ export const AcademicManager: React.FC = () => {
 
   const [formData, setFormData] = useState({
     title: '',
-    code: 'SEC',
+    code: '',
     level: 'Secondary' as any,
     description: '',
     curriculum_details: '',
-    duration: '4 Years',
+    duration: '',
     is_active: true
   });
 
@@ -26,11 +26,11 @@ export const AcademicManager: React.FC = () => {
     setEditingProgram(null);
     setFormData({
       title: '',
-      code: 'SEC',
+      code: '',
       level: 'Secondary',
       description: '',
       curriculum_details: '',
-      duration: '4 Years',
+      duration: '',
       is_active: true
     });
     setShowModal(true);

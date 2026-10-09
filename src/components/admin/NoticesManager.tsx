@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
 import { Notice, NoticeCategory, NoticePriority, NoticeStatus } from '../../types';
-import { Plus, Edit2, Pin, Archive, Bell, X } from 'lucide-react';
+import { Plus, Edit2, Pin, Archive, Bell, X, Paperclip } from 'lucide-react';
+import { FileUploadField } from './FileUploadField';
 
 const emptyForm = {
   title: '',
@@ -63,6 +64,7 @@ export const NoticesManager: React.FC = () => {
     const payload = {
       ...formData,
       attachment_url: formData.attachment_url || undefined,
+      file_url: formData.attachment_url || undefined,
       attachment_name: formData.attachment_name || undefined,
     };
     if (editing) updateNotice(editing.id, payload);
@@ -107,6 +109,11 @@ export const NoticesManager: React.FC = () => {
                     {notice.title}
                   </p>
                   <p className="text-slate-500 mt-1 line-clamp-1">{notice.excerpt}</p>
+                  {(notice.attachment_url || notice.file_url) && (
+                    <p className="text-[#005530] mt-1 inline-flex items-center gap-1 font-semibold">
+                      <Paperclip className="w-3 h-3" /> {notice.attachment_name || 'Attachment'}
+                    </p>
+                  )}
                 </td>
                 <td className="p-4 align-middle font-semibold text-[#004428]">{notice.category}</td>
                 <td className="p-4 align-middle">
@@ -187,8 +194,18 @@ export const NoticesManager: React.FC = () => {
               <input type="date" value={formData.release_date} onChange={(e) => setFormData({ ...formData, release_date: e.target.value })} className="px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] text-sm text-slate-900" />
               <input type="date" required value={formData.expiry_date} onChange={(e) => setFormData({ ...formData, expiry_date: e.target.value })} className="px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] text-sm text-slate-900" />
             </div>
-            <input value={formData.attachment_url} onChange={(e) => setFormData({ ...formData, attachment_url: e.target.value })} placeholder="Attachment URL (PDF or file)" className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] text-sm text-slate-900" />
-            <input value={formData.attachment_name} onChange={(e) => setFormData({ ...formData, attachment_name: e.target.value })} placeholder="Attachment file name" className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] text-sm text-slate-900" />
+            <FileUploadField
+              label="Attachment"
+              value={formData.attachment_url}
+              accept=".pdf,.doc,.docx,.xls,.xlsx,image/*"
+              hint="Upload a circular, PDF, form, or image for parents to download."
+              onChange={(url, meta) => setFormData({
+                ...formData,
+                attachment_url: url,
+                attachment_name: meta?.name || formData.attachment_name,
+              })}
+            />
+            <input value={formData.attachment_name} onChange={(e) => setFormData({ ...formData, attachment_name: e.target.value })} placeholder="Attachment file name (optional)" className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] text-sm text-slate-900" />
             <label className="flex items-center gap-2 text-sm text-slate-700">
               <input type="checkbox" checked={formData.is_pinned} onChange={(e) => setFormData({ ...formData, is_pinned: e.target.checked })} />
               Pin this notice

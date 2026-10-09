@@ -92,9 +92,10 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
               {(notice.attachment_url || notice.file_url) && (
                 <a
                   href={notice.attachment_url || notice.file_url}
+                  download={notice.attachment_name || 'notice-attachment'}
                   className="inline-flex items-center gap-2 shrink-0 bg-[#005530] text-white text-xs font-semibold px-4 py-2.5 rounded-xl"
                 >
-                  <Download className="w-4 h-4" /> Download
+                  <Download className="w-4 h-4" /> {notice.attachment_name || 'Download'}
                 </a>
               )}
             </article>

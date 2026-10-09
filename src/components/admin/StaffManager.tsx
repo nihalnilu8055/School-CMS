@@ -4,6 +4,7 @@ import { StaffMember } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import { Plus, Edit2, Trash2, Search, Users, Mail, Phone, Award, X } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const StaffManager: React.FC = () => {
   const { staff, departments, addStaff, updateStaff, deleteStaff } = useSite();
@@ -12,19 +13,21 @@ export const StaffManager: React.FC = () => {
   const [editingStaff, setEditingStaff] = useState<StaffMember | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     name: '',
-    photo_url: '/images/staff1.jpg',
-    designation: 'Senior Faculty',
+    photo_url: '',
+    designation: '',
     department_id: 1,
-    qualification: 'M.Sc. Education',
-    experience: '10 Years',
-    email: 'faculty@apexacademy.edu',
-    phone: '+1 (555) 101-2099',
-    bio: 'Dedicated educator passionate about student mentorship.',
+    qualification: '',
+    experience: '',
+    email: '',
+    phone: '',
+    bio: '',
     order_index: 1,
     is_active: true
-  });
+  };
+
+  const [formData, setFormData] = useState(emptyForm);
 
   const filteredStaff = staff.filter(s => 
     s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -34,17 +37,8 @@ export const StaffManager: React.FC = () => {
   const handleOpenAdd = () => {
     setEditingStaff(null);
     setFormData({
-      name: '',
-      photo_url: '/images/staff1.jpg',
-      designation: 'Senior Faculty',
-      department_id: 1,
-      qualification: 'M.Sc. Education',
-      experience: '10 Years',
-      email: 'faculty@apexacademy.edu',
-      phone: '+1 (555) 101-2099',
-      bio: 'Dedicated educator passionate about student mentorship.',
+      ...emptyForm,
       order_index: staff.length + 1,
-      is_active: true
     });
     setShowModal(true);
   };
@@ -242,15 +236,13 @@ export const StaffManager: React.FC = () => {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Photo Image URL</label>
-                <input
-                  type="url"
-                  value={formData.photo_url}
-                  onChange={(e) => setFormData({ ...formData, photo_url: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-                />
-              </div>
+              <FileUploadField
+                label="Staff photo"
+                value={formData.photo_url}
+                accept="image/*"
+                hint="Upload a portrait photo."
+                onChange={(url) => setFormData({ ...formData, photo_url: url })}
+              />
 
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <button

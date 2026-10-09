@@ -5,6 +5,7 @@ import { SafeImage } from '../common/SafeImage';
 import { Plus, Edit2, Trash2, Search, Filter, Newspaper, Eye, X, Tag } from 'lucide-react';
 import { RichTextEditor } from './RichTextEditor';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const NewsManager: React.FC = () => {
   const { news, newsCategories, addNews, updateNews, deleteNews } = useSite();
@@ -13,18 +14,20 @@ export const NewsManager: React.FC = () => {
   const [editingItem, setEditingItem] = useState<NewsItem | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     title: '',
     slug: '',
-    content: '<p>Enter article content here...</p>',
+    content: '',
     excerpt: '',
     category_id: 1,
-    featured_image: '/images/lab.jpg',
-    tags: ['STEM', 'School'],
+    featured_image: '',
+    tags: [] as string[],
     is_featured: false,
     status: 'published' as 'draft' | 'published' | 'archived',
     publish_date: new Date().toISOString()
-  });
+  };
+
+  const [formData, setFormData] = useState(emptyForm);
 
   const filteredNews = news.filter(n => 
     n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -34,16 +37,8 @@ export const NewsManager: React.FC = () => {
   const handleOpenAdd = () => {
     setEditingItem(null);
     setFormData({
-      title: '',
-      slug: '',
-      content: '<p>Enter article content here...</p>',
-      excerpt: '',
-      category_id: 1,
-      featured_image: '/images/lab.jpg',
-      tags: ['STEM', 'School'],
-      is_featured: false,
-      status: 'published',
-      publish_date: new Date().toISOString()
+      ...emptyForm,
+      publish_date: new Date().toISOString(),
     });
     setShowModal(true);
   };
@@ -243,15 +238,13 @@ export const NewsManager: React.FC = () => {
                 />
               </div>
 
-              <div>
-                <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Featured Cover Image URL</label>
-                <input
-                  type="url"
-                  value={formData.featured_image}
-                  onChange={(e) => setFormData({ ...formData, featured_image: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-                />
-              </div>
+              <FileUploadField
+                label="Featured cover image"
+                value={formData.featured_image}
+                accept="image/*"
+                hint="Upload a photo for this news article."
+                onChange={(url) => setFormData({ ...formData, featured_image: url })}
+              />
 
               <div>
                 <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Article Body Content (Rich Text)</label>

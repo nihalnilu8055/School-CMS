@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
 import { FrontendContent } from '../../types';
 import { CheckCircle, Plus, Trash2 } from 'lucide-react';
+import { FileUploadField } from './FileUploadField';
 
 const TABS = [
   { key: 'home', label: 'Home Copy' },
@@ -131,16 +132,23 @@ export const ContentManager: React.FC = () => {
                   <input value={item.role} onChange={(e) => {
                     const next = [...form.testimonials]; next[index] = { ...item, role: e.target.value }; set({ testimonials: next });
                   }} className={inputClass} placeholder="Role" />
-                  <div className="flex gap-2">
-                    <input value={item.avatar} onChange={(e) => {
-                      const next = [...form.testimonials]; next[index] = { ...item, avatar: e.target.value }; set({ testimonials: next });
-                    }} className={inputClass} placeholder="Photo URL" />
-                    <button type="button" onClick={() => set({ testimonials: form.testimonials.filter((t) => t.id !== item.id) })} className="p-2 text-red-600"><Trash2 className="w-4 h-4" /></button>
+                  <div className="flex gap-2 items-start">
+                    <div className="flex-1">
+                      <FileUploadField
+                        label="Photo"
+                        value={item.avatar}
+                        accept="image/*"
+                        onChange={(url) => {
+                          const next = [...form.testimonials]; next[index] = { ...item, avatar: url }; set({ testimonials: next });
+                        }}
+                      />
+                    </div>
+                    <button type="button" onClick={() => set({ testimonials: form.testimonials.filter((t) => t.id !== item.id) })} className="p-2 text-red-600 mt-6"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 </div>
               </div>
             ))}
-            <button type="button" onClick={() => set({ testimonials: [...form.testimonials, { id: Date.now(), quote: '', name: '', role: '', avatar: '/images/parent1.jpg', stars: 5 }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add testimonial</button>
+            <button type="button" onClick={() => set({ testimonials: [...form.testimonials, { id: Date.now(), quote: '', name: '', role: '', avatar: '', stars: 5 }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add testimonial</button>
             <Field label="Partners heading" value={form.partners_heading} onChange={(v) => set({ partners_heading: v })} />
             {form.partners.map((item, index) => (
               <div key={item.id} className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -155,14 +163,19 @@ export const ContentManager: React.FC = () => {
                 </div>
               </div>
             ))}
-            <button type="button" onClick={() => set({ partners: [...form.partners, { id: Date.now(), title: 'New partner', desc: '' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add partner</button>
+            <button type="button" onClick={() => set({ partners: [...form.partners, { id: Date.now(), title: '', desc: '' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add partner</button>
           </>
         )}
 
         {tab === 'about' && (
           <>
             <Field label="Principal message heading" value={form.principal_message_heading} onChange={(v) => set({ principal_message_heading: v })} />
-            <Field label="About banner image URL" value={form.about_banner_image} onChange={(v) => set({ about_banner_image: v })} />
+            <FileUploadField
+              label="About banner image"
+              value={form.about_banner_image}
+              accept="image/*"
+              onChange={(url) => set({ about_banner_image: url })}
+            />
             <Field label="Facilities eyebrow" value={form.facilities_eyebrow} onChange={(v) => set({ facilities_eyebrow: v })} />
             <Field label="Facilities heading" value={form.facilities_heading} onChange={(v) => set({ facilities_heading: v })} />
             {form.facilities.map((item, index) => (
@@ -173,15 +186,22 @@ export const ContentManager: React.FC = () => {
                 <input value={item.desc} onChange={(e) => {
                   const next = [...form.facilities]; next[index] = { ...item, desc: e.target.value }; set({ facilities: next });
                 }} className={inputClass} />
-                <div className="flex gap-2">
-                  <input value={item.image} onChange={(e) => {
-                    const next = [...form.facilities]; next[index] = { ...item, image: e.target.value }; set({ facilities: next });
-                  }} className={inputClass} />
-                  <button type="button" onClick={() => set({ facilities: form.facilities.filter((f) => f.id !== item.id) })} className="p-2 text-red-600"><Trash2 className="w-4 h-4" /></button>
+                <div className="flex gap-2 items-start sm:col-span-3">
+                  <div className="flex-1">
+                    <FileUploadField
+                      label="Facility photo"
+                      value={item.image}
+                      accept="image/*"
+                      onChange={(url) => {
+                        const next = [...form.facilities]; next[index] = { ...item, image: url }; set({ facilities: next });
+                      }}
+                    />
+                  </div>
+                  <button type="button" onClick={() => set({ facilities: form.facilities.filter((f) => f.id !== item.id) })} className="p-2 text-red-600 mt-6"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
             ))}
-            <button type="button" onClick={() => set({ facilities: [...form.facilities, { id: Date.now(), title: 'New facility', desc: '', image: '/images/campus.jpg' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add facility</button>
+            <button type="button" onClick={() => set({ facilities: [...form.facilities, { id: Date.now(), title: '', desc: '', image: '' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add facility</button>
             <Field label="Timeline eyebrow" value={form.timeline_eyebrow} onChange={(v) => set({ timeline_eyebrow: v })} />
             <Field label="Timeline heading" value={form.timeline_heading} onChange={(v) => set({ timeline_heading: v })} />
             {form.timeline.map((item, index) => (
@@ -200,7 +220,7 @@ export const ContentManager: React.FC = () => {
                 </div>
               </div>
             ))}
-            <button type="button" onClick={() => set({ timeline: [...form.timeline, { id: Date.now(), year: '2026', title: 'New milestone', desc: '' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add milestone</button>
+            <button type="button" onClick={() => set({ timeline: [...form.timeline, { id: Date.now(), year: '', title: '', desc: '' }] })} className="text-school-600 font-bold flex items-center gap-1"><Plus className="w-4 h-4" /> Add milestone</button>
           </>
         )}
 

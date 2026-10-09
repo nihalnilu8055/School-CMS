@@ -1,5 +1,6 @@
-import React from 'react';
-import { Bold, Italic, Underline, List, ListOrdered, Link, Heading1, Heading2, Quote, Code } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Bold, Italic, List, Heading2, Quote, ImagePlus } from 'lucide-react';
+import { readFileAsDataUrl } from '../../utils/files';
 
 interface RichTextEditorProps {
   value: string;
@@ -7,8 +8,16 @@ interface RichTextEditorProps {
 }
 
 export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange }) => {
+  const imageInputRef = useRef<HTMLInputElement>(null);
+
   const insertTag = (startTag: string, endTag: string) => {
     onChange(`${value}\n${startTag}New Content${endTag}`);
+  };
+
+  const insertImage = async (file?: File) => {
+    if (!file) return;
+    const url = await readFileAsDataUrl(file);
+    onChange(`${value}\n<p><img src="${url}" alt="${file.name}" style="max-width:100%;height:auto;border-radius:12px;" /></p>`);
   };
 
   return (
@@ -55,6 +64,24 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange 
         >
           <Quote className="w-4 h-4" />
         </button>
+        <button
+          type="button"
+          onClick={() => imageInputRef.current?.click()}
+          className="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200"
+          title="Upload image"
+        >
+          <ImagePlus className="w-4 h-4" />
+        </button>
+        <input
+          ref={imageInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={(e) => {
+            insertImage(e.target.files?.[0]);
+            e.target.value = '';
+          }}
+        />
         <span className="text-xs text-slate-400 ml-auto pr-2">Rich HTML Mode</span>
       </div>
 

@@ -3,6 +3,7 @@ import { useSite } from '../../context/SiteContext';
 import { SafeImage } from '../common/SafeImage';
 import { Plus, Edit2, Trash2, Camera, Image as ImageIcon, X } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const GalleryManager: React.FC = () => {
   const { albums, galleryItems, addAlbum, deleteAlbum, addGalleryItem, deleteGalleryItem } = useSite();
@@ -10,20 +11,23 @@ export const GalleryManager: React.FC = () => {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [deleteAlbumId, setDeleteAlbumId] = useState<number | null>(null);
 
-  const [albumForm, setAlbumForm] = useState({
+  const emptyAlbum = {
     title: '',
     slug: '',
-    cover_image: '/images/campus.jpg',
+    cover_image: '',
     description: ''
-  });
+  };
 
-  const [photoForm, setPhotoForm] = useState({
+  const emptyPhoto = {
     album_id: 1,
     type: 'image' as 'image' | 'video',
-    url: '/images/campus.jpg',
+    url: '',
     title: '',
     caption: ''
-  });
+  };
+
+  const [albumForm, setAlbumForm] = useState(emptyAlbum);
+  const [photoForm, setPhotoForm] = useState(emptyPhoto);
 
   const handleCreateAlbum = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,12 +36,14 @@ export const GalleryManager: React.FC = () => {
       slug: albumForm.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
     });
     setShowAlbumModal(false);
+    setAlbumForm(emptyAlbum);
   };
 
   const handleAddPhoto = (e: React.FormEvent) => {
     e.preventDefault();
     addGalleryItem(photoForm);
     setShowPhotoModal(false);
+    setPhotoForm({ ...emptyPhoto, album_id: albums[0]?.id || 1 });
   };
 
   return (
@@ -55,14 +61,20 @@ export const GalleryManager: React.FC = () => {
         </div>
         <div className="flex items-center gap-3">
           <button
-            onClick={() => setShowAlbumModal(true)}
+            onClick={() => {
+              setAlbumForm(emptyAlbum);
+              setShowAlbumModal(true);
+            }}
             className="bg-[#004428] hover:bg-[#005530] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             <span>Create Album</span>
           </button>
           <button
-            onClick={() => setShowPhotoModal(true)}
+            onClick={() => {
+              setPhotoForm({ ...emptyPhoto, album_id: albums[0]?.id || 1 });
+              setShowPhotoModal(true);
+            }}
             className="bg-school-600 hover:bg-school-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
           >
             <Camera className="w-4 h-4" />
@@ -116,15 +128,12 @@ export const GalleryManager: React.FC = () => {
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
                 />
               </div>
-              <div>
-                <label className="block font-bold uppercase mb-1">Cover Image URL</label>
-                <input
-                  type="url"
-                  value={albumForm.cover_image}
-                  onChange={(e) => setAlbumForm({ ...albumForm, cover_image: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-                />
-              </div>
+              <FileUploadField
+                label="Cover image"
+                value={albumForm.cover_image}
+                accept="image/*"
+                onChange={(url) => setAlbumForm({ ...albumForm, cover_image: url })}
+              />
               <div>
                 <label className="block font-bold uppercase mb-1">Description</label>
                 <textarea
@@ -173,16 +182,17 @@ export const GalleryManager: React.FC = () => {
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
                 />
               </div>
-              <div>
-                <label className="block font-bold uppercase mb-1">Photo URL</label>
-                <input
-                  type="url"
-                  required
-                  value={photoForm.url}
-                  onChange={(e) => setPhotoForm({ ...photoForm, url: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-                />
-              </div>
+              <FileUploadField
+                label="Upload photo"
+                value={photoForm.url}
+                accept="image/*"
+                hint="Choose a photo from your computer."
+                onChange={(url, meta) => setPhotoForm({
+                  ...photoForm,
+                  url,
+                  title: photoForm.title || meta?.name?.replace(/\.[^.]+$/, '') || '',
+                })}
+              />
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <button type="submit" className="px-5 py-2 bg-school-600 text-white font-semibold rounded-xl">Upload Photo</button>
               </div>

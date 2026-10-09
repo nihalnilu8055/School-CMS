@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSite } from '../../context/SiteContext';
 import { Settings, Save, CheckCircle, Globe, MapPin, Phone, Mail, Clock, Share2 } from 'lucide-react';
+import { FileUploadField } from './FileUploadField';
 
 export const SettingsManager: React.FC = () => {
   const { settings, updateSettings } = useSite();
@@ -66,15 +67,13 @@ export const SettingsManager: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">School Logo URL</label>
-              <input
-                type="url"
-                value={formData.logo_url}
-                onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
-              />
-            </div>
+            <FileUploadField
+              label="School logo"
+              value={formData.logo_url}
+              accept="image/png,image/jpeg,image/webp,image/svg+xml"
+              hint="Upload the school logo. A transparent PNG works best."
+              onChange={(url) => setFormData({ ...formData, logo_url: url, favicon_url: url })}
+            />
             <div>
               <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Website URL</label>
               <input

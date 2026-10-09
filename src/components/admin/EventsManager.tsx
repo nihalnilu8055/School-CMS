@@ -4,6 +4,7 @@ import { EventItem } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import { Plus, Edit2, Trash2, Calendar, MapPin, Clock, X } from 'lucide-react';
 import { ConfirmModal } from './ConfirmModal';
+import { FileUploadField } from './FileUploadField';
 
 export const EventsManager: React.FC = () => {
   const { events, addEvent, updateEvent, deleteEvent } = useSite();
@@ -11,31 +12,23 @@ export const EventsManager: React.FC = () => {
   const [editingEvent, setEditingEvent] = useState<EventItem | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     title: '',
     slug: '',
     description: '',
-    location: 'Main Auditorium',
-    event_date: '2026-10-30',
-    start_time: '09:00 AM',
-    end_time: '04:00 PM',
-    banner_image: '/images/campus.jpg',
-    is_featured: true
-  });
+    location: '',
+    event_date: '',
+    start_time: '',
+    end_time: '',
+    banner_image: '',
+    is_featured: false
+  };
+
+  const [formData, setFormData] = useState(emptyForm);
 
   const handleOpenAdd = () => {
     setEditingEvent(null);
-    setFormData({
-      title: '',
-      slug: '',
-      description: '',
-      location: 'Main Auditorium',
-      event_date: '2026-10-30',
-      start_time: '09:00 AM',
-      end_time: '04:00 PM',
-      banner_image: '/images/campus.jpg',
-      is_featured: true
-    });
+    setFormData(emptyForm);
     setShowModal(true);
   };
 
@@ -118,7 +111,7 @@ export const EventsManager: React.FC = () => {
 
       {showModal && (
         <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
               <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">
                 {editingEvent ? 'Edit Event' : 'Add Event'}
@@ -166,6 +159,13 @@ export const EventsManager: React.FC = () => {
                   className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
                 />
               </div>
+              <FileUploadField
+                label="Event banner"
+                value={formData.banner_image}
+                accept="image/*"
+                hint="Upload a banner photo for this event."
+                onChange={(url) => setFormData({ ...formData, banner_image: url })}
+              />
               <div className="flex justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <button type="submit" className="px-5 py-2 bg-school-600 text-white font-semibold rounded-xl">Save Event</button>
               </div>
