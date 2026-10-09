@@ -5,49 +5,49 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --primary: #0a5c47;
-  --primary-hover: #054433;
-  --secondary: #054433;
-  --accent: #10b981;
+  --primary: #005530;
+  --primary-hover: #004428;
+  --secondary: #004428;
+  --accent: #005530;
   --background: #FFFFFF;
-  --surface: #e8f0ed;
+  --surface: #e6f0eb;
   --text-primary: #17202A;
   --text-secondary: #5B6775;
-  --border: #c5d5ce;
-  --success: #0a5c47;
+  --border: #b7d0c4;
+  --success: #005530;
   --warning: #C58A1C;
   --error: #C0392B;
 }
 
 @theme {
-  --color-school-50: #e8f0ed;
-  --color-school-100: #d4e3dd;
-  --color-school-200: #a8c4b8;
+  --color-school-50: #e6f0eb;
+  --color-school-100: #d4e8dc;
+  --color-school-200: #8fceb0;
   --color-school-300: #6f9a89;
   --color-school-400: #3d7362;
-  --color-school-500: #0a5c47;
-  --color-school-600: #032f23;
-  --color-school-700: #054433;
-  --color-school-800: #032f23;
-  --color-school-900: #021f18;
-  --color-school-950: #021910;
+  --color-school-500: #005530;
+  --color-school-600: #005530;
+  --color-school-700: #004428;
+  --color-school-800: #005530;
+  --color-school-900: #003822;
+  --color-school-950: #002416;
 
-  --color-primary: #0a5c47;
-  --color-primary-hover: #054433;
-  --color-secondary: #054433;
-  --color-gold-400: #34d399;
-  --color-gold-500: #0a5c47;
-  --color-gold-600: #054433;
+  --color-primary: #005530;
+  --color-primary-hover: #004428;
+  --color-secondary: #004428;
+  --color-gold-400: #8fceb0;
+  --color-gold-500: #005530;
+  --color-gold-600: #004428;
 
-  --color-surface: #e8f0ed;
+  --color-surface: #e6f0eb;
   --color-charcoal: #17202A;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', 'Inter', sans-serif;
 
-  --shadow-subtle: 0 4px 12px 0 rgba(3, 47, 35, 0.06);
-  --shadow-card: 0 6px 16px 0 rgba(3, 47, 35, 0.08);
-  --shadow-card-hover: 0 12px 24px 0 rgba(3, 47, 35, 0.12);
+  --shadow-subtle: 0 4px 12px 0 rgba(0, 85, 48, 0.06);
+  --shadow-card: 0 6px 16px 0 rgba(0, 85, 48, 0.08);
+  --shadow-card-hover: 0 12px 24px 0 rgba(0, 85, 48, 0.12);
 }
 
 @layer base {
@@ -97,16 +97,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #e8f0ed;
+  background: #e6f0eb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a8c4b8;
+  background: #8fceb0;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #032f23;
+  background: #005530;
 }
 
 /* Glassmorphism Panel */

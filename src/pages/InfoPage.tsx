@@ -40,24 +40,24 @@ const ROUTE_HERO_IMAGES: Record<string, string> = {
   'about/mission': '/images/students.jpg',
   'about/timing': '/images/hallway.jpg',
   'about/curriculum': '/images/lab.jpg',
-  'about/assessments': '/images/computers.jpg',
-  'about/policies': '/images/auditorium.jpg',
+  'about/assessments': '/images/classroom-2.jpg',
+  'about/policies': '/images/campus.jpg',
   admissions: '/images/students.jpg',
   'admissions/process': '/images/classroom.jpg',
   'admissions/register': '/images/computers.jpg',
-  'admissions/vacancies': '/images/playground.jpg',
-  information: '/images/auditorium.jpg',
-  'information/calendar': '/images/auditorium.jpg',
+  'admissions/vacancies': '/images/campus.jpg',
+  information: '/images/event-banner.jpg',
+  'information/calendar': '/images/campus.jpg',
   'information/assembly': '/images/campus.jpg',
   'information/activities': '/images/sports.jpg',
   'information/assessment': '/images/lab.jpg',
-  fees: '/images/auditorium.jpg',
+  fees: '/images/campus.jpg',
   'fees/rules': '/images/hallway.jpg',
-  'fees/transport': '/images/playground.jpg',
+  'fees/transport': '/images/school-bus.jpg',
   'fees/structure': '/images/computers.jpg',
-  alumni: '/images/auditorium.jpg',
+  alumni: '/images/students.jpg',
   'alumni/our-alumni': '/images/students.jpg',
-  'alumni/ex-students': '/images/students.jpg',
+  'alumni/ex-students': '/images/classroom-2.jpg',
 };
 
 // Route-specific blog highlights (ensures a DIFFERENT blog is shown on right sidebar per page)
@@ -98,7 +98,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 105,
     title: 'Grade 10 & 12 External Examination Preparation Benchmarks',
     category_name: 'Academics',
-    featured_image: '/images/computers.jpg',
+    featured_image: '/images/classroom-2.jpg',
     excerpt: 'Guidance and revision schedules for upcoming board practicals and international assessments.',
     publish_date: '2026-09-08T11:00:00.000Z'
   },
@@ -106,7 +106,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 106,
     title: 'Updated Campus Safeguarding & Student Wellbeing Guidelines',
     category_name: 'Policies',
-    featured_image: '/images/auditorium.jpg',
+    featured_image: '/images/campus.jpg',
     excerpt: 'Reinforcing our commitment to child protection, respectful behavior, and safety on campus.',
     publish_date: '2026-09-02T10:00:00.000Z'
   },
@@ -122,7 +122,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 108,
     title: 'Friendly Placement Interaction Guide for New Parents',
     category_name: 'Admissions Spotlight',
-    featured_image: '/images/staff1.jpg',
+    featured_image: '/images/classroom.jpg',
     excerpt: 'What to expect during your child’s informal readiness review at our admissions desk.',
     publish_date: '2026-09-26T09:00:00.000Z'
   },
@@ -138,7 +138,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 110,
     title: 'Mid-Term Grade Seat Availability & Waitlist Circular',
     category_name: 'Admissions Spotlight',
-    featured_image: '/images/playground.jpg',
+    featured_image: '/images/campus.jpg',
     excerpt: 'Check current seat openings across KG 1 to Grade 11 and sibling priority rules.',
     publish_date: '2026-09-20T08:00:00.000Z'
   },
@@ -146,7 +146,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 111,
     title: 'Art Studio Exhibits Student Work for Parents’ Evening',
     category_name: 'Campus Life',
-    featured_image: '/images/concert.jpg',
+    featured_image: '/images/art.jpg',
     excerpt: 'Paintings, clay models, and calligraphy from Grades 3 to 12 are on display in the atrium.',
     publish_date: '2026-08-29T10:00:00.000Z'
   },
@@ -154,7 +154,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 112,
     title: 'Annual Academic Calendar & Key Holiday Dates 2026–2027',
     category_name: 'General Info',
-    featured_image: '/images/auditorium.jpg',
+    featured_image: '/images/campus.jpg',
     excerpt: 'Plan ahead for term dates, exam windows, National Day celebrations, and sports meets.',
     publish_date: '2026-09-15T10:00:00.000Z'
   },
@@ -170,7 +170,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 114,
     title: 'Football Team Opens the Season with a 3–1 Home Victory',
     category_name: 'Sports & Athletics',
-    featured_image: '/images/sports.jpg',
+    featured_image: '/images/soccer.jpg',
     excerpt: 'Senior boys squad started the interschool league with an energetic home win.',
     publish_date: '2026-08-22T16:00:00.000Z'
   },
@@ -178,7 +178,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 115,
     title: 'Accounts Desk Circular: Term Instalments & Online Payment',
     category_name: 'Fee Notice',
-    featured_image: '/images/staff3.jpg',
+    featured_image: '/images/computers.jpg',
     excerpt: 'Guidelines on settling term tuition, sibling discounts, and digital receipts.',
     publish_date: '2026-09-18T10:00:00.000Z'
   },
@@ -186,7 +186,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 116,
     title: 'School Bus Supervised Fleet Safety & Route Upgrades',
     category_name: 'Transport Notice',
-    featured_image: '/images/playground.jpg',
+    featured_image: '/images/school-bus.jpg',
     excerpt: 'New bus stops added across Riverside and North Campus loops with full conductor supervision.',
     publish_date: '2026-09-14T09:00:00.000Z'
   },
@@ -194,7 +194,7 @@ const ROUTE_BLOG_MAPPING: Record<string, Partial<NewsItem>> = {
     id: 117,
     title: 'Alumni Spotlight: Graduating Cohort Excel in Universities Worldwide',
     category_name: 'School Alumni',
-    featured_image: '/images/auditorium.jpg',
+    featured_image: '/images/students.jpg',
     excerpt: 'Ibn Seena alumni share stories of medical, engineering, and civic accomplishments.',
     publish_date: '2026-09-01T10:00:00.000Z'
   }
@@ -207,7 +207,7 @@ const go = (tab: string) => {
 };
 
 export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
-  const { pages, menus, events, news } = useSite();
+  const { pages, menus, events, news, settings } = useSite();
   const cmsPage = pages.find((page) => page.slug === slug);
   const fallback = PAGE_CONTENT[slug];
   const isLive = Boolean(cmsPage?.is_published) || (!cmsPage && Boolean(fallback));
@@ -245,11 +245,11 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
   if (!isLive) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-3xl font-bold font-heading text-[#032f23]">Page not found</h1>
+        <h1 className="text-3xl font-bold font-heading text-[#005530]">Page not found</h1>
         <p className="text-slate-500 mt-3">This page is unpublished or does not exist yet.</p>
         <button
           onClick={() => go('')}
-          className="mt-6 inline-flex items-center gap-2 bg-[#032f23] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#054433] transition-colors"
+          className="mt-6 inline-flex items-center gap-2 bg-[#005530] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#004428] transition-colors"
         >
           Return to Home <ArrowRight className="w-4 h-4" />
         </button>
@@ -273,49 +273,60 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               <div className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm relative overflow-hidden group hover:shadow-md transition-all">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#032f23] flex items-center justify-center mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center mb-6">
                       <Target className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">Our Strategic Vision</span>
-                    <h2 className="text-xl font-bold font-heading text-[#032f23] mt-2 mb-4">Vision for Excellence</h2>
-                    <p className="text-slate-600 leading-relaxed text-sm">
-                      Nurturing Social, Moral, and Intellectual Wisdom for the Greater Good. We empower learners to use knowledge with kindness, courage, and social responsibility.
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#005530]">Our Vision</span>
+                    <h2 className="text-xl font-bold font-heading text-[#005530] mt-2 mb-4">Ready for the real world</h2>
+                    <p className="text-[#17202A] leading-relaxed text-sm">
+                      {fallback?.sections.find((section) => section.heading.toLowerCase().includes('vision'))?.body
+                        || 'By placing an equal emphasis on a child’s social, moral and psychological development, students who would graduate from such an institution are well equipped to deal with real world challenges.'}
                     </p>
-                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#032f23]">
+                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#005530]">
                       <Sparkles className="w-4 h-4 text-amber-500" /> Wisdom • Integrity • Courage
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-[#032f23] to-[#065f46] rounded-3xl p-8 text-white shadow-md relative overflow-hidden">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-300 flex items-center justify-center mb-6">
+                  <div className="bg-gradient-to-br from-[#005530] to-[#004428] rounded-3xl p-8 text-white shadow-md relative overflow-hidden">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 text-[#8fceb0] flex items-center justify-center mb-6">
                       <Heart className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">Core Mission</span>
-                    <h2 className="text-xl font-bold font-heading text-white mt-2 mb-4">Our Daily Commitment</h2>
-                    <p className="text-emerald-100 leading-relaxed text-sm">
-                      To provide a trusted, approachable learning community where children grow in wisdom, not only in information, and leave school ready to serve their families and society.
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#8fceb0]">Our Mission</span>
+                    <h2 className="text-xl font-bold font-heading text-white mt-2 mb-4">The whole child first</h2>
+                    <p className="text-white leading-relaxed text-sm">
+                      {fallback?.sections.find((section) => section.heading.toLowerCase().includes('mission'))?.body
+                        || 'The philosophy behind the establishment of Ibn Seena English High School as a premier educational institution has been that while academic achievement is a necessary focus, it should not need to be at the expense of other areas of a child’s development.'}
                     </p>
-                    <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-semibold text-emerald-200">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400" /> Trusted Learning Environment
+                    <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs font-semibold text-[#b7d0c4]">
+                      <ShieldCheck className="w-4 h-4 text-[#8fceb0]" /> Trusted Learning Environment
                     </div>
                   </div>
                 </div>
 
+                {fallback?.sections.find((section) => section.heading.toLowerCase().includes('how we teach')) && (
+                  <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                    <h3 className="text-lg font-bold font-heading text-[#005530] mb-4">How we teach</h3>
+                    <p className="text-[#17202A] leading-relaxed text-sm sm:text-base">
+                      {fallback.sections.find((section) => section.heading.toLowerCase().includes('how we teach'))?.body}
+                    </p>
+                  </div>
+                )}
+
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h3 className="text-lg font-bold font-heading text-[#032f23] mb-6 flex items-center gap-2">
-                    <Award className="w-5 h-5 text-emerald-600" /> Core Pillars of Development
+                  <h3 className="text-lg font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
+                    <Award className="w-5 h-5 text-[#005530]" /> Core Pillars of Development
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-sm mb-1">Academic Mastery</h4>
+                      <h4 className="font-bold text-[#005530] text-sm mb-1">Academic Mastery</h4>
                       <p className="text-xs text-slate-500 leading-relaxed">Concept clarity, critical thinking, and structured curriculum inquiry.</p>
                     </div>
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-sm mb-1">Moral Integrity</h4>
+                      <h4 className="font-bold text-[#005530] text-sm mb-1">Moral Integrity</h4>
                       <p className="text-xs text-slate-500 leading-relaxed">Instilling strong values, respect, honesty, and empathy in all interactions.</p>
                     </div>
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-sm mb-1">Psychological Growth</h4>
+                      <h4 className="font-bold text-[#005530] text-sm mb-1">Psychological Growth</h4>
                       <p className="text-xs text-slate-500 leading-relaxed">Fostering emotional resilience, self-confidence, and mental wellbeing.</p>
                     </div>
                   </div>
@@ -328,11 +339,11 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#032f23] flex items-center justify-center font-bold">
+                    <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center font-bold">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold font-heading text-[#032f23]">4-Step Admission Journey</h2>
+                      <h2 className="text-xl font-bold font-heading text-[#005530]">4-Step Admission Journey</h2>
                       <p className="text-xs text-slate-500">Simple, transparent, and matched to available seats</p>
                     </div>
                   </div>
@@ -364,26 +375,26 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                         icon: UserCheck
                       }
                     ].map((st) => (
-                      <div key={st.step} className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 transition-colors">
-                        <div className="shrink-0 w-12 h-12 rounded-2xl bg-[#032f23] text-emerald-400 flex flex-col items-center justify-center font-heading font-bold text-lg shadow-sm">
+                      <div key={st.step} className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#b7d0c4] transition-colors">
+                        <div className="shrink-0 w-12 h-12 rounded-2xl bg-[#005530] text-[#8fceb0] flex flex-col items-center justify-center font-heading font-bold text-lg shadow-sm">
                           {st.step}
                         </div>
                         <div>
-                          <h3 className="font-bold font-heading text-[#032f23] text-base mb-1">{st.title}</h3>
+                          <h3 className="font-bold font-heading text-[#005530] text-base mb-1">{st.title}</h3>
                           <p className="text-sm text-slate-600 leading-relaxed">{st.desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-8 p-6 rounded-2xl bg-[#e8f0ed] border border-[#c5d5ce] flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="mt-8 p-6 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4] flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
-                      <h4 className="font-bold text-[#032f23]">Ready to begin enrolment?</h4>
+                      <h4 className="font-bold text-[#005530]">Ready to begin enrolment?</h4>
                       <p className="text-xs text-slate-600">Register online or visit our admissions desk today.</p>
                     </div>
                     <button
                       onClick={() => go('admissions/register')}
-                      className="shrink-0 bg-[#032f23] text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#054433] transition-colors"
+                      className="shrink-0 bg-[#005530] text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#004428] transition-colors"
                     >
                       Start Registration
                     </button>
@@ -398,11 +409,11 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                   <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
                     <div>
-                      <h2 className="text-xl font-bold font-heading text-[#032f23]">Grade Seat Availability</h2>
+                      <h2 className="text-xl font-bold font-heading text-[#005530]">Grade Seat Availability</h2>
                       <p className="text-xs text-slate-500">Live seat availability for the current academic session</p>
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Academic Year 2026-27
+                    <span className="px-3 py-1 rounded-full bg-[#e6f0eb] text-[#004428] text-xs font-semibold border border-[#b7d0c4] flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-[#005530] animate-pulse"></span> Academic Year 2026-27
                     </span>
                   </div>
 
@@ -423,11 +434,11 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                       { grade: 'Grade 11', seats: 'Science & Commerce', status: 'Open', color: 'green' },
                       { grade: 'Grade 12', seats: 'Contact Admissions Desk', status: 'Limited', color: 'blue' },
                     ].map((v, i) => (
-                      <div key={i} className="p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:border-emerald-200 transition-all shadow-2xs">
+                      <div key={i} className="p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:border-[#b7d0c4] transition-all shadow-2xs">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="font-bold text-[#032f23] text-sm">{v.grade}</span>
+                          <span className="font-bold text-[#005530] text-sm">{v.grade}</span>
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            v.color === 'green' ? 'bg-emerald-100 text-emerald-800' :
+                            v.color === 'green' ? 'bg-[#d4e8dc] text-[#003822]' :
                             v.color === 'amber' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'
                           }`}>
                             {v.status}
@@ -449,8 +460,8 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {slug === 'about/timing' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h2 className="text-xl font-bold font-heading text-[#032f23] mb-6 flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-emerald-600" /> Daily Campus Timetable
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-[#005530]" /> Daily Campus Timetable
                   </h2>
 
                   <div className="space-y-3">
@@ -466,10 +477,10 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                     ].map((slot, i) => (
                       <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-100 gap-2">
                         <div className="flex items-center gap-3">
-                          <span className="font-mono text-xs font-bold px-3 py-1 rounded-xl bg-emerald-100 text-[#032f23]">
+                          <span className="font-mono text-xs font-bold px-3 py-1 rounded-xl bg-[#d4e8dc] text-[#005530]">
                             {slot.time}
                           </span>
-                          <span className="font-bold text-[#032f23] text-sm">{slot.activity}</span>
+                          <span className="font-bold text-[#005530] text-sm">{slot.activity}</span>
                         </div>
                         <span className="text-xs text-slate-500 sm:text-right">{slot.note}</span>
                       </div>
@@ -477,12 +488,12 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                   </div>
 
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl bg-[#e8f0ed] border border-[#c5d5ce]">
-                      <h4 className="font-bold text-[#032f23] text-xs uppercase tracking-wider mb-1">Friday Early Timetable</h4>
+                    <div className="p-4 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4]">
+                      <h4 className="font-bold text-[#005530] text-xs uppercase tracking-wider mb-1">Friday Early Timetable</h4>
                       <p className="text-xs text-slate-600">Friday session concludes at 11:45 AM for all students and staff.</p>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#e8f0ed] border border-[#c5d5ce]">
-                      <h4 className="font-bold text-[#032f23] text-xs uppercase tracking-wider mb-1">Kindergarten Hours</h4>
+                    <div className="p-4 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4]">
+                      <h4 className="font-bold text-[#005530] text-xs uppercase tracking-wider mb-1">Kindergarten Hours</h4>
                       <p className="text-xs text-slate-600">KG 1 & KG 2 conclude 30 minutes earlier (1:45 PM Mon-Thu).</p>
                     </div>
                   </div>
@@ -494,14 +505,14 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {slug === 'fees/structure' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h2 className="text-xl font-bold font-heading text-[#032f23] mb-6 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5 text-emerald-600" /> Annual Fee Structure
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
+                    <DollarSign className="w-5 h-5 text-[#005530]" /> Annual Fee Structure
                   </h2>
 
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm border-collapse">
                       <thead>
-                        <tr className="border-b border-slate-200 text-xs font-bold text-[#032f23] uppercase bg-slate-50">
+                        <tr className="border-b border-slate-200 text-xs font-bold text-[#005530] uppercase bg-slate-50">
                           <th className="py-3 px-4 rounded-l-xl">Academic Stage</th>
                           <th className="py-3 px-4">Grades Covered</th>
                           <th className="py-3 px-4">Annual Tuition</th>
@@ -510,33 +521,33 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                       </thead>
                       <tbody className="divide-y divide-slate-100 text-slate-700">
                         <tr>
-                          <td className="py-3.5 px-4 font-semibold text-[#032f23]">Kindergarten</td>
+                          <td className="py-3.5 px-4 font-semibold text-[#005530]">Kindergarten</td>
                           <td className="py-3.5 px-4 text-xs">KG 1 & KG 2</td>
-                          <td className="py-3.5 px-4 font-bold text-emerald-700">18,000 AED</td>
+                          <td className="py-3.5 px-4 font-bold text-[#004428]">18,000 AED</td>
                           <td className="py-3.5 px-4 text-xs">6,000 × 3 Terms</td>
                         </tr>
                         <tr>
-                          <td className="py-3.5 px-4 font-semibold text-[#032f23]">Primary School</td>
+                          <td className="py-3.5 px-4 font-semibold text-[#005530]">Primary School</td>
                           <td className="py-3.5 px-4 text-xs">Grade 1 to 5</td>
-                          <td className="py-3.5 px-4 font-bold text-emerald-700">22,500 AED</td>
+                          <td className="py-3.5 px-4 font-bold text-[#004428]">22,500 AED</td>
                           <td className="py-3.5 px-4 text-xs">7,500 × 3 Terms</td>
                         </tr>
                         <tr>
-                          <td className="py-3.5 px-4 font-semibold text-[#032f23]">Middle School</td>
+                          <td className="py-3.5 px-4 font-semibold text-[#005530]">Middle School</td>
                           <td className="py-3.5 px-4 text-xs">Grade 6 to 8</td>
-                          <td className="py-3.5 px-4 font-bold text-emerald-700">26,000 AED</td>
+                          <td className="py-3.5 px-4 font-bold text-[#004428]">26,000 AED</td>
                           <td className="py-3.5 px-4 text-xs">8,666 × 3 Terms</td>
                         </tr>
                         <tr>
-                          <td className="py-3.5 px-4 font-semibold text-[#032f23]">Secondary School</td>
+                          <td className="py-3.5 px-4 font-semibold text-[#005530]">Secondary School</td>
                           <td className="py-3.5 px-4 text-xs">Grade 9 & 10</td>
-                          <td className="py-3.5 px-4 font-bold text-emerald-700">29,500 AED</td>
+                          <td className="py-3.5 px-4 font-bold text-[#004428]">29,500 AED</td>
                           <td className="py-3.5 px-4 text-xs">9,833 × 3 Terms</td>
                         </tr>
                         <tr>
-                          <td className="py-3.5 px-4 font-semibold text-[#032f23]">Senior Secondary</td>
+                          <td className="py-3.5 px-4 font-semibold text-[#005530]">Senior Secondary</td>
                           <td className="py-3.5 px-4 text-xs">Grade 11 & 12</td>
-                          <td className="py-3.5 px-4 font-bold text-emerald-700">32,000 AED</td>
+                          <td className="py-3.5 px-4 font-bold text-[#004428]">32,000 AED</td>
                           <td className="py-3.5 px-4 text-xs">10,666 × 3 Terms</td>
                         </tr>
                       </tbody>
@@ -545,18 +556,18 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
 
                   <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-xs uppercase mb-1">Registration Fee</h4>
-                      <p className="text-base font-bold text-emerald-700">1,500 AED</p>
+                      <h4 className="font-bold text-[#005530] text-xs uppercase mb-1">Registration Fee</h4>
+                      <p className="text-base font-bold text-[#004428]">1,500 AED</p>
                       <p className="text-[11px] text-slate-500 mt-1">One-time payment upon admission</p>
                     </div>
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-xs uppercase mb-1">Lab & Resource Fee</h4>
-                      <p className="text-base font-bold text-emerald-700">1,200 AED</p>
+                      <h4 className="font-bold text-[#005530] text-xs uppercase mb-1">Lab & Resource Fee</h4>
+                      <p className="text-base font-bold text-[#004428]">1,200 AED</p>
                       <p className="text-[11px] text-slate-500 mt-1">Annual resource contribution</p>
                     </div>
                     <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                      <h4 className="font-bold text-[#032f23] text-xs uppercase mb-1">Sibling Concession</h4>
-                      <p className="text-base font-bold text-emerald-700">10% Off</p>
+                      <h4 className="font-bold text-[#005530] text-xs uppercase mb-1">Sibling Concession</h4>
+                      <p className="text-base font-bold text-[#004428]">10% Off</p>
                       <p className="text-[11px] text-slate-500 mt-1">Applied to 3rd & subsequent child</p>
                     </div>
                   </div>
@@ -568,8 +579,8 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {slug === 'fees/transport' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h2 className="text-xl font-bold font-heading text-[#032f23] mb-6 flex items-center gap-2">
-                    <Bus className="w-5 h-5 text-emerald-600" /> Supervised School Bus Routes
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
+                    <Bus className="w-5 h-5 text-[#005530]" /> Supervised School Bus Routes
                   </h2>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -579,24 +590,24 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                       { route: 'Route C — Old Town & Market', time: '06:55 AM Pickup', areas: 'Heritage Area, Market Road, Souk District' },
                       { route: 'Route D — East Villas & Suburbs', time: '07:00 AM Pickup', areas: 'East Villas, Green Gardens, Outer Highway' },
                     ].map((r, i) => (
-                      <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 transition-all">
+                      <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#b7d0c4] transition-all">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="font-bold font-heading text-[#032f23] text-sm">{r.route}</span>
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">{r.time}</span>
+                          <span className="font-bold font-heading text-[#005530] text-sm">{r.route}</span>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#d4e8dc] text-[#003822]">{r.time}</span>
                         </div>
                         <p className="text-xs text-slate-600 leading-relaxed">{r.areas}</p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-6 p-6 rounded-2xl bg-[#032f23] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="mt-6 p-6 rounded-2xl bg-[#005530] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
                       <h4 className="font-bold font-heading text-white">Need a bus stop closer to your residence?</h4>
-                      <p className="text-xs text-emerald-200">Email transport@ibnseena.edu for custom route requests.</p>
+                      <p className="text-xs text-[#b7d0c4]">Email transport@ibnseena.edu for custom route requests.</p>
                     </div>
                     <button
                       onClick={() => go('contact')}
-                      className="shrink-0 bg-white text-[#032f23] px-4 py-2.5 rounded-xl font-semibold text-xs hover:bg-emerald-50 transition-colors"
+                      className="shrink-0 bg-white text-[#005530] px-4 py-2.5 rounded-xl font-semibold text-xs hover:bg-[#e6f0eb] transition-colors"
                     >
                       Request Stop
                     </button>
@@ -609,8 +620,8 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {slug === 'information/activities' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h2 className="text-xl font-bold font-heading text-[#032f23] mb-6 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-emerald-600" /> Student Clubs & Athletics
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-[#005530]" /> Student Clubs & Athletics
                   </h2>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -622,11 +633,11 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                       { name: 'Football & Athletics', category: 'Sports', desc: 'Inter-house tournaments, professional coaching, and physical fitness.' },
                       { name: 'Chess & Mind Sports', category: 'Strategy', desc: 'Tactical thinking, strategy workshops, and regional tournaments.' },
                     ].map((club, i) => (
-                      <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 transition-all">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
+                      <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#b7d0c4] transition-all">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#004428] bg-[#d4e8dc] px-2 py-0.5 rounded-md">
                           {club.category}
                         </span>
-                        <h3 className="font-bold font-heading text-[#032f23] text-base mt-2 mb-1">{club.name}</h3>
+                        <h3 className="font-bold font-heading text-[#005530] text-base mt-2 mb-1">{club.name}</h3>
                         <p className="text-xs text-slate-600 leading-relaxed">{club.desc}</p>
                       </div>
                     ))}
@@ -636,27 +647,28 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             )}
 
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
+            {slug !== 'about/mission' && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
-                className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#032f23] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"
+                className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
 
               {/* Dynamic Events widget for Calendar route */}
               {slug === 'information/calendar' && events.length > 0 && (
                 <div className="mt-10 pt-8 border-t border-slate-100 space-y-4">
-                  <h2 className="text-2xl font-bold font-heading text-[#032f23]">Upcoming School Events</h2>
+                  <h2 className="text-2xl font-bold font-heading text-[#005530]">Upcoming School Events</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[...events].sort((a, b) => a.event_date.localeCompare(b.event_date)).map((evt) => (
-                      <article key={evt.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-5 hover:border-emerald-200 transition-all">
-                        <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+                      <article key={evt.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-5 hover:border-[#b7d0c4] transition-all">
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">
                           {new Date(evt.event_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </p>
-                        <h3 className="font-heading font-bold text-[#032f23] mt-1 text-base">{evt.title}</h3>
+                        <h3 className="font-heading font-bold text-[#005530] mt-1 text-base">{evt.title}</h3>
                         <p className="text-xs text-slate-600 mt-1">{evt.description}</p>
                         <div className="mt-3 space-y-1 text-xs text-slate-500">
-                          <p className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-emerald-600" />{evt.start_time} - {evt.end_time}</p>
-                          <p className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-600" />{evt.location}</p>
+                          <p className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-[#005530]" />{evt.start_time} - {evt.end_time}</p>
+                          <p className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#005530]" />{evt.location}</p>
                         </div>
                       </article>
                     ))}
@@ -664,18 +676,19 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                 </div>
               )}
             </div>
+            )}
 
             {/* Bottom Call to Action Banner */}
-            <div className="rounded-3xl bg-gradient-to-br from-[#032f23] to-[#054433] p-8 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="rounded-3xl bg-gradient-to-br from-[#005530] to-[#004428] p-8 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="text-xl font-bold font-heading">Have specific questions about {title}?</h3>
-                <p className="text-xs text-emerald-200 mt-1 max-w-md">
-                  Our administrative desk is available Monday through Friday from 8:00 AM to 3:30 PM to assist you.
+                <p className="text-xs text-[#b7d0c4] mt-1 max-w-md">
+                  Our administrative desk is available Monday through Friday from 8:00 AM to 3:00 PM to assist you.
                 </p>
               </div>
               <button
                 onClick={() => go('contact')}
-                className="shrink-0 bg-white text-[#032f23] px-6 py-3 rounded-2xl font-bold text-sm hover:bg-emerald-50 transition-all shadow-sm flex items-center gap-2"
+                className="shrink-0 bg-white text-[#005530] px-6 py-3 rounded-2xl font-bold text-sm hover:bg-[#e6f0eb] transition-all shadow-sm flex items-center gap-2"
               >
                 Contact Admissions <ArrowRight className="w-4 h-4" />
               </button>
@@ -688,7 +701,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {/* Sub-menu Quick Navigation */}
             {group?.children?.length ? (
               <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 mb-4 flex items-center gap-1.5">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-[#004428] mb-4 flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4" /> {group.label} Section
                 </p>
                 <div className="space-y-1.5">
@@ -696,12 +709,12 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                     onClick={() => go(group.key)}
                     className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all flex items-center justify-between ${
                       slug === group.key
-                        ? 'bg-[#032f23] text-white shadow-sm'
+                        ? 'bg-[#005530] text-white shadow-sm'
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     <span>Overview</span>
-                    {slug === group.key && <Check className="w-4 h-4 text-emerald-400" />}
+                    {slug === group.key && <Check className="w-4 h-4 text-[#8fceb0]" />}
                   </button>
                   {group.children.map((child) => (
                     <button
@@ -709,12 +722,12 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                       onClick={() => go(child.key)}
                       className={`w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all flex items-center justify-between ${
                         slug === child.key
-                          ? 'bg-[#032f23] text-white shadow-sm'
+                          ? 'bg-[#005530] text-white shadow-sm'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
                       <span>{child.label}</span>
-                      {slug === child.key && <Check className="w-4 h-4 text-emerald-400" />}
+                      {slug === child.key && <Check className="w-4 h-4 text-[#8fceb0]" />}
                     </button>
                   ))}
                 </div>
@@ -724,10 +737,10 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {/* EXACTLY 1 MODERN BLOG CARD ON THE RIGHT SIDEBAR (Customized per Page) */}
             <div className="rounded-3xl bg-white border border-slate-100 p-6 shadow-sm hover:shadow-md transition-all space-y-4 group">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
-                  <Newspaper className="w-4 h-4 text-emerald-600" /> Featured School Blog
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#004428] flex items-center gap-1.5">
+                  <Newspaper className="w-4 h-4 text-[#005530]" /> Featured School Blog
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#d4e8dc] text-[#003822]">
                   {activeSidebarBlog.category_name || 'Blog'}
                 </span>
               </div>
@@ -744,14 +757,14 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                     type="news"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-[#032f23]/90 backdrop-blur-xs text-white text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-emerald-400" />
+                  <div className="absolute top-3 left-3 bg-[#005530]/90 backdrop-blur-xs text-white text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                    <Calendar className="w-3 h-3 text-[#8fceb0]" />
                     {new Date(activeSidebarBlog.publish_date || Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-heading font-bold text-base text-[#032f23] leading-snug group-hover:text-emerald-800 transition-colors">
+                  <h4 className="font-heading font-bold text-base text-[#005530] leading-snug group-hover:text-[#003822] transition-colors">
                     {activeSidebarBlog.title}
                   </h4>
                   <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
@@ -762,7 +775,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
 
               <button
                 onClick={() => go('news')}
-                className="w-full text-center bg-[#032f23] hover:bg-[#054433] text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-2xs"
+                className="w-full text-center bg-[#005530] hover:bg-[#004428] text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-2xs"
               >
                 Read Full Blog Story <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -770,33 +783,33 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
 
             {/* Quick School Contact Desk Card */}
             <div className="rounded-3xl bg-white border border-slate-100 p-6 shadow-sm space-y-4">
-              <h3 className="font-heading font-bold text-base text-[#032f23] flex items-center gap-2">
-                <Phone className="w-4 h-4 text-emerald-600" /> Admissions Desk
+              <h3 className="font-heading font-bold text-base text-[#005530] flex items-center gap-2">
+                <Phone className="w-4 h-4 text-[#005530]" /> Admissions Desk
               </h3>
               
               <div className="space-y-3 text-xs text-slate-600">
                 <div className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                  <span>Ibn Seena English High School, Main Campus Road, UAE</span>
+                  <span>{settings.address}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-slate-400 shrink-0" />
-                  <span className="font-semibold text-slate-800">+1 (555) 234-5678</span>
+                  <span className="font-semibold text-slate-800">{settings.phone}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Mail className="w-4 h-4 text-slate-400 shrink-0" />
-                  <span className="font-semibold text-slate-800">admissions@ibnseena.edu</span>
+                  <span className="font-semibold text-slate-800">{settings.email}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-slate-400 shrink-0" />
-                  <span>Mon – Fri: 8:00 AM – 3:30 PM</span>
+                  <span>{settings.working_hours}</span>
                 </div>
               </div>
 
               <div className="pt-2">
                 <button
                   onClick={() => go('contact')}
-                  className="w-full text-center bg-slate-100 hover:bg-[#e8f0ed] text-[#032f23] font-bold text-xs py-3 rounded-xl transition-colors"
+                  className="w-full text-center bg-slate-100 hover:bg-[#e6f0eb] text-[#005530] font-bold text-xs py-3 rounded-xl transition-colors"
                 >
                   Send Online Enquiry
                 </button>

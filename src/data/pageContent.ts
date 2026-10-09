@@ -21,7 +21,7 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
       },
       {
         heading: 'Admissions desk',
-        body: 'Visit the school office Monday to Friday, 8:00 AM to 3:00 PM, or write to admissions@ibnseena.edu. Please bring the child’s birth certificate, previous report card, passport-size photographs, and parent identification.',
+        body: 'Visit the school office Monday to Friday, 8:00 AM to 3:00 PM, or write to reception@ibnseenaschool.net. Please bring the child’s birth certificate, previous report card, passport-size photographs, and parent identification.',
       },
     ],
   },
@@ -55,7 +55,7 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
     sections: [
       {
         heading: 'How to start',
-        body: 'Click Apply for Admissions in the header, or send an email to admissions@ibnseena.edu with the subject “New Registration”. Include the child’s full name, date of birth, current grade, and preferred joining term.',
+        body: 'Click Apply for Admissions in the header, or send an email to reception@ibnseenaschool.net with the subject “New Registration”. Include the child’s full name, date of birth, current grade, and preferred joining term.',
       },
       {
         heading: 'Documents to keep ready',
@@ -82,7 +82,7 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
       },
       {
         heading: 'Confirm a vacancy',
-        body: 'Always confirm with the office before planning a transfer. Call +1 (555) 234-5678 or visit during working hours. This page is updated whenever a circular is issued in Fee Notices or General Notices.',
+        body: 'Always confirm with the office before planning a transfer. Call +971 6 558 2071 or visit during working hours. This page is updated whenever a circular is issued in Fee Notices or General Notices.',
       },
     ],
   },
@@ -104,23 +104,19 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   'about/mission': {
     title: 'Mission & Vision',
     eyebrow: 'About Us',
-    intro: 'Ibn Seena English High School is committed to academic achievement without sacrificing the wider growth of every child.',
+    intro: 'The philosophy behind the establishment of Ibn Seena English High School as a premier educational institution has been that while academic achievement is a necessary focus, it should not need to be at the expense of other areas of a child’s development.',
     sections: [
       {
-        heading: 'Establishment philosophy',
+        heading: 'Our mission',
         body: 'The philosophy behind the establishment of Ibn Seena English High School as a premier educational institution has been that while academic achievement is a necessary focus, it should not need to be at the expense of other areas of a child’s development.',
       },
       {
-        heading: 'Holistic development',
-        body: 'By placing an equal emphasis on a child’s social, moral and psychological development, students who graduate from this institution are well equipped to deal with real-world challenges. Classrooms stay calm, relationships stay respectful, and curiosity is protected.',
-      },
-      {
         heading: 'Our vision',
-        body: 'Nurturing Social, Moral, and Intellectual Wisdom for the Greater Good. We want learners who can use knowledge with kindness, courage, and responsibility.',
+        body: 'By placing an equal emphasis on a child’s social, moral and psychological development, students who would graduate from such an institution are well equipped to deal with real world challenges.',
       },
       {
-        heading: 'Our mission',
-        body: 'To provide a trusted, approachable learning community where children grow in wisdom, not only in information, and leave school ready to serve their families and society.',
+        heading: 'How we teach',
+        body: 'The school is committed to producing a universal human being, a person with not just robotic information at his command, but the wisdom to use it for the greater good. We believe that children need a free and relaxed atmosphere to grow in, where they are trusted and the teachers are approachable.',
       },
     ],
   },

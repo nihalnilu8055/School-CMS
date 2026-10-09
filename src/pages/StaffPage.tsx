@@ -31,6 +31,7 @@ export const StaffPage: React.FC = () => {
         eyebrow={content.staff_eyebrow || 'Faculty'}
         title={content.staff_heading || 'Teachers & leadership'}
         intro={content.staff_intro || 'Meet the educators who guide learning at Ibn Seena English High School.'}
+        image="/images/classroom-2.jpg"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -44,7 +45,7 @@ export const StaffPage: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search by name or designation..."
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-sm focus:border-[#032f23]"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-sm focus:border-[#005530]"
                 />
               </div>
               <select
@@ -69,15 +70,15 @@ export const StaffPage: React.FC = () => {
                   const deptName = member.department_name || departments.find((d) => d.id === member.department_id)?.name || 'Faculty';
                   return (
                     <div key={member.id} className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-card">
-                      <div className="relative h-64 overflow-hidden bg-[#e8f0ed]">
+                      <div className="relative h-64 overflow-hidden bg-[#e6f0eb]">
                         <SafeImage src={member.photo_url} alt={member.name} type="person" className="w-full h-full object-cover object-top" />
-                        <span className="absolute top-4 left-4 bg-white/95 text-[#032f23] text-xs font-bold px-3 py-1 rounded-full">
+                        <span className="absolute top-4 left-4 bg-white/95 text-[#005530] text-xs font-bold px-3 py-1 rounded-full">
                           {deptName}
                         </span>
                       </div>
                       <div className="p-6 space-y-3">
-                        <h3 className="text-xl font-bold font-heading text-[#032f23]">{member.name}</h3>
-                        <p className="text-sm font-semibold text-[#054433]">{member.designation}</p>
+                        <h3 className="text-xl font-bold font-heading text-[#005530]">{member.name}</h3>
+                        <p className="text-sm font-semibold text-[#004428]">{member.designation}</p>
                         <div className="space-y-1.5 text-sm text-slate-600">
                           <div className="flex items-center gap-2"><Award className="w-3.5 h-3.5 text-slate-400 shrink-0" />{member.qualification}</div>
                           <div className="flex items-center gap-2"><Briefcase className="w-3.5 h-3.5 text-slate-400 shrink-0" />{member.experience}</div>
@@ -85,11 +86,11 @@ export const StaffPage: React.FC = () => {
                         {member.bio && <p className="text-sm text-slate-500 line-clamp-3">{member.bio}</p>}
                         <div className="pt-3 border-t border-slate-100 space-y-2 text-sm">
                           <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-slate-600 truncate">
-                            <Mail className="w-3.5 h-3.5 text-[#0a5c47] shrink-0" />{member.email}
+                            <Mail className="w-3.5 h-3.5 text-[#005530] shrink-0" />{member.email}
                           </a>
                           {member.phone && (
                             <div className="flex items-center gap-2 text-slate-500">
-                              <Phone className="w-3.5 h-3.5 text-[#0a5c47] shrink-0" />{member.phone}
+                              <Phone className="w-3.5 h-3.5 text-[#005530] shrink-0" />{member.phone}
                             </div>
                           )}
                         </div>
@@ -102,8 +103,8 @@ export const StaffPage: React.FC = () => {
           </div>
 
           <aside className="lg:col-span-4 space-y-4">
-            <div className="rounded-2xl border border-[#c5d5ce] bg-[#e8f0ed] p-6">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-[#054433] mb-3">Related to this</p>
+            <div className="rounded-2xl border border-[#b7d0c4] bg-[#e6f0eb] p-6">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[#004428] mb-3">Related to this</p>
               <div className="space-y-1">
                 <button onClick={() => go('about')} className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-slate-700 hover:bg-white">
                   About overview
@@ -113,7 +114,7 @@ export const StaffPage: React.FC = () => {
                     key={child.key}
                     onClick={() => go(child.key)}
                     className={`w-full text-left px-3 py-2.5 rounded-xl text-sm ${
-                      child.key === 'about/staff' ? 'bg-white text-[#032f23] font-semibold' : 'text-slate-700 hover:bg-white'
+                      child.key === 'about/staff' ? 'bg-white text-[#005530] font-semibold' : 'text-slate-700 hover:bg-white'
                     }`}
                   >
                     {child.label}

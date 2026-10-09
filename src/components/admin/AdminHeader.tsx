@@ -111,7 +111,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
   };
 
   return (
-    <header className="h-16 bg-white border-b border-[#c5d5ce] px-6 flex items-center justify-between sticky top-0 z-40">
+    <header className="h-16 bg-white border-b border-[#b7d0c4] px-6 flex items-center justify-between sticky top-0 z-40">
       {openPanel && (
         <button
           type="button"
@@ -124,11 +124,11 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
       <div className="flex items-center gap-4 relative z-50">
         <button
           onClick={onToggleSidebar}
-          className="lg:hidden p-2 text-[#032f23] hover:bg-[#e8f0ed] rounded-xl transition"
+          className="lg:hidden p-2 text-[#005530] hover:bg-[#e6f0eb] rounded-xl transition"
         >
           <Menu className="w-5 h-5" />
         </button>
-        <h1 className="text-base font-bold font-heading text-[#032f23]">
+        <h1 className="text-base font-bold font-heading text-[#005530]">
           CMS Management Console
         </h1>
       </div>
@@ -136,7 +136,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
       <div ref={clusterRef} className="relative z-50 flex items-center gap-3">
         <button
           onClick={onNavigatePublic}
-          className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#e8f0ed] text-[#032f23] font-semibold text-xs hover:bg-[#d1fae5] border border-[#c5d5ce]"
+          className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#e6f0eb] text-[#005530] font-semibold text-xs hover:bg-[#d1fae5] border border-[#b7d0c4]"
         >
           <Globe className="w-3.5 h-3.5" />
           <span>View Live Site</span>
@@ -149,7 +149,7 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
             aria-haspopup="dialog"
             onClick={() => togglePanel('notifications')}
             className={`p-2 rounded-xl relative ${
-              openPanel === 'notifications' ? 'bg-[#e8f0ed] text-[#032f23]' : 'text-[#032f23] hover:bg-[#e8f0ed]'
+              openPanel === 'notifications' ? 'bg-[#e6f0eb] text-[#005530]' : 'text-[#005530] hover:bg-[#e6f0eb]'
             }`}
           >
             <Bell className="w-4 h-4" />
@@ -161,11 +161,11 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
           </button>
 
           {openPanel === 'notifications' && (
-            <div className="absolute right-0 mt-2 w-[22rem] bg-white rounded-2xl shadow-2xl border border-[#c5d5ce] overflow-hidden z-50">
-              <div className="px-4 py-3 border-b border-[#c5d5ce] flex items-center justify-between">
-                <h4 className="text-xs font-bold text-[#032f23] uppercase tracking-wider">System notifications</h4>
+            <div className="absolute right-0 mt-2 w-[22rem] bg-white rounded-2xl shadow-2xl border border-[#b7d0c4] overflow-hidden z-50">
+              <div className="px-4 py-3 border-b border-[#b7d0c4] flex items-center justify-between">
+                <h4 className="text-xs font-bold text-[#005530] uppercase tracking-wider">System notifications</h4>
                 {unreadCount > 0 && (
-                  <span className="text-[10px] font-bold text-[#054433] bg-[#e8f0ed] px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-[#004428] bg-[#e6f0eb] px-2 py-0.5 rounded-full">
                     {unreadCount} new
                   </span>
                 )}
@@ -184,15 +184,15 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
                       type="button"
                       onClick={() => openNotification(item.module, item.id)}
                       className={`w-full text-left p-3 rounded-xl flex items-start gap-3 ${
-                        isUnread ? 'bg-[#e8f0ed]' : 'hover:bg-[#f8fafc]'
+                        isUnread ? 'bg-[#e6f0eb]' : 'hover:bg-[#f8fafc]'
                       }`}
                     >
-                      <span className="mt-0.5 w-8 h-8 rounded-xl bg-white border border-[#c5d5ce] text-[#032f23] flex items-center justify-center shrink-0">
+                      <span className="mt-0.5 w-8 h-8 rounded-xl bg-white border border-[#b7d0c4] text-[#005530] flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4" />
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="flex items-center justify-between gap-2">
-                          <span className="text-xs font-semibold text-[#032f23]">{item.title}</span>
+                          <span className="text-xs font-semibold text-[#005530]">{item.title}</span>
                           {isUnread && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />}
                         </span>
                         <span className="block text-xs text-slate-500 mt-0.5 line-clamp-2">{item.detail}</span>
@@ -203,11 +203,11 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
                 })}
               </div>
 
-              <div className="border-t border-[#c5d5ce] p-2">
+              <div className="border-t border-[#b7d0c4] p-2">
                 <button
                   type="button"
                   onClick={() => { closePanel(); onNavigateModule('messages'); }}
-                  className="w-full text-center text-xs font-semibold text-[#032f23] hover:bg-[#e8f0ed] rounded-xl py-2"
+                  className="w-full text-center text-xs font-semibold text-[#005530] hover:bg-[#e6f0eb] rounded-xl py-2"
                 >
                   Open contact submissions
                 </button>
@@ -223,24 +223,24 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({
             aria-haspopup="menu"
             onClick={() => togglePanel('user')}
             className={`flex items-center gap-2 p-1.5 rounded-xl ${
-              openPanel === 'user' ? 'bg-[#e8f0ed]' : 'hover:bg-[#e8f0ed]'
+              openPanel === 'user' ? 'bg-[#e6f0eb]' : 'hover:bg-[#e6f0eb]'
             }`}
           >
             <SafeImage
               src={user?.avatar_url || '/images/staff3.jpg'}
               alt="Avatar"
               type="person"
-              className="w-8 h-8 rounded-full object-cover border border-[#054433]"
+              className="w-8 h-8 rounded-full object-cover border border-[#004428]"
             />
-            <span className="hidden md:block text-xs font-bold text-[#032f23]">{user?.name || 'Admin'}</span>
+            <span className="hidden md:block text-xs font-bold text-[#005530]">{user?.name || 'Admin'}</span>
           </button>
 
           {openPanel === 'user' && (
-            <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-[#c5d5ce] p-2 z-50">
+            <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-[#b7d0c4] p-2 z-50">
               <button
                 type="button"
                 onClick={() => { closePanel(); onOpenProfile(); }}
-                className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium text-[#032f23] hover:bg-[#e8f0ed] rounded-xl"
+                className="w-full flex items-center gap-2 px-3 py-2 text-xs font-medium text-[#005530] hover:bg-[#e6f0eb] rounded-xl"
               >
                 <User className="w-4 h-4" />
                 My Profile Settings

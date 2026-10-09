@@ -28,7 +28,7 @@ export const SettingsManager: React.FC = () => {
         </div>
 
         {saved && (
-          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-bold text-xs animate-fadeIn">
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e6f0eb] text-[#005530] font-bold text-xs animate-fadeIn">
             <CheckCircle className="w-4 h-4" /> Saved Successfully!
           </span>
         )}
@@ -141,6 +141,16 @@ export const SettingsManager: React.FC = () => {
               type="text"
               value={formData.google_map_embed}
               onChange={(e) => setFormData({ ...formData, google_map_embed: e.target.value })}
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Google Maps Location Link</label>
+            <input
+              type="url"
+              value={formData.google_maps_url || ''}
+              onChange={(e) => setFormData({ ...formData, google_maps_url: e.target.value })}
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm"
             />
           </div>

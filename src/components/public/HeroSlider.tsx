@@ -26,7 +26,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ setCurrentTab, onOpenAdm
   const slide = activeSlides[currentSlide];
 
   return (
-    <div className="relative w-full min-h-[380px] h-[42vh] sm:h-[480px] md:h-[540px] lg:h-[600px] xl:h-[640px] max-h-[720px] bg-[#021f18] overflow-hidden">
+    <div className="relative w-full min-h-[380px] h-[42vh] sm:h-[480px] md:h-[540px] lg:h-[600px] xl:h-[640px] max-h-[720px] bg-[#003822] overflow-hidden">
       {activeSlides.map((item, idx) => (
         <div
           key={item.id}
@@ -38,8 +38,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ setCurrentTab, onOpenAdm
             fallbackType="building"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-[#021f18]/55" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#021910] via-[#021f18]/70 to-transparent" />
+          <div className="absolute inset-0 bg-[#003822]/55" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#002416] via-[#003822]/70 to-transparent" />
         </div>
       ))}
 
@@ -57,7 +57,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ setCurrentTab, onOpenAdm
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={onOpenAdmissionModal}
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#032f23] hover:bg-[#e8f0ed] font-semibold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 bg-white text-[#005530] hover:bg-[#e6f0eb] font-semibold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl w-full sm:w-auto"
             >
               {content.admissions_cta_label}
               <ArrowRight className="w-4 h-4" />

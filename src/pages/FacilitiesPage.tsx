@@ -8,14 +8,15 @@ import { ArrowRight } from 'lucide-react';
 import { Facility } from '../types';
 
 const FALLBACK_FACILITIES: Facility[] = [
-  { id: 1, title: 'STEM & Science Labs', desc: 'Advanced robotics and molecular chemistry workstations.', image: '/images/lab.jpg' },
-  { id: 2, title: 'Central Resource Library', desc: '35,000+ reference volumes and digital archives.', image: '/images/library.jpg' },
-  { id: 3, title: 'Sports Ground & Courts', desc: 'Athletics track, football field, and indoor games hall.', image: '/images/sports.jpg' },
-  { id: 4, title: 'Main Auditorium', desc: 'Assembly, annual day, and parent briefing space.', image: '/images/auditorium.jpg' },
-  { id: 5, title: 'Smart Classrooms', desc: 'Calm, well-lit rooms with boards and digital screens.', image: '/images/classroom.jpg' },
-  { id: 6, title: 'Campus & Gardens', desc: 'Open lawns and shaded walkways for break and arrival.', image: '/images/campus.jpg' },
-  { id: 7, title: 'Student Commons', desc: 'Cafeteria and gathering spaces for clubs and lunch.', image: '/images/students.jpg' },
-  { id: 8, title: 'Art & Activity Studios', desc: 'Art, music, and co-curricular rooms for hands-on work.', image: '/images/classroom.jpg' },
+  { id: 1, title: 'Science Laboratories', desc: 'Biology and chemistry benches for practical work and enquiry.', image: '/images/lab.jpg' },
+  { id: 2, title: 'Biology Laboratory', desc: 'Skeletons, glassware, and models for life-science practicals.', image: '/images/lab-biology.jpg' },
+  { id: 3, title: 'Computer Laboratory', desc: 'Dedicated ICT booths for digital literacy and research.', image: '/images/computers.jpg' },
+  { id: 4, title: 'Sports Courts', desc: 'Basketball court and outdoor play spaces for PE and games.', image: '/images/sports.jpg' },
+  { id: 5, title: 'Smart Classrooms', desc: 'Bright, well-equipped rooms where teachers stay approachable.', image: '/images/classroom.jpg' },
+  { id: 6, title: 'Campus Courtyard', desc: 'Shaded gathering steps at the heart of the Sharjah campus.', image: '/images/campus.jpg' },
+  { id: 7, title: 'Campus Gardens', desc: 'Planted walkways and quiet outdoor corners for a relaxed day.', image: '/images/garden.jpg' },
+  { id: 8, title: 'School Library', desc: 'Quiet reading space and reference collections for every grade.', image: '/images/library.jpg' },
+  { id: 9, title: 'Art Studio', desc: 'Paints, drawing, and creative work for co-curricular classes.', image: '/images/art.jpg' },
 ];
 
 export const resolveFacilities = (saved?: Facility[]) => {
@@ -52,11 +53,11 @@ export const FacilitiesPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {facilities.map((fac) => (
                 <article key={fac.id} className="rounded-2xl overflow-hidden border border-slate-100 bg-white shadow-subtle">
-                  <div className="h-44 overflow-hidden bg-[#e8f0ed]">
+                  <div className="h-44 overflow-hidden bg-[#e6f0eb]">
                     <SafeImage src={fac.image} alt={fac.title} type="building" className="w-full h-full object-cover" />
                   </div>
                   <div className="p-5">
-                    <h2 className="font-heading font-bold text-[#032f23]">{fac.title}</h2>
+                    <h2 className="font-heading font-bold text-[#005530]">{fac.title}</h2>
                     <p className="text-sm text-slate-500 mt-1 leading-relaxed">{fac.desc}</p>
                   </div>
                 </article>
@@ -65,8 +66,8 @@ export const FacilitiesPage: React.FC = () => {
           </div>
 
           <aside className="lg:col-span-4 space-y-4">
-            <div className="rounded-2xl border border-[#c5d5ce] bg-[#e8f0ed] p-6">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-[#054433] mb-3">Related to this</p>
+            <div className="rounded-2xl border border-[#b7d0c4] bg-[#e6f0eb] p-6">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[#004428] mb-3">Related to this</p>
               <div className="space-y-1">
                 <button onClick={() => go('about')} className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-slate-700 hover:bg-white">
                   About overview
@@ -85,14 +86,14 @@ export const FacilitiesPage: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="rounded-2xl bg-[#032f23] text-white p-6">
+            <div className="rounded-2xl bg-[#005530] text-white p-6">
               <h3 className="font-heading font-bold text-lg">Visit the campus</h3>
               <p className="text-sm text-white/80 mt-2 leading-relaxed">
                 {mission?.intro || 'Book a short tour to see classrooms, labs, and the library in person.'}
               </p>
               <button
                 onClick={() => go('contact')}
-                className="mt-4 inline-flex items-center gap-2 bg-white text-[#032f23] font-semibold text-sm px-4 py-2.5 rounded-xl"
+                className="mt-4 inline-flex items-center gap-2 bg-white text-[#005530] font-semibold text-sm px-4 py-2.5 rounded-xl"
               >
                 Contact the office <ArrowRight className="w-4 h-4" />
               </button>

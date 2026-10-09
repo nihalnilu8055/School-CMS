@@ -77,7 +77,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
   };
 
   return (
-    <div className="min-h-screen bg-[#e8f0ed] flex">
+    <div className="min-h-screen bg-[#e6f0eb] flex">
       
       {/* Admin Sidebar */}
       <AdminSidebar

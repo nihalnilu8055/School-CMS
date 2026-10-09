@@ -28,7 +28,7 @@ export const SeoManager: React.FC = () => {
         </div>
 
         {saved && (
-          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-bold text-xs animate-fadeIn">
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e6f0eb] text-[#005530] font-bold text-xs animate-fadeIn">
             <CheckCircle className="w-4 h-4" /> SEO Settings Saved!
           </span>
         )}
@@ -105,7 +105,7 @@ export const SeoManager: React.FC = () => {
               rows={4}
               value={formData.robots_txt}
               onChange={(e) => setFormData({ ...formData, robots_txt: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 font-mono text-[#054433] border border-slate-800 outline-none text-xs"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 font-mono text-[#004428] border border-slate-800 outline-none text-xs"
             />
           </div>
         </div>

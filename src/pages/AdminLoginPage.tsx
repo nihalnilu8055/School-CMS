@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useSite } from '../context/SiteContext';
 import { verifyPassword } from '../utils/password';
-import { GraduationCap, ShieldCheck, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
 
 interface AdminLoginPageProps {
   onSuccessLogin: () => void;
@@ -52,28 +52,28 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccessLogin, 
   };
 
   return (
-    <div className="min-h-screen bg-[#e8f0ed] text-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#e6f0eb] text-slate-900 flex items-center justify-center p-4">
       <div className="max-w-md w-full relative z-10 space-y-6">
         <div className="text-center space-y-3">
           <div
             onClick={onNavigatePublic}
-            className="w-16 h-16 rounded-2xl bg-[#032f23] shadow-md mx-auto cursor-pointer hover:scale-105 transition flex items-center justify-center"
+            className="w-20 h-20 rounded-2xl bg-white border border-[#b7d0c4] shadow-md mx-auto cursor-pointer hover:scale-105 transition flex items-center justify-center overflow-hidden p-1"
           >
-            <GraduationCap className="w-9 h-9 text-white" />
+            <img src="/images/logo.png" alt="Ibn Seena English High School" className="w-full h-full object-contain" />
           </div>
-          <h1 className="text-2xl font-extrabold font-heading tracking-tight text-[#032f23]">Ibn Seena Admin Portal</h1>
+          <h1 className="text-2xl font-extrabold font-heading tracking-tight text-[#005530]">Ibn Seena Admin Portal</h1>
           <p className="text-xs text-slate-500">School Management Content Management System</p>
         </div>
 
-        <div className="bg-white p-8 rounded-3xl border border-[#c5d5ce] shadow-card space-y-6">
-          <div className="flex items-center justify-between border-b border-[#c5d5ce] pb-4">
-            <h2 className="text-lg font-bold font-heading text-[#032f23] flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#054433]" />
+        <div className="bg-white p-8 rounded-3xl border border-[#b7d0c4] shadow-card space-y-6">
+          <div className="flex items-center justify-between border-b border-[#b7d0c4] pb-4">
+            <h2 className="text-lg font-bold font-heading text-[#005530] flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#004428]" />
               Staff Authentication
             </h2>
             <button
               onClick={onNavigatePublic}
-              className="text-xs text-[#032f23] font-semibold hover:underline"
+              className="text-xs text-[#005530] font-semibold hover:underline"
             >
               Public Website →
             </button>
@@ -88,9 +88,9 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccessLogin, 
 
           <form onSubmit={handleLogin} className="space-y-4 text-xs" autoComplete="on">
             <div>
-              <label className="block font-bold uppercase mb-1 text-[#032f23]">Email Address</label>
+              <label className="block font-bold uppercase mb-1 text-[#005530]">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#054433] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-[#004428] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="email"
                   name="email"
@@ -98,15 +98,15 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccessLogin, 
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#e8f0ed] border border-[#c5d5ce] outline-none text-slate-900 focus:border-[#032f23] transition text-sm"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] outline-none text-slate-900 focus:border-[#005530] transition text-sm"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold uppercase mb-1 text-[#032f23]">Password</label>
+              <label className="block font-bold uppercase mb-1 text-[#005530]">Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#054433] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#004428] absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
                   name="password"
@@ -114,7 +114,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccessLogin, 
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#e8f0ed] border border-[#c5d5ce] outline-none text-slate-900 focus:border-[#032f23] transition text-sm"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#e6f0eb] border border-[#b7d0c4] outline-none text-slate-900 focus:border-[#005530] transition text-sm"
                 />
               </div>
             </div>
@@ -122,7 +122,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({ onSuccessLogin, 
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-[#032f23] hover:bg-[#054433] text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm mt-2 disabled:opacity-60"
+              className="w-full bg-[#005530] hover:bg-[#004428] text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm mt-2 disabled:opacity-60"
             >
               <span>{submitting ? 'Signing in...' : 'Sign In to Admin Panel'}</span>
               <ArrowRight className="w-4 h-4 text-white" />

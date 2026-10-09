@@ -29,10 +29,10 @@ export const PartnersSection: React.FC = () => {
             return (
               <div
                 key={p.id}
-                className="p-6 rounded-2xl bg-[#e8f0ed] border border-[#E2E8F0] text-center flex flex-col items-center justify-center space-y-2"
+                className="p-6 rounded-2xl bg-[#e6f0eb] border border-[#E2E8F0] text-center flex flex-col items-center justify-center space-y-2"
               >
-                <Icon className="w-8 h-8 text-[#054433]" />
-                <h4 className="text-sm font-bold font-heading text-[#032f23]">{p.title}</h4>
+                <Icon className="w-8 h-8 text-[#004428]" />
+                <h4 className="text-sm font-bold font-heading text-[#005530]">{p.title}</h4>
                 <p className="text-[11px] text-[#5B6775]">{p.desc}</p>
               </div>
             );

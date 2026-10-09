@@ -10,7 +10,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     quote: 'Ibn Seena English High School provided my children with not just academic success, but strong moral grounding and confidence.',
     name: 'Dr. Hamza Rahman',
     role: 'Parent of Grade 9 Scholar',
-    avatar: '/images/staff1.jpg',
+    avatar: '/images/parent2.jpg',
     stars: 5,
   },
   {
@@ -18,7 +18,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     quote: 'Teachers are approachable, classrooms stay calm, and my daughter looks forward to assembly and library time every week.',
     name: 'Amina Joseph',
     role: 'Parent of Grade 4 Student',
-    avatar: '/images/staff3.jpg',
+    avatar: '/images/parent1.jpg',
     stars: 5,
   },
   {
@@ -26,7 +26,7 @@ const FALLBACK_TESTIMONIALS: Testimonial[] = [
     quote: 'As an alumnus, I still use the writing and ethics I learned here. The school treats graduates as part of one family.',
     name: 'Faris Al-Najjar',
     role: 'Alumnus, Class of 2020',
-    avatar: '/images/parent1.jpg',
+    avatar: '/images/alumni.jpg',
     stars: 5,
   },
 ];
@@ -38,14 +38,14 @@ export const TestimonialsSection: React.FC = () => {
   const testimonials = (saved.length >= 3 ? saved : [...saved, ...extras]).slice(0, 3);
 
   return (
-    <section className="py-16 sm:py-20 bg-[#e8f0ed] border-b border-[#E2E8F0]">
+    <section className="py-16 sm:py-20 bg-[#e6f0eb] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#032f23] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
-            <Quote className="w-3.5 h-3.5 text-[#0a5c47]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#005530] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
+            <Quote className="w-3.5 h-3.5 text-[#005530]" />
             {content.testimonials_eyebrow}
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#032f23]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#005530]">
             {content.testimonials_heading}
           </h2>
         </div>
@@ -57,9 +57,9 @@ export const TestimonialsSection: React.FC = () => {
               className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] shadow-card flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <div className="flex items-center gap-1 text-[#0a5c47]">
+                <div className="flex items-center gap-1 text-[#005530]">
                   {[...Array(t.stars || 5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#0a5c47] text-[#0a5c47]" />
+                    <Star key={i} className="w-4 h-4 fill-[#005530] text-[#005530]" />
                   ))}
                 </div>
                 <p className="text-sm text-[#5B6775] italic leading-relaxed">
@@ -71,10 +71,10 @@ export const TestimonialsSection: React.FC = () => {
                   src={t.avatar}
                   alt={t.name}
                   type="person"
-                  className="w-11 h-11 rounded-full object-cover border-2 border-[#0a5c47]"
+                  className="w-11 h-11 rounded-full object-cover border-2 border-[#005530]"
                 />
                 <div>
-                  <h4 className="text-sm font-bold font-heading text-[#032f23]">{t.name}</h4>
+                  <h4 className="text-sm font-bold font-heading text-[#005530]">{t.name}</h4>
                   <p className="text-xs text-[#5B6775]">{t.role}</p>
                 </div>
               </div>

@@ -18,18 +18,10 @@ const isNoticesNav = (key: string, label?: string) =>
   key === 'notices' || key.startsWith('notices/') || (label || '').toLowerCase().includes('notice');
 
 export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpenAdmissionModal }) => {
-  const { settings, pages, menus, content, notices } = useSite();
+  const { settings, menus, content, notices } = useSite();
   const [unseenCount, setUnseenCount] = useState(0);
   const cmsGroups = menusToNavGroups(menus);
-  const baseGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
-  const reservedNav = new Set([
-    ...baseGroups.flatMap((group) => [group.key, ...(group.children?.map((child) => child.key) || [])]),
-    'home', 'admin', 'news', 'staff', 'gallery', 'academics', 'contact', 'news_detail', 'about/facilities', 'about/staff', 'alumni/our-alumni',
-  ]);
-  const extraPages = pages.filter((page) => page.is_published && !reservedNav.has(page.slug));
-  const navGroups = extraPages.length
-    ? [...baseGroups, { key: 'more', label: 'More Pages', children: extraPages.map((page) => ({ key: page.slug, label: page.title })) }]
-    : baseGroups;
+  const navGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
 
   return (
     <header className="w-full sticky top-0 z-40 bg-white shadow-subtle">
-      <div className="bg-[#032f23] text-white text-[11px] sm:text-xs py-2">
+      <div className="bg-[#005530] text-white text-[11px] sm:text-xs py-2">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 min-w-0">
             <span className="flex items-center gap-1.5 truncate">
@@ -85,18 +77,20 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
         </div>
       </div>
 
-      <div className="bg-white border-b border-[#c5d5ce]">
+      <div className="bg-white border-b border-[#b7d0c4]">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
           <div onClick={() => handleNavClick('home')} className="flex items-center gap-2 sm:gap-3 cursor-pointer min-w-0">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#032f23] flex items-center justify-center border border-[#054433] shrink-0 overflow-hidden">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white flex items-center justify-center border border-[#b7d0c4] shrink-0 overflow-hidden">
               {settings.logo_url ? (
-                <SafeImage src={settings.logo_url} alt={settings.school_name} type="building" className="w-full h-full object-cover" />
+                <SafeImage src={settings.logo_url} alt={settings.school_name} type="building" className="w-full h-full object-contain" />
               ) : (
-                <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="w-full h-full bg-[#005530] flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
               )}
             </div>
             <div className="min-w-0">
-              <h1 className="text-sm sm:text-lg xl:text-xl font-bold font-heading text-[#032f23] leading-tight line-clamp-2 sm:truncate">
+              <h1 className="text-sm sm:text-lg xl:text-xl font-bold font-heading text-[#005530] leading-tight line-clamp-2 sm:truncate">
                 {settings.school_name}
               </h1>
               <p className="hidden xs:block sm:block text-[11px] sm:text-xs text-slate-500 leading-snug line-clamp-1">
@@ -106,12 +100,12 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <button onClick={() => setShowSearchModal(true)} className="p-2 sm:p-2.5 text-[#032f23] hover:bg-[#e8f0ed] rounded-xl">
+            <button onClick={() => setShowSearchModal(true)} className="p-2 sm:p-2.5 text-[#005530] hover:bg-[#e6f0eb] rounded-xl">
               <Search className="w-5 h-5" />
             </button>
             <button
               onClick={onOpenAdmissionModal}
-              className="inline-flex items-center gap-1.5 bg-[#032f23] hover:bg-[#054433] text-white font-semibold text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl"
+              className="inline-flex items-center gap-1.5 bg-[#005530] hover:bg-[#004428] text-white font-semibold text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl"
             >
               <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
               <span className="sm:hidden">Apply</span>
@@ -119,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 sm:p-2.5 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce]"
+              className="xl:hidden p-2 sm:p-2.5 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4]"
               aria-label="Open menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -128,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
         </div>
       </div>
 
-      <nav className="hidden xl:block bg-[#032f23]">
+      <nav className="hidden xl:block bg-[#005530]">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-flow-col auto-cols-fr">
           {navGroups.map((group, index) => {
             const active = isNavActive(currentTab, group);
@@ -143,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
                 <button
                   onClick={() => handleNavClick(group.key)}
                   className={`w-full min-h-12 px-2 py-2 flex items-center justify-center gap-1 text-[12px] 2xl:text-[13px] font-semibold text-center leading-snug ${
-                    active ? 'bg-[#054433] text-white' : 'text-white hover:bg-[#054433]'
+                    active ? 'bg-[#004428] text-white' : 'text-white hover:bg-[#004428]'
                   }`}
                 >
                   <span className="relative inline-flex items-center pr-1">
@@ -158,15 +152,15 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
                 </button>
                 {openGroup === group.key && hasChildren && (
                   <div className="absolute left-0 right-0 top-full z-50">
-                    <div className="bg-white border border-[#c5d5ce] shadow-card-hover py-2 min-w-full">
+                    <div className="bg-white border border-[#b7d0c4] shadow-card-hover py-2 min-w-full">
                       {group.children?.map((child) => (
                         <button
                           key={child.key}
                           onClick={() => handleNavClick(child.key)}
                           className={`w-full text-left px-4 py-2.5 text-sm ${
                             currentTab === child.key
-                              ? 'bg-[#e8f0ed] text-[#032f23] font-semibold'
-                              : 'text-slate-700 hover:bg-[#e8f0ed] hover:text-[#032f23]'
+                              ? 'bg-[#e6f0eb] text-[#005530] font-semibold'
+                              : 'text-slate-700 hover:bg-[#e6f0eb] hover:text-[#005530]'
                           }`}
                         >
                           {child.label}
@@ -182,13 +176,13 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
       </nav>
 
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-t border-[#c5d5ce] px-3 sm:px-4 pt-2 pb-6 max-h-[75vh] overflow-y-auto">
+        <div className="xl:hidden bg-white border-t border-[#b7d0c4] px-3 sm:px-4 pt-2 pb-6 max-h-[75vh] overflow-y-auto">
           {navGroups.map((group) => (
             <div key={group.key} className="border-b border-[#d7e3de] pb-1">
               <div className="flex items-center">
                 <button
                   onClick={() => handleNavClick(group.key)}
-                  className="flex-1 px-3 py-3 rounded-xl text-left font-semibold text-[#032f23] inline-flex items-center gap-2"
+                  className="flex-1 px-3 py-3 rounded-xl text-left font-semibold text-[#005530] inline-flex items-center gap-2"
                 >
                   {group.label}
                   {unseenCount > 0 && isNoticesNav(group.key, group.label) && (
@@ -200,7 +194,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
                 {group.children?.length ? (
                   <button
                     onClick={() => setOpenGroup(openGroup === group.key ? null : group.key)}
-                    className="p-3 text-[#032f23]"
+                    className="p-3 text-[#005530]"
                     aria-label={`Show ${group.label} pages`}
                   >
                     <ChevronRight className={`w-4 h-4 transition ${openGroup === group.key ? 'rotate-90' : ''}`} />
@@ -211,7 +205,7 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
                 <button
                   key={child.key}
                   onClick={() => handleNavClick(child.key)}
-                  className="w-full text-left pl-6 pr-3 py-2.5 text-sm text-slate-600 hover:bg-[#e8f0ed] rounded-xl"
+                  className="w-full text-left pl-6 pr-3 py-2.5 text-sm text-slate-600 hover:bg-[#e6f0eb] rounded-xl"
                 >
                   {child.label}
                 </button>
@@ -222,10 +216,10 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
       )}
 
       {showSearchModal && (
-        <div className="fixed inset-0 z-50 bg-[#032f23]/60 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4">
-          <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-[#c5d5ce] overflow-hidden">
-            <div className="p-4 border-b border-[#c5d5ce] flex items-center gap-3">
-              <Search className="w-5 h-5 text-[#054433] shrink-0" />
+        <div className="fixed inset-0 z-50 bg-[#005530]/60 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4">
+          <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-[#b7d0c4] overflow-hidden">
+            <div className="p-4 border-b border-[#b7d0c4] flex items-center gap-3">
+              <Search className="w-5 h-5 text-[#004428] shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
@@ -234,21 +228,21 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
                 className="w-full outline-none text-slate-800 text-base"
                 autoFocus
               />
-              <button onClick={() => setShowSearchModal(false)} className="p-1 rounded-lg hover:bg-[#e8f0ed]">
+              <button onClick={() => setShowSearchModal(false)} className="p-1 rounded-lg hover:bg-[#e6f0eb]">
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="p-4 sm:p-6 space-y-3">
-              <button onClick={() => { handleNavClick('notices'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e8f0ed]">
-                <p className="font-semibold text-[#032f23] text-sm">Urgent Notices</p>
+              <button onClick={() => { handleNavClick('notices'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
+                <p className="font-semibold text-[#005530] text-sm">Urgent Notices</p>
                 <p className="text-xs text-slate-500">General and fee circulars</p>
               </button>
-              <button onClick={() => { handleNavClick('about/mission'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e8f0ed]">
-                <p className="font-semibold text-[#032f23] text-sm">Mission & Vision</p>
+              <button onClick={() => { handleNavClick('about/mission'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
+                <p className="font-semibold text-[#005530] text-sm">Mission & Vision</p>
                 <p className="text-xs text-slate-500">School philosophy</p>
               </button>
-              <button onClick={() => { handleNavClick('about/staff'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e8f0ed]">
-                <p className="font-semibold text-[#032f23] text-sm">Faculty & Staff</p>
+              <button onClick={() => { handleNavClick('about/staff'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
+                <p className="font-semibold text-[#005530] text-sm">Faculty & Staff</p>
                 <p className="text-xs text-slate-500">Teachers and school leadership</p>
               </button>
             </div>

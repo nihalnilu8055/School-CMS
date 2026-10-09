@@ -38,20 +38,20 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({ isOpen, onClose 
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#032f23]/85 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fadeIn">
+    <div className="fixed inset-0 z-50 bg-[#005530]/85 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fadeIn">
       <div className="bg-white rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-8 shadow-2xl border border-[#E2E8F0] space-y-6 relative overflow-y-auto max-h-[92vh]">
         
         <div className="flex justify-between items-start border-b border-[#E2E8F0] pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] text-[#032f23] flex items-center justify-center">
-              <GraduationCap className="w-5 h-5 text-[#0a5c47]" />
+            <div className="w-10 h-10 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] text-[#005530] flex items-center justify-center">
+              <GraduationCap className="w-5 h-5 text-[#005530]" />
             </div>
             <div>
-              <h3 className="text-xl font-bold font-heading text-[#032f23]">{content.admissions_cta_label}</h3>
-              <p className="text-xs text-[#054433] font-bold">{settings.school_name}</p>
+              <h3 className="text-xl font-bold font-heading text-[#005530]">{content.admissions_cta_label}</h3>
+              <p className="text-xs text-[#004428] font-bold">{settings.school_name}</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1 rounded-lg text-[#5B6775] hover:text-[#032f23]">
+          <button onClick={onClose} className="p-1 rounded-lg text-[#5B6775] hover:text-[#005530]">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -61,7 +61,7 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({ isOpen, onClose 
             <div className="w-14 h-14 rounded-full bg-[#2E7D5B] text-white flex items-center justify-center mx-auto shadow-md">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h4 className="text-xl font-bold font-heading text-[#032f23]">Application Submitted!</h4>
+            <h4 className="text-xl font-bold font-heading text-[#005530]">Application Submitted!</h4>
             <p className="text-xs text-[#5B6775] leading-relaxed">
               We have received your enrolment application for {formData.studentName}. Our admissions desk will schedule a campus interview call shortly.
             </p>
@@ -70,60 +70,60 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({ isOpen, onClose 
           <form onSubmit={handleSubmit} className="space-y-4 text-xs">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-bold text-[#032f23] uppercase mb-1">Student Full Name *</label>
+                <label className="block font-bold text-[#005530] uppercase mb-1">Student Full Name *</label>
                 <input
                   type="text"
                   required
                   value={formData.studentName}
                   onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
                   placeholder="e.g. Lucas Wright"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#032f23]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#005530]"
                 />
               </div>
               <div>
-                <label className="block font-bold text-[#032f23] uppercase mb-1">Parent / Guardian *</label>
+                <label className="block font-bold text-[#005530] uppercase mb-1">Parent / Guardian *</label>
                 <input
                   type="text"
                   required
                   value={formData.parentName}
                   onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
                   placeholder="e.g. Sarah Wright"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#032f23]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#005530]"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-bold text-[#032f23] uppercase mb-1">Email Address *</label>
+                <label className="block font-bold text-[#005530] uppercase mb-1">Email Address *</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="sarah@domain.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#032f23]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#005530]"
                 />
               </div>
               <div>
-                <label className="block font-bold text-[#032f23] uppercase mb-1">Phone Number *</label>
+                <label className="block font-bold text-[#005530] uppercase mb-1">Phone Number *</label>
                 <input
                   type="tel"
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#032f23]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] outline-none text-[#17202A] text-sm focus:border-[#005530]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-bold text-[#032f23] uppercase mb-1">Grade Applying For</label>
+              <label className="block font-bold text-[#005530] uppercase mb-1">Grade Applying For</label>
               <select
                 value={formData.gradeApplying}
                 onChange={(e) => setFormData({ ...formData, gradeApplying: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#e8f0ed] border border-[#E2E8F0] outline-none text-[#17202A] text-sm cursor-pointer"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#e6f0eb] border border-[#E2E8F0] outline-none text-[#17202A] text-sm cursor-pointer"
               >
                 <option value="Primary (Grades 1-5)">Primary Foundation (Grades 1-5)</option>
                 <option value="Middle School (Grades 6-8)">Middle School Discovery (Grades 6-8)</option>
@@ -135,9 +135,9 @@ export const AdmissionModal: React.FC<AdmissionModalProps> = ({ isOpen, onClose 
 
             <button
               type="submit"
-              className="w-full bg-[#032f23] hover:bg-[#021f18] text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm mt-4"
+              className="w-full bg-[#005530] hover:bg-[#003822] text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm mt-4"
             >
-              <Send className="w-4 h-4 text-[#0a5c47]" />
+              <Send className="w-4 h-4 text-[#005530]" />
               <span>Submit Admission Application</span>
             </button>
           </form>

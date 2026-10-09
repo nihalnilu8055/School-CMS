@@ -29,6 +29,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onSelectNewsItem }) => {
         eyebrow={content.news_eyebrow || 'News'}
         title={content.news_heading || 'News & achievements'}
         intro={content.news_intro || 'Academic milestones, sports, cultural events, and school updates.'}
+        image="/images/students.jpg"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
@@ -40,7 +41,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onSelectNewsItem }) => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search news..."
-              className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-sm focus:border-[#032f23]"
+              className="w-full pl-11 pr-4 py-3 rounded-xl bg-white border border-slate-200 outline-none text-sm focus:border-[#005530]"
             />
           </div>
           <select
@@ -67,22 +68,22 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onSelectNewsItem }) => {
                 onClick={() => onSelectNewsItem(item)}
                 className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-card text-left flex flex-col group"
               >
-                <div className="relative h-52 overflow-hidden bg-[#e8f0ed]">
+                <div className="relative h-52 overflow-hidden bg-[#e6f0eb]">
                   <SafeImage src={item.featured_image} alt={item.title} type="news" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <span className="absolute top-4 left-4 bg-[#032f23] text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="absolute top-4 left-4 bg-[#005530] text-white text-xs font-bold px-3 py-1 rounded-full">
                     {item.category_name || 'News'}
                   </span>
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs text-slate-400">
-                      <Calendar className="w-3.5 h-3.5 text-[#0a5c47]" />
+                      <Calendar className="w-3.5 h-3.5 text-[#005530]" />
                       {new Date(item.publish_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </div>
-                    <h3 className="text-lg font-bold font-heading text-[#032f23] line-clamp-2">{item.title}</h3>
+                    <h3 className="text-lg font-bold font-heading text-[#005530] line-clamp-2">{item.title}</h3>
                     <p className="text-sm text-slate-500 line-clamp-3">{item.excerpt}</p>
                   </div>
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#032f23]">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#005530]">
                     Read story <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>

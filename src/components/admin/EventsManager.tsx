@@ -19,7 +19,7 @@ export const EventsManager: React.FC = () => {
     event_date: '2026-10-30',
     start_time: '09:00 AM',
     end_time: '04:00 PM',
-    banner_image: '/images/auditorium.jpg',
+    banner_image: '/images/campus.jpg',
     is_featured: true
   });
 
@@ -33,7 +33,7 @@ export const EventsManager: React.FC = () => {
       event_date: '2026-10-30',
       start_time: '09:00 AM',
       end_time: '04:00 PM',
-      banner_image: '/images/auditorium.jpg',
+      banner_image: '/images/campus.jpg',
       is_featured: true
     });
     setShowModal(true);

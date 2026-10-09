@@ -10,14 +10,15 @@ import { NAV_GROUPS } from '../data/navigation';
 export const INITIAL_SETTINGS: SiteSettings = {
   school_name: "Ibn Seena English High School",
   tagline: "Producing Universal Human Beings with Wisdom & Character",
-  logo_url: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=200&q=80",
-  favicon_url: "/favicon.ico",
-  address: "Ibn Seena Education Campus, High School Road, CA 94016",
-  phone: "+1 (555) 345-6789 / +1 (555) 876-5432",
-  email: "info@ibnseenaschool.edu",
-  website: "https://ibnseenaschool.edu",
-  working_hours: "Monday - Friday: 7:30 AM - 3:30 PM | Saturday: 8:00 AM - 1:00 PM",
-  google_map_embed: "https://maps.google.com/maps?q=37.7749,-122.4194&z=15&output=embed",
+  logo_url: "/images/logo.png",
+  favicon_url: "/images/logo.png",
+  address: "9 Aghades Street, Al Shahba, Mughaidir Suburb, Sharjah, UAE (P.O. Box 2909)",
+  phone: "+971 6 558 2071",
+  email: "reception@ibnseenaschool.net",
+  website: "https://ibnseenaschool.net",
+  working_hours: "Monday – Friday: 8:00 AM – 3:00 PM",
+  google_map_embed: "https://maps.google.com/maps?q=9+Aghades+Street,+Al+Shahba,+Mughaidir+Suburb,+Sharjah,+UAE&z=16&output=embed",
+  google_maps_url: "https://maps.app.goo.gl/jRpFWuewjdUhcHYz5",
   social_links: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",
@@ -31,9 +32,9 @@ export const INITIAL_SEO: SeoSettings = {
   meta_title: "Ibn Seena English High School - Excellence in Education & Character",
   meta_description: "Ibn Seena English High School nurtures the social, moral, and psychological development of students to face real-world challenges.",
   keywords: "Ibn Seena, High School, Education, Admissions, Fees, Notices, Curriculum, Alumni",
-  og_image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80",
+  og_image: "/images/banner-classroom.jpg",
   twitter_card: "summary_large_image",
-  robots_txt: "User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://ibnseenaschool.edu/sitemap.xml"
+  robots_txt: "User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://ibnseenaschool.net/sitemap.xml"
 };
 
 export const INITIAL_BANNERS: BannerSlide[] = [
@@ -42,8 +43,8 @@ export const INITIAL_BANNERS: BannerSlide[] = [
     title: "Wisdom for the Greater Good",
     subtitle: "The school is committed to producing a universal human being, a person with not just robotic information at his command, but the wisdom to use it for the greater good.",
     button_text: "Explore Mission & Vision",
-    button_url: "/about",
-    image_url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80",
+    button_url: "/about/mission",
+    image_url: "/images/banner-classroom.jpg",
     order_index: 1,
     is_active: true
   },
@@ -53,18 +54,38 @@ export const INITIAL_BANNERS: BannerSlide[] = [
     subtitle: "We believe that children need a free and relaxed atmosphere to grow in, where they are trusted and the teachers are approachable.",
     button_text: "Our Curriculum",
     button_url: "/academics",
-    image_url: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80",
+    image_url: "/images/banner-courtyard.jpg",
     order_index: 2,
     is_active: true
   },
   {
     id: 3,
+    title: "Learning Through Discovery",
+    subtitle: "Science labs, computer rooms, and classrooms give students the space to practise knowledge — and the wisdom to use it well.",
+    button_text: "Campus Facilities",
+    button_url: "/about/facilities",
+    image_url: "/images/banner-lab.jpg",
+    order_index: 3,
+    is_active: true
+  },
+  {
+    id: 4,
+    title: "A Calm Campus in Sharjah",
+    subtitle: "At 9 Aghades Street, Al Shahba, children grow in a trusted setting where teachers are approachable and learning stays relaxed.",
+    button_text: "Visit Us",
+    button_url: "/contact",
+    image_url: "/images/banner-campus.jpg",
+    order_index: 4,
+    is_active: true
+  },
+  {
+    id: 5,
     title: "Holistic Social & Moral Growth",
     subtitle: "By placing an equal emphasis on a child's social, moral and psychological development, our graduates are well equipped to deal with real-world challenges.",
-    button_text: "Read Notices",
-    button_url: "/notices",
-    image_url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1920&q=80",
-    order_index: 3,
+    button_text: "About the School",
+    button_url: "/about",
+    image_url: "/images/banner-computers.jpg",
+    order_index: 5,
     is_active: true
   }
 ];
@@ -81,7 +102,7 @@ export const INITIAL_STAFF: StaffMember[] = [
   {
     id: 1,
     name: "Dr. Robert Vance",
-    photo_url: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80",
+    photo_url: "/images/staff-principal.jpg",
     designation: "Principal & Chief Academic Officer",
     department_id: 1,
     department_name: "Science & STEM Research",
@@ -96,7 +117,7 @@ export const INITIAL_STAFF: StaffMember[] = [
   {
     id: 2,
     name: "Prof. Eleanor Vance",
-    photo_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    photo_url: "/images/staff2.jpg",
     designation: "Vice Principal & Math Chair",
     department_id: 2,
     department_name: "Mathematics & Computing",
@@ -141,7 +162,7 @@ export const INITIAL_STAFF: StaffMember[] = [
   {
     id: 5,
     name: "Coach David Miller",
-    photo_url: "/images/sports.jpg",
+    photo_url: "/images/staff-coach.jpg",
     designation: "Athletics & Sports Director",
     department_id: 5,
     department_name: "Sports & Physical Fitness",
@@ -230,7 +251,7 @@ export const INITIAL_NEWS: NewsItem[] = [
     content: "<p>The art studio opened a week-long exhibition so families can see how drawing, design, and Islamic art are taught across the school.</p>",
     category_id: 3,
     category_name: "Campus Life",
-    featured_image: "/images/students.jpg",
+    featured_image: "/images/art.jpg",
     tags: ["Art", "Exhibition", "Parents"],
     is_featured: false,
     status: "published",
@@ -245,7 +266,7 @@ export const INITIAL_NEWS: NewsItem[] = [
     content: "<p>Supporters filled the sidelines as Ibn Seena won the season opener 3–1. The PE department reminded families that midweek fixtures are listed on the school calendar.</p>",
     category_id: 2,
     category_name: "Sports & Athletics",
-    featured_image: "/images/sports.jpg",
+    featured_image: "/images/soccer.jpg",
     tags: ["Football", "Sports", "Secondary"],
     is_featured: false,
     status: "published",
@@ -296,7 +317,7 @@ export const INITIAL_CONTENT: FrontendContent = {
   admissions_cta_label: "Apply for Admissions 2026",
   welcome_eyebrow: "About Ibn Seena English High School",
   welcome_heading: "Wisdom, Character & Real-World Resilience",
-  welcome_body: "The school is committed to producing a universal human being, a person with not just robotic information at his command, but the wisdom to use it for the greater good.",
+  welcome_body: "The school is committed to producing a universal human being, a person with not just robotic information at his command, but the wisdom to use it for the greater good. We believe that children need a free and relaxed atmosphere to grow in, where they are trusted and the teachers are approachable.",
   welcome_quote: "We believe that children need a free and relaxed atmosphere to grow in, where they are trusted and the teachers are approachable.",
   welcome_bullets: [
     "Equal emphasis on social, moral & psychological development",
@@ -327,7 +348,7 @@ export const INITIAL_CONTENT: FrontendContent = {
       quote: "Ibn Seena English High School provided my children with not just academic success, but strong moral grounding and confidence.",
       name: "Dr. Hamza Rahman",
       role: "Parent of Grade 9 Scholar",
-      avatar: "/images/staff1.jpg",
+      avatar: "/images/parent2.jpg",
       stars: 5
     },
     {
@@ -335,7 +356,7 @@ export const INITIAL_CONTENT: FrontendContent = {
       quote: "Teachers are approachable, classrooms stay calm, and my daughter looks forward to assembly and library time every week.",
       name: "Amina Joseph",
       role: "Parent of Grade 4 Student",
-      avatar: "/images/staff3.jpg",
+      avatar: "/images/parent1.jpg",
       stars: 5
     },
     {
@@ -343,7 +364,7 @@ export const INITIAL_CONTENT: FrontendContent = {
       quote: "As an alumnus, I still use the writing and ethics I learned here. The school treats graduates as part of one family.",
       name: "Faris Al-Najjar",
       role: "Alumnus, Class of 2020",
-      avatar: "/images/parent1.jpg",
+      avatar: "/images/alumni.jpg",
       stars: 5
     }
   ],
@@ -354,18 +375,19 @@ export const INITIAL_CONTENT: FrontendContent = {
     { id: 3, title: "Character Education", desc: "Values & Citizenship Network" }
   ],
   principal_message_heading: "Message from the Desk of Principal",
-  about_banner_image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1920&q=80",
+  about_banner_image: "/images/campus.jpg",
   facilities_eyebrow: "Infrastructure",
   facilities_heading: "Campus Facilities",
   facilities: [
-    { id: 1, title: "STEM & Science Labs", desc: "Advanced robotics and molecular chemistry workstations.", image: "/images/lab.jpg" },
-    { id: 2, title: "Central Resource Library", desc: "35,000+ reference volumes and digital archives.", image: "/images/library.jpg" },
-    { id: 3, title: "Sports Ground & Courts", desc: "Athletics track, football field, and indoor games hall.", image: "/images/sports.jpg" },
-    { id: 4, title: "Main Auditorium", desc: "Assembly, annual day, and parent briefing space.", image: "/images/auditorium.jpg" },
-    { id: 5, title: "Smart Classrooms", desc: "Calm, well-lit rooms with boards and digital screens.", image: "/images/classroom.jpg" },
-    { id: 6, title: "Campus & Gardens", desc: "Open lawns and shaded walkways for break and arrival.", image: "/images/campus.jpg" },
-    { id: 7, title: "Student Commons", desc: "Cafeteria and gathering spaces for clubs and lunch.", image: "/images/students.jpg" },
-    { id: 8, title: "Art & Activity Studios", desc: "Art, music, and co-curricular rooms for hands-on work.", image: "/images/classroom.jpg" }
+    { id: 1, title: "Science Laboratories", desc: "Biology and chemistry benches for practical work and enquiry.", image: "/images/lab.jpg" },
+    { id: 2, title: "Biology Laboratory", desc: "Skeletons, glassware, and models for life-science practicals.", image: "/images/lab-biology.jpg" },
+    { id: 3, title: "Computer Laboratory", desc: "Dedicated ICT booths for digital literacy and research.", image: "/images/computers.jpg" },
+    { id: 4, title: "Sports Courts", desc: "Basketball court and outdoor play spaces for PE and games.", image: "/images/sports.jpg" },
+    { id: 5, title: "Smart Classrooms", desc: "Bright, well-equipped rooms where teachers stay approachable.", image: "/images/classroom.jpg" },
+    { id: 6, title: "Campus Courtyard", desc: "Shaded gathering steps at the heart of the Sharjah campus.", image: "/images/campus.jpg" },
+    { id: 7, title: "Campus Gardens", desc: "Planted walkways and quiet outdoor corners for a relaxed day.", image: "/images/garden.jpg" },
+    { id: 8, title: "School Library", desc: "Quiet reading space and reference collections for every grade.", image: "/images/library.jpg" },
+    { id: 9, title: "Art Studio", desc: "Paints, drawing, and creative work for co-curricular classes.", image: "/images/art.jpg" }
   ],
   timeline_eyebrow: "Our Heritage",
   timeline_heading: "Milestones Timeline",
@@ -456,7 +478,7 @@ export const INITIAL_EVENTS: EventItem[] = [
     event_date: "2026-12-12",
     start_time: "05:00 PM",
     end_time: "08:00 PM",
-    banner_image: "/images/auditorium.jpg",
+    banner_image: "/images/concert.jpg",
     is_featured: false
   },
   {
@@ -470,46 +492,76 @@ export const INITIAL_EVENTS: EventItem[] = [
     end_time: "12:00 PM",
     banner_image: "/images/campus.jpg",
     is_featured: false
+  },
+  {
+    id: 7,
+    title: "Teachers’ Day & Children’s Day",
+    slug: "teachers-childrens-day-2026",
+    description: "Partners in Learning celebrations across the Sharjah campus.",
+    location: "Campus Courtyard",
+    event_date: "2026-11-14",
+    start_time: "08:00 AM",
+    end_time: "01:00 PM",
+    banner_image: "/images/event-banner.jpg",
+    is_featured: true
   }
 ];
 
 export const INITIAL_GALLERY_ALBUMS: GalleryAlbum[] = [
   {
     id: 1,
-    title: "Campus & Facilities",
-    slug: "campus-facilities",
+    title: "Campus & Gardens",
+    slug: "campus-gardens",
     cover_image: "/images/campus.jpg",
-    description: "Buildings, library, labs, and outdoor spaces.",
+    description: "Courtyard, gardens, and walkways on the Sharjah campus.",
     created_at: "2026-08-01T10:00:00.000Z",
-    items_count: 2
+    items_count: 5
   },
   {
     id: 2,
     title: "Classroom Learning",
     slug: "classroom-learning",
     cover_image: "/images/classroom.jpg",
-    description: "Lessons, labs, and library time.",
+    description: "Lessons in well-lit classrooms.",
     created_at: "2026-08-10T10:00:00.000Z",
     items_count: 2
   },
   {
     id: 3,
-    title: "Sports & Activities",
-    slug: "sports-activities",
-    cover_image: "/images/sports.jpg",
-    description: "Games, assemblies, and student life.",
+    title: "Laboratories",
+    slug: "laboratories",
+    cover_image: "/images/lab.jpg",
+    description: "Science, biology, physics, and computer labs.",
     created_at: "2026-08-18T10:00:00.000Z",
-    items_count: 2
+    items_count: 5
+  },
+  {
+    id: 4,
+    title: "Sports & Campus Life",
+    slug: "sports-campus-life",
+    cover_image: "/images/sports.jpg",
+    description: "Basketball court, field, and school celebrations.",
+    created_at: "2026-08-22T10:00:00.000Z",
+    items_count: 3
   }
 ];
 
 export const INITIAL_GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, album_id: 1, type: "image", url: "/images/campus.jpg", title: "Main Academic Building", caption: "Front entrance and plaza" },
-  { id: 2, album_id: 2, type: "image", url: "/images/classroom.jpg", title: "Morning Lesson", caption: "Primary classroom" },
-  { id: 3, album_id: 3, type: "image", url: "/images/sports.jpg", title: "Sports Day", caption: "House races on the field" },
-  { id: 4, album_id: 1, type: "image", url: "/images/library.jpg", title: "Central Library", caption: "Quiet reading and research" },
-  { id: 5, album_id: 2, type: "image", url: "/images/lab.jpg", title: "Science Lab", caption: "Secondary practical work" },
-  { id: 6, album_id: 3, type: "image", url: "/images/students.jpg", title: "Student Life", caption: "Friends on campus" }
+  { id: 1, album_id: 2, type: "image", url: "/images/classroom.jpg", title: "Classroom Learning", caption: "Students during a lesson" },
+  { id: 2, album_id: 1, type: "image", url: "/images/campus.jpg", title: "Campus Courtyard", caption: "Shaded steps at the Sharjah campus" },
+  { id: 3, album_id: 3, type: "image", url: "/images/lab.jpg", title: "Science Laboratory", caption: "Secondary practical work" },
+  { id: 4, album_id: 4, type: "image", url: "/images/sports.jpg", title: "Basketball Court", caption: "Outdoor games and PE" },
+  { id: 5, album_id: 3, type: "image", url: "/images/computers.jpg", title: "Computer Laboratory", caption: "ICT booths for digital learning" },
+  { id: 6, album_id: 1, type: "image", url: "/images/garden.jpg", title: "Campus Gardens", caption: "Planted walkways beside the classrooms" },
+  { id: 7, album_id: 2, type: "image", url: "/images/classroom-2.jpg", title: "Smart Classroom", caption: "Another lesson in progress" },
+  { id: 8, album_id: 1, type: "image", url: "/images/courtyard.jpg", title: "Courtyard Steps", caption: "Open gathering space under shade sails" },
+  { id: 9, album_id: 1, type: "image", url: "/images/campus-garden.jpg", title: "Garden Path", caption: "Green beds along the classroom block" },
+  { id: 10, album_id: 1, type: "image", url: "/images/hallway.jpg", title: "Campus Walkway", caption: "Arrival path beside planted borders" },
+  { id: 11, album_id: 3, type: "image", url: "/images/lab-2.jpg", title: "Chemistry Benches", caption: "Sinks, taps, and apparatus for experiments" },
+  { id: 12, album_id: 3, type: "image", url: "/images/lab-biology.jpg", title: "Biology Laboratory", caption: "Models and glassware for life science" },
+  { id: 13, album_id: 3, type: "image", url: "/images/physics-lab.jpg", title: "Physics Laboratory", caption: "Worktables for secondary science practicals" },
+  { id: 14, album_id: 4, type: "image", url: "/images/playground.jpg", title: "Playing Field", caption: "Open grass field for athletics and games" },
+  { id: 15, album_id: 4, type: "image", url: "/images/event-banner.jpg", title: "Teachers’ Day", caption: "Partners in Learning on the Sharjah campus" }
 ];
 
 export const INITIAL_PROGRAMS: AcademicProgram[] = [

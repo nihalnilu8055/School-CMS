@@ -18,14 +18,16 @@ export const MediaManager: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const [mediaList, setMediaList] = useState<MediaItem[]>([
-    { id: 1, name: 'Science_Lab.jpg', url: '/images/lab.jpg', type: 'image', folder: 'news', size: '980 KB' },
+    { id: 1, name: 'Science_Lab.jpg', url: '/images/lab.jpg', type: 'image', folder: 'news', size: '103 KB' },
     { id: 2, name: 'Academic_Prospectus_2026.pdf', url: '#', type: 'pdf', folder: 'documents', size: '4.2 MB' },
-    { id: 3, name: 'School_Campus.jpg', url: '/images/campus.jpg', type: 'image', folder: 'gallery', size: '1.2 MB' },
-    { id: 4, name: 'Classroom_Lesson.jpg', url: '/images/classroom.jpg', type: 'image', folder: 'gallery', size: '850 KB' },
-    { id: 5, name: 'Students_Learning.jpg', url: '/images/students.jpg', type: 'image', folder: 'gallery', size: '900 KB' },
-    { id: 6, name: 'School_Library.jpg', url: '/images/library.jpg', type: 'image', folder: 'gallery', size: '1.1 MB' },
-    { id: 7, name: 'Sports_Day.jpg', url: '/images/sports.jpg', type: 'image', folder: 'gallery', size: '1.4 MB' },
-    { id: 8, name: 'Faculty_Teacher.jpg', url: '/images/staff1.jpg', type: 'image', folder: 'staff', size: '750 KB' },
+    { id: 3, name: 'School_Campus.jpg', url: '/images/campus.jpg', type: 'image', folder: 'gallery', size: '142 KB' },
+    { id: 4, name: 'Classroom_Lesson.jpg', url: '/images/classroom.jpg', type: 'image', folder: 'gallery', size: '164 KB' },
+    { id: 5, name: 'Computer_Lab.jpg', url: '/images/computers.jpg', type: 'image', folder: 'gallery', size: '98 KB' },
+    { id: 6, name: 'School_Library.jpg', url: '/images/library.jpg', type: 'image', folder: 'gallery', size: '282 KB' },
+    { id: 7, name: 'Basketball_Court.jpg', url: '/images/sports.jpg', type: 'image', folder: 'gallery', size: '129 KB' },
+    { id: 8, name: 'Faculty_Teacher.jpg', url: '/images/staff2.jpg', type: 'image', folder: 'staff', size: '108 KB' },
+    { id: 9, name: 'Biology_Lab.jpg', url: '/images/lab-biology.jpg', type: 'image', folder: 'gallery', size: '134 KB' },
+    { id: 10, name: 'Campus_Garden.jpg', url: '/images/garden.jpg', type: 'image', folder: 'gallery', size: '148 KB' },
   ]);
 
   const filteredMedia = mediaList.filter(m => currentFolder === 'all' || m.folder === currentFolder);

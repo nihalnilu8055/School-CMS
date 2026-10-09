@@ -43,6 +43,7 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
         eyebrow={content.notices_eyebrow || 'School notices'}
         title={content.notices_heading || 'Notices & circulars'}
         intro={content.notices_intro}
+        image="/images/campus.jpg"
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
@@ -53,7 +54,7 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
                 key={item.key}
                 onClick={() => setFilter(item.key)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-bold ${
-                  filter === item.key ? 'bg-[#032f23] text-white' : 'bg-[#e8f0ed] text-[#032f23]'
+                  filter === item.key ? 'bg-[#005530] text-white' : 'bg-[#e6f0eb] text-[#005530]'
                 }`}
               >
                 {item.label}
@@ -67,7 +68,7 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search notices..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200 text-sm outline-none focus:border-[#032f23]"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#f8fafc] border border-slate-200 text-sm outline-none focus:border-[#005530]"
             />
           </div>
         </div>
@@ -77,8 +78,8 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
             <article key={notice.id} className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-6 flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                  {notice.is_pinned && <Pin className="w-3.5 h-3.5 text-[#032f23]" />}
-                  <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-[#e8f0ed] text-[#032f23]">{notice.category}</span>
+                  {notice.is_pinned && <Pin className="w-3.5 h-3.5 text-[#005530]" />}
+                  <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-[#e6f0eb] text-[#005530]">{notice.category}</span>
                   <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">{notice.priority}</span>
                   <span className="inline-flex items-center gap-1 text-xs text-slate-400">
                     <Calendar className="w-3.5 h-3.5" />
@@ -91,7 +92,7 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
               {(notice.attachment_url || notice.file_url) && (
                 <a
                   href={notice.attachment_url || notice.file_url}
-                  className="inline-flex items-center gap-2 shrink-0 bg-[#032f23] text-white text-xs font-semibold px-4 py-2.5 rounded-xl"
+                  className="inline-flex items-center gap-2 shrink-0 bg-[#005530] text-white text-xs font-semibold px-4 py-2.5 rounded-xl"
                 >
                   <Download className="w-4 h-4" /> Download
                 </a>
@@ -100,7 +101,7 @@ export const NoticesPage: React.FC<NoticesPageProps> = ({ initialFilter = 'all' 
           ))}
           {visible.length === 0 && (
             <div className="text-center py-16 bg-white rounded-2xl border border-slate-100 text-slate-500">
-              <Bell className="w-8 h-8 mx-auto mb-3 text-[#9bb8ad]" />
+              <Bell className="w-8 h-8 mx-auto mb-3 text-[#7eb89a]" />
               No notices match this filter.
             </div>
           )}

@@ -61,7 +61,7 @@ export const MenuManager: React.FC = () => {
     <div className="space-y-6 animate-fadeIn">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold font-heading text-[#032f23]">Navigation Menu Management</h2>
+          <h2 className="text-2xl font-bold font-heading text-[#005530]">Navigation Menu Management</h2>
           <p className="text-xs text-slate-600 mt-1">
             These links drive the public header dropdowns and footer quick links. Parent items become dropdown groups.
           </p>
@@ -98,13 +98,13 @@ export const MenuManager: React.FC = () => {
                   <td className="p-4 text-slate-500">{parent?.title || '—'}</td>
                   <td className="p-4">{item.order_index}</td>
                   <td className="p-4">
-                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${item.is_active ? 'bg-[#e8f0ed] text-[#032f23]' : 'bg-slate-200 text-slate-600'}`}>
+                    <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${item.is_active ? 'bg-[#e6f0eb] text-[#005530]' : 'bg-slate-200 text-slate-600'}`}>
                       {item.is_active ? 'Visible' : 'Hidden'}
                     </span>
                   </td>
                   <td className="p-4">
                     <div className="flex items-center justify-end gap-2 whitespace-nowrap">
-                      <button onClick={() => openEdit(item)} className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]">
+                      <button onClick={() => openEdit(item)} className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]">
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button onClick={() => setDeleteId(item.id)} className="p-2 rounded-xl bg-red-50 text-red-600 border border-red-100 hover:bg-red-100">

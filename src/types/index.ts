@@ -192,6 +192,7 @@ export interface SiteSettings {
   website: string;
   working_hours: string;
   google_map_embed: string;
+  google_maps_url: string;
   social_links: {
     facebook: string;
     instagram: string;

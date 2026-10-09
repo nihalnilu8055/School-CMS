@@ -178,7 +178,7 @@ export const UserManager: React.FC = () => {
                 <td className="p-4">
                   <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${
                     user.password_hash
-                      ? 'bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce]'
+                      ? 'bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4]'
                       : 'bg-amber-50 text-amber-700 border border-amber-100'
                   }`}>
                     <Lock className="w-3 h-3" />
@@ -187,7 +187,7 @@ export const UserManager: React.FC = () => {
                 </td>
                 <td className="p-4">
                   <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
-                    user.is_active ? 'bg-[#e8f0ed] text-[#032f23]' : 'bg-slate-200 text-slate-700'
+                    user.is_active ? 'bg-[#e6f0eb] text-[#005530]' : 'bg-slate-200 text-slate-700'
                   }`}>
                     {user.is_active ? 'Active' : 'Disabled'}
                   </span>
@@ -196,7 +196,7 @@ export const UserManager: React.FC = () => {
                   <div className="flex items-center justify-end gap-2 whitespace-nowrap">
                     <button
                       onClick={() => handleOpenEdit(user)}
-                      className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]"
+                      className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
@@ -215,12 +215,12 @@ export const UserManager: React.FC = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 z-50 bg-[#032f23]/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-[#005530]/75 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-            <div className="px-6 py-5 bg-[#032f23] text-white flex items-start justify-between gap-4">
+            <div className="px-6 py-5 bg-[#005530] text-white flex items-start justify-between gap-4">
               <div className="flex items-start gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-white/10 border border-[#0a5c47]/40 flex items-center justify-center shrink-0">
-                  <Shield className="w-5 h-5 text-[#0a5c47]" />
+                <div className="w-11 h-11 rounded-2xl bg-white/10 border border-[#005530]/40 flex items-center justify-center shrink-0">
+                  <Shield className="w-5 h-5 text-[#005530]" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold font-heading">
@@ -246,8 +246,8 @@ export const UserManager: React.FC = () => {
               )}
 
               <section className="space-y-4">
-                <div className="flex items-center gap-2 text-[#032f23]">
-                  <UserRound className="w-4 h-4 text-[#0a5c47]" />
+                <div className="flex items-center gap-2 text-[#005530]">
+                  <UserRound className="w-4 h-4 text-[#005530]" />
                   <h4 className="text-xs font-bold uppercase tracking-wider">Account details</h4>
                 </div>
 
@@ -259,7 +259,7 @@ export const UserManager: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#054433]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                     />
                   </label>
 
@@ -270,7 +270,7 @@ export const UserManager: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#054433]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                     />
                   </label>
 
@@ -280,7 +280,7 @@ export const UserManager: React.FC = () => {
                       type="text"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#054433]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                     />
                   </label>
 
@@ -289,7 +289,7 @@ export const UserManager: React.FC = () => {
                     <select
                       value={formData.role_id}
                       onChange={(e) => setFormData({ ...formData, role_id: Number(e.target.value) })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#054433]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                     >
                       {roles.map((role) => (
                         <option key={role.id} value={role.id}>{role.name} — {role.description}</option>
@@ -302,7 +302,7 @@ export const UserManager: React.FC = () => {
                       type="checkbox"
                       checked={formData.is_active}
                       onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                      className="w-4 h-4 accent-[#032f23]"
+                      className="w-4 h-4 accent-[#005530]"
                     />
                     <span className="text-sm text-slate-700 dark:text-slate-200">
                       Account is active and allowed to sign in
@@ -313,14 +313,14 @@ export const UserManager: React.FC = () => {
 
               <section className="space-y-4 pt-2">
                 <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 text-[#032f23]">
-                    <KeyRound className="w-4 h-4 text-[#0a5c47]" />
+                  <div className="flex items-center gap-2 text-[#005530]">
+                    <KeyRound className="w-4 h-4 text-[#005530]" />
                     <h4 className="text-xs font-bold uppercase tracking-wider">Login password</h4>
                   </div>
                   <button
                     type="button"
                     onClick={handleGeneratePassword}
-                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#054433] hover:text-[#032f23]"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#004428] hover:text-[#005530]"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
                     Generate strong password
@@ -346,7 +346,7 @@ export const UserManager: React.FC = () => {
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         placeholder={editingUser ? 'Leave blank to keep current password' : 'Create a sign-in password'}
-                        className="w-full pl-10 pr-11 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#054433]"
+                        className="w-full pl-10 pr-11 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none text-slate-900 dark:text-white text-sm focus:border-[#004428]"
                       />
                       <button
                         type="button"
@@ -378,7 +378,7 @@ export const UserManager: React.FC = () => {
                           { ok: strength.checks.number, label: 'Contains a number' },
                           { ok: strength.checks.symbol, label: 'Symbol recommended' },
                         ].map((item) => (
-                          <span key={item.label} className={`inline-flex items-center gap-1.5 ${item.ok ? 'text-[#032f23]' : 'text-slate-400'}`}>
+                          <span key={item.label} className={`inline-flex items-center gap-1.5 ${item.ok ? 'text-[#005530]' : 'text-slate-400'}`}>
                             <Check className="w-3 h-3" />
                             {item.label}
                           </span>
@@ -398,7 +398,7 @@ export const UserManager: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                         placeholder={editingUser ? 'Re-enter only if changing password' : 'Re-enter password'}
                         className={`w-full pl-10 pr-11 py-2.5 rounded-xl bg-white dark:bg-slate-900 border outline-none text-slate-900 dark:text-white text-sm ${
-                          passwordsMatch ? 'border-slate-200 dark:border-slate-700 focus:border-[#054433]' : 'border-red-300'
+                          passwordsMatch ? 'border-slate-200 dark:border-slate-700 focus:border-[#004428]' : 'border-red-300'
                         }`}
                       />
                       <button
@@ -428,7 +428,7 @@ export const UserManager: React.FC = () => {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-5 py-2.5 rounded-xl bg-[#032f23] hover:bg-[#021f18] text-white font-semibold text-sm disabled:opacity-60"
+                  className="px-5 py-2.5 rounded-xl bg-[#005530] hover:bg-[#003822] text-white font-semibold text-sm disabled:opacity-60"
                 >
                   {saving ? 'Saving...' : editingUser ? 'Save Changes' : 'Create Account'}
                 </button>

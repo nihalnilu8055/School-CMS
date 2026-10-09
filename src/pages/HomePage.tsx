@@ -29,7 +29,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <EventsSection setCurrentTab={setCurrentTab} />
       <PhotoGalleryPreview setCurrentTab={setCurrentTab} />
       <TestimonialsSection />
-      <section className="bg-[#032f23] py-10 sm:py-12">
+      <section className="bg-[#005530] py-10 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/70">Admissions 2026</p>
@@ -37,7 +37,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
           <button
             onClick={onOpenAdmissionModal}
-            className="w-full md:w-auto shrink-0 bg-white text-[#032f23] font-semibold px-6 py-3.5 rounded-xl"
+            className="w-full md:w-auto shrink-0 bg-white text-[#005530] font-semibold px-6 py-3.5 rounded-xl"
           >
             Apply for Admissions 2026
           </button>

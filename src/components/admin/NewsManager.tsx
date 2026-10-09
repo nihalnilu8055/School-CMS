@@ -92,7 +92,7 @@ export const NewsManager: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold font-heading text-[#032f23]">
+          <h2 className="text-2xl font-bold font-heading text-[#005530]">
             News & Press Article Management
           </h2>
           <p className="text-xs text-slate-600 mt-1">
@@ -148,7 +148,7 @@ export const NewsManager: React.FC = () => {
                   </td>
                   <td className="p-4">
                     <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
-                      item.status === 'published' ? 'bg-[#e8f0ed] text-[#032f23] dark:bg-emerald-950 dark:text-[#9bb8ad]' : 'bg-amber-100 text-amber-800'
+                      item.status === 'published' ? 'bg-[#e6f0eb] text-[#005530] dark:bg-emerald-950 dark:text-[#7eb89a]' : 'bg-amber-100 text-amber-800'
                     }`}>
                       {item.status}
                     </span>
@@ -160,7 +160,7 @@ export const NewsManager: React.FC = () => {
                     <div className="flex items-center justify-end gap-2 whitespace-nowrap">
                       <button
                         onClick={() => handleOpenEdit(item)}
-                        className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]"
+                        className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>

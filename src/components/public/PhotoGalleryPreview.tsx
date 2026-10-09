@@ -12,7 +12,7 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
   const { galleryItems, content } = useSite();
   const [activeLightbox, setActiveLightbox] = useState<GalleryItem | null>(null);
 
-  const previewItems = galleryItems.slice(0, 3);
+  const previewItems = galleryItems.slice(0, 6);
 
   return (
     <section className="py-20 bg-white border-b border-[#E2E8F0] relative overflow-hidden">
@@ -20,20 +20,20 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#032f23] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
-              <Camera className="w-3.5 h-3.5 text-[#0a5c47]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#005530] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
+              <Camera className="w-3.5 h-3.5 text-[#005530]" />
               {content.gallery_home_eyebrow}
             </div>
-            <h2 className="text-3xl font-bold font-heading text-[#032f23]">
+            <h2 className="text-3xl font-bold font-heading text-[#005530]">
               {content.gallery_home_heading}
             </h2>
           </div>
           <button
             onClick={() => { setCurrentTab('gallery'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="inline-flex items-center gap-2 text-[#054433] hover:text-[#032f23] font-semibold text-sm group"
+            className="inline-flex items-center gap-2 text-[#004428] hover:text-[#005530] font-semibold text-sm group"
           >
             <span>Explore All Albums</span>
-            <ArrowRight className="w-4 h-4 text-[#0a5c47] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#005530] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
@@ -51,7 +51,7 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
                 type="academic"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#032f23]/80 via-transparent to-transparent flex flex-col justify-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#005530]/80 via-transparent to-transparent flex flex-col justify-end p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-base font-bold font-heading text-white">{item.title}</h3>
@@ -70,11 +70,11 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
 
       {/* Lightbox Modal */}
       {activeLightbox && (
-        <div className="fixed inset-0 z-50 bg-[#032f23]/85 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
+        <div className="fixed inset-0 z-50 bg-[#005530]/85 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
           <div className="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-2xl">
             <button
               onClick={() => setActiveLightbox(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#032f23] text-white flex items-center justify-center transition hover:bg-[#021f18]"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#005530] text-white flex items-center justify-center transition hover:bg-[#003822]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -87,7 +87,7 @@ export const PhotoGalleryPreview: React.FC<PhotoGalleryPreviewProps> = ({ setCur
               />
             </div>
             <div className="p-6 bg-white border-t border-[#E2E8F0]">
-              <h3 className="text-xl font-bold font-heading text-[#032f23]">{activeLightbox.title}</h3>
+              <h3 className="text-xl font-bold font-heading text-[#005530]">{activeLightbox.title}</h3>
               {activeLightbox.caption && <p className="text-sm text-[#5B6775] mt-1">{activeLightbox.caption}</p>}
             </div>
           </div>

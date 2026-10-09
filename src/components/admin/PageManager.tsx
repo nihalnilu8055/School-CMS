@@ -72,7 +72,7 @@ export const PageManager: React.FC = () => {
     <div className="space-y-6 animate-fadeIn">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold font-heading text-[#032f23]">
+          <h2 className="text-2xl font-bold font-heading text-[#005530]">
             Page Management
           </h2>
           <p className="text-xs text-slate-600 mt-1">
@@ -113,7 +113,7 @@ export const PageManager: React.FC = () => {
                 <td className="p-4 font-mono text-school-600">/{page.slug}</td>
                 <td className="p-4">
                   <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
-                    page.is_published ? 'bg-[#e8f0ed] text-[#032f23]' : 'bg-slate-200 text-slate-600'
+                    page.is_published ? 'bg-[#e6f0eb] text-[#005530]' : 'bg-slate-200 text-slate-600'
                   }`}>
                     {page.is_published ? 'Published' : 'Draft'}
                   </span>
@@ -125,17 +125,17 @@ export const PageManager: React.FC = () => {
                       href={`/${page.slug}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]"
+                      className="inline-flex p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]"
                       title="View on website"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
-                    <button onClick={() => handleOpenEdit(page)} className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]">
+                    <button onClick={() => handleOpenEdit(page)} className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]">
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => updatePage(page.id, { is_published: !page.is_published })}
-                      className="p-2 rounded-xl bg-[#e8f0ed] text-[#032f23] border border-[#c5d5ce] hover:bg-[#d1fae5]"
+                      className="p-2 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] hover:bg-[#d1fae5]"
                       title={page.is_published ? 'Unpublish' : 'Publish'}
                     >
                       {page.is_published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}

@@ -14,24 +14,24 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ setCurrentTab }) =
     .slice(0, 3);
 
   return (
-    <section className="py-20 bg-[#e8f0ed] border-b border-[#E2E8F0]">
+    <section className="py-20 bg-[#e6f0eb] border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#032f23] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
-              <Sparkles className="w-3.5 h-3.5 text-[#0a5c47]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E8F0] text-[#005530] text-xs font-bold uppercase tracking-wider mb-3 shadow-subtle">
+              <Sparkles className="w-3.5 h-3.5 text-[#005530]" />
               {content.events_home_eyebrow}
             </div>
-            <h2 className="text-3xl font-bold font-heading text-[#032f23]">
+            <h2 className="text-3xl font-bold font-heading text-[#005530]">
               {content.events_home_heading}
             </h2>
           </div>
           <button
             onClick={() => { setCurrentTab('information/calendar'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="inline-flex items-center gap-2 text-[#054433] hover:text-[#032f23] font-semibold text-sm group"
+            className="inline-flex items-center gap-2 text-[#004428] hover:text-[#005530] font-semibold text-sm group"
           >
             <span>Full academic calendar</span>
-            <ArrowRight className="w-4 h-4 text-[#0a5c47] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#005530] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
@@ -55,13 +55,13 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ setCurrentTab }) =
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-white/95 rounded-2xl px-3.5 py-2 text-center shadow-md border border-[#E2E8F0]">
-                    <span className="block text-xs font-extrabold text-[#0a5c47] uppercase">{monthStr}</span>
-                    <span className="block text-xl font-black font-heading text-[#032f23] leading-none">{dayNum}</span>
+                    <span className="block text-xs font-extrabold text-[#005530] uppercase">{monthStr}</span>
+                    <span className="block text-xl font-black font-heading text-[#005530] leading-none">{dayNum}</span>
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <h3 className="text-lg font-bold font-heading text-[#032f23] group-hover:text-[#054433]">
+                    <h3 className="text-lg font-bold font-heading text-[#005530] group-hover:text-[#004428]">
                       {evt.title}
                     </h3>
                     <p className="text-sm text-[#5B6775] line-clamp-2 leading-relaxed">
@@ -70,11 +70,11 @@ export const EventsSection: React.FC<EventsSectionProps> = ({ setCurrentTab }) =
                   </div>
                   <div className="space-y-2 pt-2 border-t border-[#E2E8F0] text-xs text-[#5B6775]">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-[#054433] shrink-0" />
+                      <Clock className="w-3.5 h-3.5 text-[#004428] shrink-0" />
                       <span>{evt.start_time} - {evt.end_time}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-[#054433] shrink-0" />
+                      <MapPin className="w-3.5 h-3.5 text-[#004428] shrink-0" />
                       <span className="truncate">{evt.location}</span>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { SafeImage } from '../common/SafeImage';
 import { 
   LayoutDashboard, Menu as MenuIcon, FileText, Image as ImageIcon, 
   Newspaper, Users, BookOpen, Download, Mail, Settings, 
-  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, GraduationCap, X, Calendar, Bell 
+  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, X, Calendar, Bell 
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -67,19 +67,19 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
       {isOpen && (
         <div 
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 bg-[#032f23]/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-[#005530]/80 backdrop-blur-sm lg:hidden"
         />
       )}
 
-      <aside className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#032f23] text-white border-r border-[#021f18] flex flex-col transition-transform duration-300 ${
+      <aside className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#005530] text-white border-r border-[#003822] flex flex-col transition-transform duration-300 ${
         isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       }`}>
         
         {/* Brand Bar */}
         <div className="p-6 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white p-0.5 shadow-md flex items-center justify-center border border-[#0a5c47]">
-              <GraduationCap className="w-5 h-5 text-[#032f23]" />
+            <div className="w-11 h-11 rounded-xl bg-white p-0.5 shadow-md flex items-center justify-center overflow-hidden">
+              <SafeImage src="/images/logo.png" alt="Ibn Seena English High School" type="building" className="w-full h-full object-contain" />
             </div>
             <div>
               <h2 className="text-base font-bold font-heading text-white leading-tight">Ibn Seena Admin</h2>
@@ -109,11 +109,11 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
                       onClick={() => { setActiveModule(item.key); setIsOpen(false); }}
                       className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-semibold text-xs transition-all ${
                         isActive
-                          ? 'bg-white text-[#032f23] shadow-sm'
+                          ? 'bg-white text-[#005530] shadow-sm'
                           : 'text-white hover:bg-white/15'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#032f23]' : 'text-white'}`} />
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#005530]' : 'text-white'}`} />
                       <span>{item.label}</span>
                     </button>
                   );
@@ -124,13 +124,13 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         </div>
 
         {/* User Footer info & Logout */}
-        <div className="p-4 border-t border-white/10 bg-[#021f18] flex items-center justify-between">
+        <div className="p-4 border-t border-white/10 bg-[#003822] flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <SafeImage
               src={user?.avatar_url || "/images/staff3.jpg"}
               alt={user?.name || "User"}
               type="person"
-              className="w-9 h-9 rounded-full object-cover border border-[#0a5c47] shrink-0"
+              className="w-9 h-9 rounded-full object-cover border border-[#8fceb0] shrink-0"
             />
             <div className="min-w-0">
               <p className="text-xs font-bold text-white truncate">{user?.name || "Alexander Wright"}</p>

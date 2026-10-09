@@ -80,7 +80,7 @@ export const MessagesManager: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handleExportCSV}
-            className="bg-[#054433] hover:bg-[#032f23] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
+            className="bg-[#004428] hover:bg-[#005530] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
           >
             <Download className="w-4 h-4 text-white" />
             <span>Export CSV</span>
@@ -88,7 +88,7 @@ export const MessagesManager: React.FC = () => {
 
           <button
             onClick={handleExportExcel}
-            className="bg-[#032f23] hover:bg-[#021f18] text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
+            className="bg-[#005530] hover:bg-[#003822] text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>Export Excel</span>
@@ -154,7 +154,7 @@ export const MessagesManager: React.FC = () => {
                   <td className="p-4">
                     <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase ${
                       msg.reply_status === 'pending' ? 'bg-amber-100 text-amber-800' :
-                      msg.reply_status === 'replied' ? 'bg-[#e8f0ed] text-[#032f23]' : 'bg-slate-200 text-slate-700'
+                      msg.reply_status === 'replied' ? 'bg-[#e6f0eb] text-[#005530]' : 'bg-slate-200 text-slate-700'
                     }`}>
                       {msg.reply_status}
                     </span>
@@ -166,7 +166,7 @@ export const MessagesManager: React.FC = () => {
                     <div className="flex items-center justify-end gap-2 whitespace-nowrap">
                       <button
                         onClick={() => { setSelectedMsg(msg); setAdminNotes(msg.admin_notes || ''); }}
-                        className="px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-semibold hover:bg-[#d1fae5] border border-[#c5d5ce]"
+                        className="px-3 py-1.5 rounded-xl bg-[#e6f0eb] text-[#005530] font-semibold hover:bg-[#d1fae5] border border-[#b7d0c4]"
                       >
                         View & Reply
                       </button>
@@ -224,7 +224,7 @@ export const MessagesManager: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => { updateMessageStatus(selectedMsg.id, 'replied', adminNotes); setSelectedMsg(null); }}
-                    className="px-4 py-2 rounded-xl bg-[#032f23] hover:bg-[#021f18] text-white font-semibold text-xs shadow"
+                    className="px-4 py-2 rounded-xl bg-[#005530] hover:bg-[#003822] text-white font-semibold text-xs shadow"
                   >
                     Mark as Replied
                   </button>

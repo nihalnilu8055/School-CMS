@@ -56,7 +56,7 @@ export const GalleryManager: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowAlbumModal(true)}
-            className="bg-[#054433] hover:bg-[#032f23] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
+            className="bg-[#004428] hover:bg-[#005530] text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             <span>Create Album</span>

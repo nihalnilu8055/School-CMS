@@ -39,7 +39,7 @@ export const ContentManager: React.FC = () => {
           </p>
         </div>
         {saved && (
-          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e8f0ed] text-[#032f23] font-bold text-xs">
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#e6f0eb] text-[#005530] font-bold text-xs">
             <CheckCircle className="w-4 h-4" /> Saved to website
           </span>
         )}

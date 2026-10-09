@@ -35,7 +35,7 @@ export function getPasswordStrength(password: string) {
 
   const score = Object.values(checks).filter(Boolean).length;
   const labels = ['Too weak', 'Weak', 'Fair', 'Good', 'Strong'] as const;
-  const colors = ['bg-slate-200', 'bg-red-500', 'bg-amber-500', 'bg-sky-500', 'bg-[#e8f0ed]0'] as const;
+  const colors = ['bg-slate-200', 'bg-red-500', 'bg-amber-500', 'bg-sky-500', 'bg-[#e6f0eb]0'] as const;
 
   return {
     checks,
