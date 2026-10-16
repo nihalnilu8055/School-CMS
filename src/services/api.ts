@@ -392,7 +392,7 @@ export const INITIAL_CONTENT: FrontendContent = {
   timeline_eyebrow: "Our Heritage",
   timeline_heading: "Milestones Timeline",
   timeline: [
-    { id: 1, year: "1996", title: "Foundation", desc: "Established with a vision for holistic wisdom and character." },
+    { id: 1, year: "1978", title: "Foundation", desc: "Built under the patronage of H.H. Sheikh Sultan Bin Mohd. Al Qassimi to provide honest education at affordable prices." },
     { id: 2, year: "2010", title: "Campus Expansion", desc: "Added modern STEM labs and Symphony Auditorium." },
     { id: 3, year: "2026", title: "National Olympiad Champions", desc: "Secured 1st Place at National Science Olympiad." }
   ],

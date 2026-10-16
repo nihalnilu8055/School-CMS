@@ -334,6 +334,122 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               </div>
             )}
 
+            {/* Official admission rules and document lists */}
+            {slug === 'admissions' && (
+              <div className="space-y-8">
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold font-heading text-[#005530]">Admission rules</h2>
+                      <p className="text-xs text-slate-500">Entrance test, seat order, and FS2 registration</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'All admissions are subjected to passing an entrance test and are based on first come first serve basis.',
+                      'The highest scorer will get the first chance.',
+                      'There will be no retest.',
+                      'For FS2 the admission requests are filled and submitted online on the date announced. Only the required number of forms will be accepted and others will be rejected as explained on the website when admissions are opened.',
+                    ].map((rule) => (
+                      <li key={rule} className="flex gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <CheckCircle2 className="w-5 h-5 text-[#005530] shrink-0 mt-0.5" />
+                        <p className="text-sm text-slate-700 leading-relaxed">{rule}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-2">Documents required at admission</h2>
+                  <p className="text-sm text-slate-500 mb-6">Both original and photocopy must be produced. All photocopies should be on A4 size paper.</p>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="font-bold font-heading text-[#005530] mb-3">Classes FS2, Year 1 and Year 2</h3>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Original Passport with a valid residence visa + 1 Photocopy</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Two Passport size photographs</li>
+                        <li>One photocopy of Father’s passport with valid residence visa</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Copy of Vaccination Card</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                        <li>SIS No. of Nursery if attended in Sharjah or Ajman</li>
+                        <li>Those students who transfer from a school in the UAE must bring their Medical File from the previous school</li>
+                      </ol>
+                    </div>
+
+                    <div>
+                      <h3 className="font-bold font-heading text-[#005530] mb-1">Year 3 to Year 13</h3>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#004428] mb-3">A. Transfer within Ajman &amp; Sharjah</p>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Students coming from other systems (other than British system) must provide a School Leaving Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card Attested.</li>
+                        <li>Students coming from the British system must provide a Transfer Certificate Attested by The Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested.</li>
+                        <li>Original Passport with a valid residence visa + 1 photocopy of the same</li>
+                        <li>One Photocopy of Father’s Passport with Valid Residence visa</li>
+                        <li>One Passport size photograph of Student</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>Latest Report Card attested by the Ministry of Education</li>
+                        <li>Copy of Vaccination Card</li>
+                        <li>Those students who transfer from a school in the UAE must bring their Medical File from the previous school</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                      </ol>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#004428] mb-3">B. Transfer outside UAE</p>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed mb-4">
+                        <li>Students coming from India, Pakistan, Bangladesh, Sri Lanka or other systems (other than British system) must provide School Leaving Certificate attested + Report Card attested.</li>
+                        <li>Students coming from the British system must provide a Transfer Certificate duly attested.</li>
+                        <li>All candidates of all systems must provide a Report Card duly attested.</li>
+                      </ol>
+                      <div className="p-5 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4]">
+                        <p className="text-sm font-bold text-[#005530] mb-2">All out of UAE documents must be attested by:</p>
+                        <ol className="list-decimal pl-5 space-y-1.5 text-sm text-slate-700 leading-relaxed">
+                          <li>The Ministry of Education or education Bureau of the country</li>
+                          <li>The Ministry of Foreign Affairs of the country</li>
+                          <li>The Embassy or the Consulate of UAE in the country</li>
+                          <li>The TC / Leaving certificate should mention that the student has passed and been promoted to the next class (the class admission is sought in)</li>
+                        </ol>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="font-bold font-heading text-[#005530] mb-3">Additional documents for all admissions from outside the UAE</h3>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Original Passport with a valid residence visa + 1 Copy</li>
+                        <li>One Photocopy of Father’s Passport with Valid Residence visa</li>
+                        <li>One Passport size photograph of Student</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>Latest Report Card of the last class attested in the same manner as the TC</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                      </ol>
+                      <p className="mt-4 text-xs text-slate-500">*NOTE: Subject to change by the Ministry of Education.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-4">Requirements for admission test</h2>
+                  <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Candidates must bring the Report Card of the previous school.</li>
+                    <li>If the student wants to transfer in midterm, he/she must bring the latest report card from the current school.</li>
+                  </ol>
+                  <div className="mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-sm leading-relaxed">
+                    Parents are requested to be honest when filling the registration and admission forms because withholding information or giving false information is dishonest.
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Specialized Rich UI Block for Admission Process */}
             {slug === 'admissions/process' && (
               <div className="space-y-8">
@@ -647,7 +763,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             )}
 
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
-            {slug !== 'about/mission' && (
+            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
                 className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"

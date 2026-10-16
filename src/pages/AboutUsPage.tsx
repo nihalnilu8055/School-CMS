@@ -10,8 +10,12 @@ import { resolveFacilities } from './FacilitiesPage';
 export const AboutUsPage: React.FC = () => {
   const { staff, settings, pages, content } = useSite();
   const aboutPage = pages.find((page) => page.slug === 'about' && page.is_published);
+  const aboutCopy = PAGE_CONTENT.about;
   const mission = PAGE_CONTENT['about/mission'];
   const aboutLinks = relatedNavForSlug('about')?.children || [];
+  const history = aboutCopy?.sections.find((section) => section.heading.toLowerCase().includes('history'));
+  const philosophy = aboutCopy?.sections.find((section) => section.heading.toLowerCase().includes('philosophy'));
+  const education = aboutCopy?.sections.find((section) => section.heading.toLowerCase().includes('education'));
   const facilities = resolveFacilities(content.facilities);
   const previewFacilities = facilities.slice(0, 4);
   const timeline = content.timeline?.length ? content.timeline : [];
@@ -26,7 +30,7 @@ export const AboutUsPage: React.FC = () => {
       <PageHero
         eyebrow={settings.school_name}
         title="About Our School"
-        intro={aboutPage?.intro || 'Nurturing social, moral, and intellectual wisdom for the greater good.'}
+        intro={aboutPage?.intro || aboutCopy?.intro || 'The school was built in 1978 under the patronage of the ruler of Sharjah, H.H. Sheikh Sultan Bin Mohd. Al Qassimi.'}
         image={content.about_banner_image}
       />
 
@@ -56,18 +60,28 @@ export const AboutUsPage: React.FC = () => {
           </div>
           <div className="lg:col-span-7 space-y-4">
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#004428]">
-              <Quote className="w-4 h-4" /> School philosophy
+              <Quote className="w-4 h-4" /> School Profile
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#005530] leading-tight">
-              Academic achievement without losing the whole child
+              {history?.heading || 'School Profile — History'}
             </h2>
             <p className="text-[#17202A] leading-relaxed">
-              {mission?.sections.find((section) => section.heading.toLowerCase().includes('mission'))?.body}
-            </p>
-            <p className="text-[#17202A] leading-relaxed">
-              {mission?.sections.find((section) => section.heading.toLowerCase().includes('vision'))?.body}
+              {history?.body}
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="rounded-3xl border border-slate-100 bg-white p-8 sm:p-10 shadow-subtle">
+          <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">School Profile</p>
+          <h2 className="text-2xl font-bold font-heading text-[#005530] mt-2">{philosophy?.heading || 'The Philosophy'}</h2>
+          <p className="mt-4 text-[#17202A] leading-relaxed text-sm sm:text-base">{philosophy?.body}</p>
+        </div>
+        <div className="rounded-3xl border border-[#b7d0c4] bg-[#e6f0eb] p-8 sm:p-10">
+          <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">Summary</p>
+          <h2 className="text-2xl font-bold font-heading text-[#005530] mt-2">{education?.heading || 'What is education?'}</h2>
+          <p className="mt-4 text-[#17202A] leading-relaxed text-sm sm:text-base">{education?.body}</p>
         </div>
       </section>
 

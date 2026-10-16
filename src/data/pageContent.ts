@@ -9,19 +9,27 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   admissions: {
     title: 'Vacancy & Admissions',
     eyebrow: 'Admissions Office',
-    intro: 'Ibn Seena English High School welcomes new families whenever a seat is available. This page explains how admission works, how to register online, and where to check current vacancies.',
+    intro: 'All admissions are subjected to passing an entrance test and are based on a first come first serve basis. The highest scorer will get the first chance. There will be no retest.',
     sections: [
       {
-        heading: 'Who can apply',
-        body: 'Admission is open to boys and girls who meet the age criteria for the requested grade. Applications are accepted throughout the year, subject to vacancy. Priority is given to siblings of current students and to families who complete documents on time.',
+        heading: 'Admission rules',
+        body: 'All admissions are subjected to passing an entrance test and are based on first come first serve basis. The highest scorer will get the first chance. There will be no retest. For FS2 the admission requests are filled and submitted online on the date announced. Only the required number of forms will be accepted and others will be rejected as explained on the website when admissions are opened.',
       },
       {
-        heading: 'What you will find in this menu',
-        body: 'Use Admission Process for the step-by-step journey, Online Registration to start an enquiry, and Vacancies for a demo list of open seats by grade. The Admissions button in the header also opens a short enquiry form.',
+        heading: 'Documents for FS2, Year 1 and Year 2',
+        body: 'At the time of admission the following documents should be produced (both original and photocopy): Original Passport with a valid residence visa + 1 photocopy; Original Birth Certificate (must be in English or Arabic) + 1 photocopy; two passport size photographs; one photocopy of father’s passport with valid residence visa; advance of two months’ fees (cash only); copy of Vaccination Card; Original Emirates ID + 1 photocopy; all photocopies on A4 size paper; SIS No. of Nursery if attended in Sharjah or Ajman; students transferring from a school in the UAE must bring their Medical File from the previous school.',
       },
       {
-        heading: 'Admissions desk',
-        body: 'Visit the school office Monday to Friday, 8:00 AM to 3:00 PM, or write to reception@ibnseenaschool.net. Please bring the child’s birth certificate, previous report card, passport-size photographs, and parent identification.',
+        heading: 'Year 3 to Year 13 — Transfer within Ajman & Sharjah',
+        body: 'Students coming from other systems (other than British system) must provide a School Leaving Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested. Students coming from the British system must provide a Transfer Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested. Also required: original passport with a valid residence visa + 1 photocopy; one photocopy of father’s passport with valid residence visa; one passport size photograph of the student; advance of two months’ fees (cash only); original Birth Certificate (English or Arabic) + 1 photocopy; original Emirates ID + 1 photocopy; latest Report Card attested by the Ministry of Education; copy of Vaccination Card; Medical File from the previous UAE school; all photocopies on A4 size paper.',
+      },
+      {
+        heading: 'Year 3 to Year 13 — Transfer outside UAE',
+        body: 'Students coming from India, Pakistan, Bangladesh, Sri Lanka or other systems (other than British system) must provide a School Leaving Certificate attested + Report Card attested. Students coming from the British system must provide a Transfer Certificate duly attested. All candidates of all systems must provide a Report Card duly attested. All out-of-UAE documents must be attested by: the Ministry of Education or Education Bureau of the country; the Ministry of Foreign Affairs of the country; and the Embassy or Consulate of the UAE in the country. The TC / Leaving Certificate should mention that the student has passed and been promoted to the class for which admission is sought. Additional documents for all outside-UAE admissions: original passport with a valid residence visa + 1 copy; one photocopy of father’s passport with valid residence visa; one passport size photograph of the student; advance of two months’ fees (cash only); original Birth Certificate (English or Arabic) + 1 photocopy; original Emirates ID + 1 photocopy; latest Report Card of the last class attested in the same manner as the TC; all photocopies on A4 size paper. Subject to change by the Ministry of Education.',
+      },
+      {
+        heading: 'Requirements for admission test',
+        body: 'Candidates must bring the Report Card of the previous school. If the student wants to transfer in midterm, he/she must bring the latest report card from the current school. Parents are requested to be honest when filling the registration and admission forms because withholding information or giving false information is dishonest.',
       },
     ],
   },
@@ -89,15 +97,19 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   about: {
     title: 'About Us',
     eyebrow: 'Ibn Seena English High School',
-    intro: 'A school that values academic achievement without sacrificing a child’s social, moral, and psychological growth.',
+    intro: 'The school was built in 1978 under the patronage of the ruler of Sharjah, H.H. Sheikh Sultan Bin Mohd. Al Qassimi. No frills, no jargon, just honest education.',
     sections: [
       {
-        heading: 'Who we are',
-        body: 'Ibn Seena English High School is committed to producing a universal human being: a person with not just robotic information at his command, but the wisdom to use it for the greater good. Children learn in a free and relaxed atmosphere, where they are trusted and teachers are approachable.',
+        heading: 'School Profile — History',
+        body: 'The school was built in 1978 under the patronage of the ruler of Sharjah, H.H. Sheikh Sultan Bin Mohd. Al Qassimi. The town was growing and there was a need to provide wholesome education at affordable prices. No frills, no jargon, just honest education.',
       },
       {
-        heading: 'Explore this menu',
-        body: 'Mission & Vision explains our philosophy. School Timing lists the daily timetable. Our Curriculum and External Assessments describe what students study and how progress is measured. School Policies cover conduct and safeguarding.',
+        heading: 'The Philosophy',
+        body: 'The school is committed to producing a universal human being, a person with not just robotic information at his command, but the wisdom to use it for the greater good. A world citizen; erudite, able to accept diverse cultures and values while holding on to his own. A humane person; an eco friendly citizen of the world. These are big targets, but unless you reach for the stars, you will not touch the moon!',
+      },
+      {
+        heading: 'What is education?',
+        body: 'Is it a meal ticket? Is it a CD full of information? Is it the key to wisdom? Is it a bridge to universal understanding? We think it is all this and more. It helps us to understand ourselves and our potential. It helps us to take the hard times philosophically, and the good times level headedly. We believe that children need a free and relaxed atmosphere to grow in, where they are trusted and the teachers are approachable.',
       },
     ],
   },
