@@ -16,7 +16,7 @@ export const INITIAL_SETTINGS: SiteSettings = {
   phone: "+971 6 558 2071",
   email: "reception@ibnseenaschool.net",
   website: "https://ibnseenaschool.net",
-  working_hours: "Monday – Friday: 8:00 AM – 3:00 PM",
+  working_hours: "Monday to Thursday",
   google_map_embed: "https://maps.google.com/maps?q=9+Aghades+Street,+Al+Shahba,+Mughaidir+Suburb,+Sharjah,+UAE&z=16&output=embed",
   google_maps_url: "https://maps.app.goo.gl/jRpFWuewjdUhcHYz5",
   social_links: {
