@@ -4,7 +4,6 @@ import { WelcomeSection } from '../components/public/WelcomeSection';
 import { NewsSection } from '../components/public/NewsSection';
 import { EventsSection } from '../components/public/EventsSection';
 import { PhotoGalleryPreview } from '../components/public/PhotoGalleryPreview';
-import { PartnersSection } from '../components/public/PartnersSection';
 import { NewsItem } from '../types';
 import { SOFT_LAUNCH } from '../data/livePages';
 
@@ -46,7 +45,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </section>
       )}
-      <PartnersSection />
     </div>
   );
 };
