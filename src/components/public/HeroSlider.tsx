@@ -2,6 +2,7 @@ import React from 'react';
 import { useSite } from '../../context/SiteContext';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { SafeImage } from '../common/SafeImage';
+import { SOFT_LAUNCH } from '../../data/livePages';
 
 interface HeroSliderProps {
   setCurrentTab: (tab: string) => void;
@@ -55,18 +56,21 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ setCurrentTab, onOpenAdm
             {slide.subtitle}
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">
+            {!SOFT_LAUNCH && (
+              <button
+                onClick={onOpenAdmissionModal}
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#005530] hover:bg-[#e6f0eb] font-semibold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl w-full sm:w-auto"
+              >
+                {content.admissions_cta_label}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
             <button
-              onClick={onOpenAdmissionModal}
+              onClick={() => setCurrentTab(SOFT_LAUNCH ? 'about/mission' : (slide.button_url.replace(/^\//, '') || 'about'))}
               className="inline-flex items-center justify-center gap-2 bg-white text-[#005530] hover:bg-[#e6f0eb] font-semibold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl w-full sm:w-auto"
             >
-              {content.admissions_cta_label}
+              {SOFT_LAUNCH ? 'Mission & Vision' : (slide.button_text || 'Learn more')}
               <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setCurrentTab(slide.button_url.replace(/^\//, '') || 'about')}
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-white border border-white/40 hover:bg-white/10 font-semibold text-sm px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl w-full sm:w-auto"
-            >
-              {slide.button_text || 'Learn more'}
             </button>
           </div>
         </div>

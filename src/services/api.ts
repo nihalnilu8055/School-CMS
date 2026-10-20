@@ -668,14 +668,9 @@ const buildInitialMenus = (): MenuItem[] => {
     });
   });
   [
+    { title: 'Home', url: '/' },
     { title: 'Mission & Vision', url: '/about/mission' },
-    { title: 'Faculty & Staff', url: '/about/staff' },
-    { title: 'Admission Process', url: '/admissions/process' },
-    { title: 'Academic Calendar', url: '/information/calendar' },
-    { title: 'Fee Structure', url: '/fees/structure' },
-    { title: 'Our Alumni', url: '/alumni/our-alumni' },
     { title: 'Notices', url: '/notices' },
-    { title: 'Contact Us', url: '/contact' },
   ].forEach((link, index) => {
     items.push({
       id: id++,

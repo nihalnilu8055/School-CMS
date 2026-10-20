@@ -1,3 +1,5 @@
+import { SOFT_LAUNCH } from './livePages';
+
 export interface NavChild {
   key: string;
   label: string;
@@ -9,7 +11,8 @@ export interface NavGroup {
   children?: NavChild[];
 }
 
-export const NAV_GROUPS: NavGroup[] = [
+/** Full site navigation (restored when SOFT_LAUNCH is false). */
+const FULL_NAV_GROUPS: NavGroup[] = [
   {
     key: 'about',
     label: 'About Us',
@@ -66,6 +69,21 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
 ];
+
+/** Soft-launch menu: Home is separate in the header logo; these are the bar items. */
+const SOFT_LAUNCH_NAV_GROUPS: NavGroup[] = [
+  { key: 'about/mission', label: 'Mission & Vision' },
+  {
+    key: 'notices',
+    label: 'Notices',
+    children: [
+      { key: 'notices/general', label: 'General Notices' },
+      { key: 'notices/fee', label: 'Fee Notices' },
+    ],
+  },
+];
+
+export const NAV_GROUPS: NavGroup[] = SOFT_LAUNCH ? SOFT_LAUNCH_NAV_GROUPS : FULL_NAV_GROUPS;
 
 export const relatedNavForSlug = (slug: string) =>
   NAV_GROUPS.find((group) => slug === group.key || slug.startsWith(`${group.key}/`));

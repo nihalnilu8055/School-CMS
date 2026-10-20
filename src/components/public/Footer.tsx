@@ -4,6 +4,7 @@ import {
   GraduationCap, MapPin, Phone, Mail, Clock, ExternalLink, 
   FileText 
 } from 'lucide-react';
+import { isLivePublicTab } from '../../data/livePages';
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
@@ -14,6 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | null>(null);
   const footerLinks = menus
     .filter((item) => item.location === 'footer' && item.is_active)
+    .filter((item) => isLivePublicTab(item.url.replace(/^\//, '') || 'home'))
     .sort((a, b) => a.order_index - b.order_index);
 
   const handleNav = (tab: string) => {

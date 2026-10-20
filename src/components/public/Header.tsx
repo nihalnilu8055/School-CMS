@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { SafeImage } from '../common/SafeImage';
 import { NAV_GROUPS, isNavActive, menusToNavGroups } from '../../data/navigation';
+import { SOFT_LAUNCH, isLivePublicTab } from '../../data/livePages';
 import { getUnseenNotices } from '../../utils/notices';
 
 interface HeaderProps {
@@ -21,7 +22,18 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
   const { settings, menus, content, notices } = useSite();
   const [unseenCount, setUnseenCount] = useState(0);
   const cmsGroups = menusToNavGroups(menus);
-  const navGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
+  const rawGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
+  const navGroups = SOFT_LAUNCH
+    ? rawGroups
+        .map((group) => ({
+          ...group,
+          children: group.children?.filter((child) => isLivePublicTab(child.key)),
+        }))
+        .filter(
+          (group) =>
+            isLivePublicTab(group.key) || Boolean(group.children?.length)
+        )
+    : rawGroups;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -103,14 +115,16 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
             <button onClick={() => setShowSearchModal(true)} className="p-2 sm:p-2.5 text-[#005530] hover:bg-[#e6f0eb] rounded-xl">
               <Search className="w-5 h-5" />
             </button>
-            <button
-              onClick={onOpenAdmissionModal}
-              className="inline-flex items-center gap-1.5 bg-[#005530] hover:bg-[#004428] text-white font-semibold text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl"
-            >
-              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-              <span className="sm:hidden">Apply</span>
-              <span className="hidden sm:inline">{content.admissions_cta_label || 'Apply for Admissions'}</span>
-            </button>
+            {!SOFT_LAUNCH && (
+              <button
+                onClick={onOpenAdmissionModal}
+                className="inline-flex items-center gap-1.5 bg-[#005530] hover:bg-[#004428] text-white font-semibold text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl"
+              >
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                <span className="sm:hidden">Apply</span>
+                <span className="hidden sm:inline">{content.admissions_cta_label || 'Apply for Admissions'}</span>
+              </button>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="xl:hidden p-2 sm:p-2.5 rounded-xl bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4]"
@@ -233,17 +247,17 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
               </button>
             </div>
             <div className="p-4 sm:p-6 space-y-3">
-              <button onClick={() => { handleNavClick('notices'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
-                <p className="font-semibold text-[#005530] text-sm">Urgent Notices</p>
-                <p className="text-xs text-slate-500">General and fee circulars</p>
+              <button onClick={() => { handleNavClick('home'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
+                <p className="font-semibold text-[#005530] text-sm">Home</p>
+                <p className="text-xs text-slate-500">School homepage</p>
               </button>
               <button onClick={() => { handleNavClick('about/mission'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
                 <p className="font-semibold text-[#005530] text-sm">Mission & Vision</p>
                 <p className="text-xs text-slate-500">School philosophy</p>
               </button>
-              <button onClick={() => { handleNavClick('about/staff'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
-                <p className="font-semibold text-[#005530] text-sm">Faculty & Staff</p>
-                <p className="text-xs text-slate-500">Teachers and school leadership</p>
+              <button onClick={() => { handleNavClick('notices'); setShowSearchModal(false); }} className="w-full text-left p-3 rounded-xl hover:bg-[#e6f0eb]">
+                <p className="font-semibold text-[#005530] text-sm">Notices</p>
+                <p className="text-xs text-slate-500">General and fee circulars</p>
               </button>
             </div>
           </div>

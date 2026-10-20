@@ -13,6 +13,8 @@ lerna-debug.log*
 
 node_modules
 dist
+cpanel-build
+website-for-cpanel.zip
 dist-ssr
 *.local
 

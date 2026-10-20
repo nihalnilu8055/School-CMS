@@ -22,12 +22,13 @@ import { PAGE_CONTENT } from './data/pageContent';
 import { NewsItem } from './types';
 import { useSite } from './context/SiteContext';
 import { SeoHead } from './components/common/SeoHead';
+import { SOFT_LAUNCH, isLivePublicTab, toLiveTab } from './data/livePages';
 
 const getTabFromPath = (): string => {
   const path = window.location.pathname.toLowerCase().replace(/^\//, '');
   if (path.includes('admin')) return 'admin';
   if (!path) return 'home';
-  return path;
+  return toLiveTab(path);
 };
 
 const MainAppContent: React.FC = () => {
@@ -38,13 +39,14 @@ const MainAppContent: React.FC = () => {
   const { pages } = useSite();
 
   const navigateTab = (tab: string) => {
-    setCurrentTabState(tab);
+    const nextTab = toLiveTab(tab);
+    setCurrentTabState(nextTab);
     let targetPath = '/';
-    if (tab === 'admin') {
+    if (nextTab === 'admin') {
       const path = window.location.pathname.toLowerCase();
       targetPath = path.includes('admin-portal') ? '/admin-portal' : '/admin';
     }
-    else if (tab !== 'home' && tab !== 'news_detail') targetPath = `/${tab}`;
+    else if (nextTab !== 'home' && nextTab !== 'news_detail') targetPath = `/${nextTab}`;
     if (window.location.pathname !== targetPath) {
       window.history.pushState({}, '', targetPath);
     }
@@ -58,6 +60,15 @@ const MainAppContent: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  React.useEffect(() => {
+    if (!SOFT_LAUNCH) return;
+    const path = window.location.pathname.toLowerCase().replace(/^\//, '');
+    if (path && !path.includes('admin') && !isLivePublicTab(path)) {
+      window.history.replaceState({}, '', '/');
+      setCurrentTabState('home');
+    }
+  }, []);
+
   const handleSelectNewsItem = (item: NewsItem) => {
     setSelectedNewsItem(item);
     navigateTab('news_detail');
@@ -65,6 +76,16 @@ const MainAppContent: React.FC = () => {
   };
 
   const renderContent = () => {
+    if (SOFT_LAUNCH && !isLivePublicTab(currentTab)) {
+      return (
+        <HomePage
+          setCurrentTab={navigateTab}
+          onSelectNewsItem={handleSelectNewsItem}
+          onOpenAdmissionModal={() => setIsAdmissionModalOpen(true)}
+        />
+      );
+    }
+
     switch (currentTab) {
       case 'home':
         return (
@@ -74,6 +95,8 @@ const MainAppContent: React.FC = () => {
             onOpenAdmissionModal={() => setIsAdmissionModalOpen(true)}
           />
         );
+      case 'about/mission':
+        return <InfoPage slug="about/mission" />;
       case 'about':
         return <AboutUsPage />;
       case 'about/facilities':
@@ -123,7 +146,10 @@ const MainAppContent: React.FC = () => {
           />
         );
       default:
-        if (pages.some((page) => page.slug === currentTab) || PAGE_CONTENT[currentTab]) {
+        if (
+          !SOFT_LAUNCH &&
+          (pages.some((page) => page.slug === currentTab) || PAGE_CONTENT[currentTab])
+        ) {
           return <InfoPage slug={currentTab} />;
         }
         return (
