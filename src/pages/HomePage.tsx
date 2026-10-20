@@ -1,11 +1,9 @@
 import React from 'react';
 import { HeroSlider } from '../components/public/HeroSlider';
 import { WelcomeSection } from '../components/public/WelcomeSection';
-import { HighlightsStats } from '../components/public/HighlightsStats';
 import { NewsSection } from '../components/public/NewsSection';
 import { EventsSection } from '../components/public/EventsSection';
 import { PhotoGalleryPreview } from '../components/public/PhotoGalleryPreview';
-import { TestimonialsSection } from '../components/public/TestimonialsSection';
 import { PartnersSection } from '../components/public/PartnersSection';
 import { NewsItem } from '../types';
 import { SOFT_LAUNCH } from '../data/livePages';
@@ -25,7 +23,6 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-0">
       <HeroSlider setCurrentTab={setCurrentTab} onOpenAdmissionModal={onOpenAdmissionModal} />
       <WelcomeSection setCurrentTab={setCurrentTab} />
-      <HighlightsStats />
       {!SOFT_LAUNCH && (
         <>
           <NewsSection setCurrentTab={setCurrentTab} onSelectNewsItem={onSelectNewsItem} />
@@ -33,7 +30,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           <PhotoGalleryPreview setCurrentTab={setCurrentTab} />
         </>
       )}
-      <TestimonialsSection />
       {!SOFT_LAUNCH && (
         <section className="bg-[#005530] py-10 sm:py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
