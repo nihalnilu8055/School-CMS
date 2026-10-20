@@ -7,7 +7,7 @@
     "dev": "vite",
     "server": "tsx server/index.ts",
     "dev:full": "concurrently \"npm run dev\" \"npm run server\"",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && node scripts/make-dist.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
