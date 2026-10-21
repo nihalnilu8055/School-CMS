@@ -12,13 +12,14 @@ export const INITIAL_SETTINGS: SiteSettings = {
   tagline: "Producing Universal Human Beings with Wisdom & Character",
   logo_url: "/images/logo.png",
   favicon_url: "/images/logo.png",
-  address: "9 Aghades Street, Al Shahba, Mughaidir Suburb, Sharjah, UAE (P.O. Box 2909)",
+  // Google Maps: 8CPJ+X68 Ibn Seena English High School - Al Shahba - Mughaider Suburb - Sharjah
+  address: "8CPJ+X68 Ibn Seena English High School - Al Shahba - Mughaider Suburb - Sharjah - United Arab Emirates",
   phone: "+971 6 558 2071",
   email: "reception@ibnseenaschool.net",
   website: "https://ibnseenaschool.net",
   working_hours: "Monday to Thursday",
-  google_map_embed: "https://maps.google.com/maps?q=9+Aghades+Street,+Al+Shahba,+Mughaidir+Suburb,+Sharjah,+UAE&z=16&output=embed",
-  google_maps_url: "https://maps.app.goo.gl/jRpFWuewjdUhcHYz5",
+  google_map_embed: "https://maps.google.com/maps?q=8CPJ%2BX68+Ibn+Seena+English+High+School+Al+Shahba+Mughaider+Suburb+Sharjah&z=17&output=embed",
+  google_maps_url: "https://www.google.com/maps/search/?api=1&query=8CPJ%2BX68+Ibn+Seena+English+High+School+Al+Shahba+Mughaider+Suburb+Sharjah",
   social_links: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",
@@ -71,7 +72,7 @@ export const INITIAL_BANNERS: BannerSlide[] = [
   {
     id: 4,
     title: "A Calm Campus in Sharjah",
-    subtitle: "At 9 Aghades Street, Al Shahba, children grow in a trusted setting where teachers are approachable and learning stays relaxed.",
+    subtitle: "At our Al Shahba campus in Mughaider Suburb, Sharjah, children grow in a trusted setting where teachers are approachable and learning stays relaxed.",
     button_text: "Visit Us",
     button_url: "/contact",
     image_url: "/images/banner-campus.jpg",
