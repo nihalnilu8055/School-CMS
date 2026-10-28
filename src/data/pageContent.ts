@@ -264,19 +264,48 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   'information/activities': {
     title: 'Co-curricular Activities',
     eyebrow: 'General Information',
-    intro: 'Clubs and activities sit alongside academics so children can grow socially and morally as well as intellectually.',
+    intro: 'Co-curricular life at Ibn Seena is organised by stage — Primary, Junior, and Senior — so every child can take part in assemblies, ceremonies, clubs, and stage events suited to their age.',
     sections: [
       {
-        heading: 'Clubs (demo list)',
-        body: 'Debate and Model United Nations. Science and Robotics. Art and Calligraphy. Choir and School Band. Eco Club. Community Service. Chess. Photography. Participation is encouraged but never forced, in keeping with our relaxed and trusting atmosphere.',
+        heading: 'Browse by stage',
+        body: 'Open Primary for lower-school ceremonies and activities, Junior for middle years, and Senior for upper-school events. New photo updates are published under the matching stage page after each programme.',
       },
       {
-        heading: 'Sports',
-        body: 'Football, basketball, athletics, badminton, and swimming (seasonal) run after Period 7 on selected days. House matches are held each term. A medical fitness note is required for competitive teams.',
+        heading: 'What we celebrate',
+        body: 'Investiture ceremonies, assemblies, cultural programmes, sports days, and community events sit alongside academics so children grow socially and morally as well as intellectually.',
       },
+    ],
+  },
+  'information/activities/primary': {
+    title: 'Primary — Co-curricular Activities',
+    eyebrow: 'General Information · Co-curricular Activities',
+    intro: 'Primary stage programmes, ceremonies, and co-curricular moments from the Ibn Seena campus.',
+    sections: [
       {
-        heading: 'How to join',
-        body: 'Club lists open in the first two weeks of Term 1. Students give two preferences to the class teacher. Most clubs meet once a week. Changes after October need a parent note.',
+        heading: 'Primary Investiture Ceremony — Year 3',
+        body: 'Date: 30 September 2026. Year 3 students were invested as primary leaders in a special ceremony on the school stage. The programme included the formal investiture, a procession with school flags, and a group performance for parents and teachers.',
+      },
+    ],
+  },
+  'information/activities/junior': {
+    title: 'Junior — Co-curricular Activities',
+    eyebrow: 'General Information · Co-curricular Activities',
+    intro: 'Junior stage clubs, ceremonies, and co-curricular events will appear here as they are published.',
+    sections: [
+      {
+        heading: 'Coming soon',
+        body: 'Junior co-curricular photos and activity updates will be added after each programme. Please check back, or contact the school office for the latest junior calendar.',
+      },
+    ],
+  },
+  'information/activities/senior': {
+    title: 'Senior — Co-curricular Activities',
+    eyebrow: 'General Information · Co-curricular Activities',
+    intro: 'Senior stage clubs, ceremonies, and co-curricular events will appear here as they are published.',
+    sections: [
+      {
+        heading: 'Coming soon',
+        body: 'Senior co-curricular photos and activity updates will be added after each programme. Please check back, or contact the school office for the latest senior calendar.',
       },
     ],
   },

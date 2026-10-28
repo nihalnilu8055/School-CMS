@@ -146,10 +146,7 @@ const MainAppContent: React.FC = () => {
           />
         );
       default:
-        if (
-          !SOFT_LAUNCH &&
-          (pages.some((page) => page.slug === currentTab) || PAGE_CONTENT[currentTab])
-        ) {
+        if (pages.some((page) => page.slug === currentTab) || PAGE_CONTENT[currentTab]) {
           return <InfoPage slug={currentTab} />;
         }
         return (

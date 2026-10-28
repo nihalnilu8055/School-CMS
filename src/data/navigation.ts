@@ -41,6 +41,9 @@ const FULL_NAV_GROUPS: NavGroup[] = [
       { key: 'information/calendar', label: 'Academic Calendar' },
       { key: 'information/assembly', label: 'Assembly' },
       { key: 'information/activities', label: 'Co-curricular Activities' },
+      { key: 'information/activities/primary', label: 'Primary' },
+      { key: 'information/activities/junior', label: 'Junior' },
+      { key: 'information/activities/senior', label: 'Senior' },
       { key: 'information/assessment', label: 'Assessment' },
     ],
   },
@@ -73,6 +76,16 @@ const FULL_NAV_GROUPS: NavGroup[] = [
 /** Soft-launch menu: Home is separate in the header logo; these are the bar items. */
 const SOFT_LAUNCH_NAV_GROUPS: NavGroup[] = [
   { key: 'about/mission', label: 'Mission & Vision' },
+  {
+    key: 'information',
+    label: 'General Information',
+    children: [
+      { key: 'information/activities', label: 'Co-curricular Activities' },
+      { key: 'information/activities/primary', label: 'Primary' },
+      { key: 'information/activities/junior', label: 'Junior' },
+      { key: 'information/activities/senior', label: 'Senior' },
+    ],
+  },
   {
     key: 'notices',
     label: 'Notices',

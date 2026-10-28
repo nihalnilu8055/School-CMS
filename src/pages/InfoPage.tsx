@@ -50,6 +50,9 @@ const ROUTE_HERO_IMAGES: Record<string, string> = {
   'information/calendar': '/images/campus.jpg',
   'information/assembly': '/images/campus.jpg',
   'information/activities': '/images/sports.jpg',
+  'information/activities/primary': '/images/activities/investiture-2.jpg',
+  'information/activities/junior': '/images/students.jpg',
+  'information/activities/senior': '/images/event-banner.jpg',
   'information/assessment': '/images/lab.jpg',
   fees: '/images/campus.jpg',
   'fees/rules': '/images/hallway.jpg',
@@ -732,30 +735,70 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               </div>
             )}
 
-            {/* Specialized Rich UI Block for Activities */}
+            {/* Co-curricular overview — Primary / Junior / Senior */}
             {slug === 'information/activities' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-6 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-[#005530]" /> Student Clubs & Athletics
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-2 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-[#005530]" /> Co-curricular by stage
                   </h2>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <p className="text-sm text-slate-500 mb-6">Choose Primary, Junior, or Senior to view ceremonies, programmes, and photo updates.</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {[
-                      { name: 'Robotics & Coding', category: 'STEM', desc: 'Hands-on programming, sensor tech, and annual robotics contests.' },
-                      { name: 'Debate & MUN', category: 'Leadership', desc: 'Public speaking, diplomacy, policy research, and inter-school assemblies.' },
-                      { name: 'Art & Calligraphy', category: 'Creative', desc: 'Visual arts, canvas painting, Islamic calligraphy, and gallery exhibitions.' },
-                      { name: 'Eco & Sustainability', category: 'Community', desc: 'Campus recycling, green house gardening, and environmental advocacy.' },
-                      { name: 'Football & Athletics', category: 'Sports', desc: 'Inter-house tournaments, professional coaching, and physical fitness.' },
-                      { name: 'Chess & Mind Sports', category: 'Strategy', desc: 'Tactical thinking, strategy workshops, and regional tournaments.' },
-                    ].map((club, i) => (
-                      <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#b7d0c4] transition-all">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#004428] bg-[#d4e8dc] px-2 py-0.5 rounded-md">
-                          {club.category}
-                        </span>
-                        <h3 className="font-bold font-heading text-[#005530] text-base mt-2 mb-1">{club.name}</h3>
-                        <p className="text-xs text-slate-600 leading-relaxed">{club.desc}</p>
-                      </div>
+                      { key: 'information/activities/primary', name: 'Primary', desc: 'Year 3 investiture and primary stage activities.', image: '/images/activities/investiture-2.jpg' },
+                      { key: 'information/activities/junior', name: 'Junior', desc: 'Junior stage clubs and co-curricular events.', image: '/images/students.jpg' },
+                      { key: 'information/activities/senior', name: 'Senior', desc: 'Senior stage programmes and celebrations.', image: '/images/event-banner.jpg' },
+                    ].map((stage) => (
+                      <button
+                        key={stage.key}
+                        type="button"
+                        onClick={() => go(stage.key)}
+                        className="text-left rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 hover:border-[#b7d0c4] hover:bg-white transition-all"
+                      >
+                        <div className="h-36 overflow-hidden bg-[#e6f0eb]">
+                          <SafeImage src={stage.image} alt={stage.name} type="academic" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="p-5">
+                          <h3 className="font-bold font-heading text-[#005530] text-base">{stage.name}</h3>
+                          <p className="text-xs text-slate-600 leading-relaxed mt-1">{stage.desc}</p>
+                          <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#005530] mt-3">
+                            View page <ArrowRight className="w-3.5 h-3.5" />
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Primary activities — Investiture Ceremony gallery */}
+            {slug === 'information/activities/primary' && (
+              <div className="space-y-8">
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">30 September 2026</p>
+                      <h2 className="text-xl font-bold font-heading text-[#005530] mt-1">Primary Investiture Ceremony — Year 3</h2>
+                      <p className="text-sm text-slate-600 mt-2 leading-relaxed max-w-2xl">
+                        Year 3 students were invested as primary leaders. The ceremony included badge pinning, a school-flag procession, and a stage performance for parents and teachers.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                      { src: '/images/activities/investiture-1.jpg', caption: 'Stage performance during the investiture programme' },
+                      { src: '/images/activities/investiture-2.jpg', caption: 'Year 3 leaders after the investiture' },
+                      { src: '/images/activities/investiture-3.jpg', caption: 'Welcome board and full hall view' },
+                      { src: '/images/activities/investiture-4.jpg', caption: 'Flag procession through the assembly hall' },
+                      { src: '/images/activities/investiture-5.jpg', caption: 'Badge pinning for a Year 3 student leader' },
+                    ].map((photo) => (
+                      <figure key={photo.src} className="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50">
+                        <div className="aspect-[4/3] overflow-hidden bg-[#e6f0eb]">
+                          <SafeImage src={photo.src} alt={photo.caption} type="academic" className="w-full h-full object-cover" />
+                        </div>
+                        <figcaption className="p-3 text-xs text-slate-600 leading-relaxed">{photo.caption}</figcaption>
+                      </figure>
                     ))}
                   </div>
                 </div>
@@ -763,7 +806,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             )}
 
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
-            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && (
+            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'information/activities' && slug !== 'information/activities/primary' && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
                 className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"

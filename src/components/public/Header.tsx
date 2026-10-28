@@ -22,7 +22,8 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab, onOpe
   const { settings, menus, content, notices } = useSite();
   const [unseenCount, setUnseenCount] = useState(0);
   const cmsGroups = menusToNavGroups(menus);
-  const rawGroups = cmsGroups.length ? cmsGroups : NAV_GROUPS;
+  // Soft launch always uses the coded live menu so stale localStorage menus cannot hide new pages.
+  const rawGroups = SOFT_LAUNCH ? NAV_GROUPS : (cmsGroups.length ? cmsGroups : NAV_GROUPS);
   const navGroups = SOFT_LAUNCH
     ? rawGroups
         .map((group) => ({

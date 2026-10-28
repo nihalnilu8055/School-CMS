@@ -8,6 +8,11 @@ export const SOFT_LAUNCH = true;
 export const LIVE_PUBLIC_TABS = [
   'home',
   'about/mission',
+  'information',
+  'information/activities',
+  'information/activities/primary',
+  'information/activities/junior',
+  'information/activities/senior',
   'notices',
   'notices/general',
   'notices/fee',
