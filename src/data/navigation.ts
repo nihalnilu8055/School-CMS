@@ -30,8 +30,7 @@ const FULL_NAV_GROUPS: NavGroup[] = [
     label: 'Vacancy & Admissions',
     children: [
       { key: 'admissions/process', label: 'Admission Process' },
-      { key: 'admissions/register', label: 'Online Registration' },
-      { key: 'admissions/vacancies', label: 'Vacancies' },
+      { key: 'admissions/register', label: 'Documents & Registration' },
     ],
   },
   {
@@ -84,6 +83,14 @@ const SOFT_LAUNCH_NAV_GROUPS: NavGroup[] = [
       { key: 'information/activities/primary', label: 'Primary' },
       { key: 'information/activities/junior', label: 'Junior' },
       { key: 'information/activities/senior', label: 'Senior' },
+    ],
+  },
+  {
+    key: 'admissions',
+    label: 'Vacancy & Admissions',
+    children: [
+      { key: 'admissions/process', label: 'Admission Process' },
+      { key: 'admissions/register', label: 'Documents & Registration' },
     ],
   },
   {

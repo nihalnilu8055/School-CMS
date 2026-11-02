@@ -36,61 +36,34 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   'admissions/process': {
     title: 'Admission Process',
     eyebrow: 'Vacancy & Admissions',
-    intro: 'Admission is simple, transparent, and matched to vacancy. Families complete four steps from enquiry to confirmed enrolment.',
+    intro: 'All admissions are subjected to passing an entrance test and are based on a first come first serve basis. The highest scorer will get the first chance. There will be no retest.',
     sections: [
       {
-        heading: 'Step 1 — Enquiry & online registration',
-        body: 'Submit the online registration form with the child’s name, date of birth, last school attended, and the grade you are applying for. Our admissions team replies within two working days with an appointment or a wait-list note if the grade is full.',
+        heading: 'Admission rules',
+        body: 'All admissions are subjected to passing an entrance test and are based on first come first serve basis. The highest scorer will get the first chance. There will be no retest. For FS2 the admission requests are filled and submitted online on the date announced. Only the required number of forms will be accepted and others will be rejected as explained on the website when admissions are opened.',
       },
       {
-        heading: 'Step 2 — Interaction and placement review',
-        body: 'The child meets a teacher for a friendly interaction. We look at language comfort, number sense, and social readiness. This is not a high-pressure exam. It helps us place the learner in the right class without sacrificing wellbeing.',
-      },
-      {
-        heading: 'Step 3 — Offer of admission',
-        body: 'If a seat is available and the interaction is successful, the school issues a written offer with the fee schedule, uniform list, and joining date. Offers remain valid for seven working days.',
-      },
-      {
-        heading: 'Step 4 — Confirmation',
-        body: 'Pay the registration fee, submit original documents for verification, and collect the welcome pack. Transport and after-school activity requests can be added at this stage if routes and clubs have space.',
+        heading: 'Requirements for admission test',
+        body: 'Candidates must bring the Report Card of the previous school. If the student wants to transfer in midterm, he/she must bring the latest report card from the current school. Parents are requested to be honest when filling the registration and admission forms because withholding information or giving false information is dishonest.',
       },
     ],
   },
   'admissions/register': {
-    title: 'Online Registration',
+    title: 'Documents & Registration',
     eyebrow: 'Vacancy & Admissions',
-    intro: 'Begin your application online. This demo form captures an enquiry; the admissions office then schedules the next visit.',
+    intro: 'At the time of admission the following documents should be produced (both original and photocopy). All photocopies should be on A4 size paper.',
     sections: [
       {
-        heading: 'How to start',
-        body: 'Click Apply for Admissions in the header, or send an email to reception@ibnseenaschool.net with the subject “New Registration”. Include the child’s full name, date of birth, current grade, and preferred joining term.',
+        heading: 'Documents for FS2, Year 1 and Year 2',
+        body: 'Original Passport with a valid residence visa + 1 photocopy; Original Birth Certificate (must be in English or Arabic) + 1 photocopy; two passport size photographs; one photocopy of father’s passport with valid residence visa; advance of two months’ fees (cash only); copy of Vaccination Card; Original Emirates ID + 1 photocopy; all photocopies on A4 size paper; SIS No. of Nursery if attended in Sharjah or Ajman; students transferring from a school in the UAE must bring their Medical File from the previous school.',
       },
       {
-        heading: 'Documents to keep ready',
-        body: 'Birth certificate, latest report card, transfer certificate (if moving from another school), vaccination record, two passport photographs, and a copy of parent Emirates ID or passport. Soft copies are accepted for the first enquiry; originals are checked at confirmation.',
+        heading: 'Year 3 to Year 13 — Transfer within Ajman & Sharjah',
+        body: 'Students coming from other systems (other than British system) must provide a School Leaving Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested. Students coming from the British system must provide a Transfer Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested. Also required: original passport with valid residence visa + 1 photocopy; father’s passport photocopy; one passport photograph; advance of two months’ fees (cash only); birth certificate; Emirates ID; latest Report Card attested; Vaccination Card; Medical File from previous UAE school; all photocopies on A4 paper.',
       },
       {
-        heading: 'What happens next',
-        body: 'You will receive an acknowledgement and a proposed interaction slot. Incomplete forms are held for five days. After that the enquiry is closed and you may register again.',
-      },
-    ],
-  },
-  'admissions/vacancies': {
-    title: 'Vacancies',
-    eyebrow: 'Vacancy & Admissions',
-    intro: 'Seat availability changes during the year. The list below is demo data for the current academic year so families can see how vacancies are published.',
-    sections: [
-      {
-        heading: 'Open seats (demo)',
-        body: 'KG 1: 6 seats. KG 2: 4 seats. Grade 1: 3 seats. Grade 2: wait-list only. Grade 3: 2 seats. Grade 4: 1 seat. Grade 5: wait-list only. Grade 6: 4 seats. Grade 7: 2 seats. Grade 8: 3 seats. Grade 9: 2 seats. Grade 10: 1 seat. Grade 11: 3 seats (Science and Commerce). Grade 12: limited, contact office.',
-      },
-      {
-        heading: 'Wait-list policy',
-        body: 'When a grade shows wait-list only, names are recorded in the order received. A seat is offered by phone and email. Families have 48 hours to accept. Sibling applicants are moved one place forward on the same list.',
-      },
-      {
-        heading: 'Confirm a vacancy',
-        body: 'Always confirm with the office before planning a transfer. Call +971 6 558 2071 or visit during working hours. This page is updated whenever a circular is issued in Fee Notices or General Notices.',
+        heading: 'Year 3 to Year 13 — Transfer outside UAE',
+        body: 'School Leaving / Transfer Certificate and Report Card must be attested as required. Out-of-UAE documents must be attested by the Ministry of Education (or Education Bureau), the Ministry of Foreign Affairs, and the UAE Embassy/Consulate in that country. The TC must state that the student has passed and been promoted to the class applied for. Also bring passport, father’s passport copy, photograph, two months’ fees (cash), birth certificate, Emirates ID, and attested latest Report Card. Subject to change by the Ministry of Education.',
       },
     ],
   },

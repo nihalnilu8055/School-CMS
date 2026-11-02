@@ -341,6 +341,34 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             {slug === 'admissions' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center shrink-0">
+                        <FileText className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">31 October 2026</p>
+                        <h2 className="text-xl font-bold font-heading text-[#005530] mt-1">Admission Notice</h2>
+                        <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                          Official admission circular. Download the PDF for full details, or write to{' '}
+                          <a href="mailto:admission@ibnseenaschool.net" className="text-[#005530] font-semibold underline">
+                            admission@ibnseenaschool.net
+                          </a>
+                          .
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href="/notices/31_10_2026_ADMISSION.pdf"
+                      download="31_10_2026_ADMISSION.pdf"
+                      className="shrink-0 inline-flex items-center justify-center gap-2 bg-[#005530] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#004428] transition-colors"
+                    >
+                      <FileText className="w-4 h-4" /> Download PDF
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center">
                       <ShieldCheck className="w-5 h-5" />
@@ -453,123 +481,137 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               </div>
             )}
 
-            {/* Specialized Rich UI Block for Admission Process */}
+            {/* Official Admission Process (school circular content) */}
             {slug === 'admissions/process' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center font-bold">
+                    <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold font-heading text-[#005530]">4-Step Admission Journey</h2>
-                      <p className="text-xs text-slate-500">Simple, transparent, and matched to available seats</p>
+                      <h2 className="text-xl font-bold font-heading text-[#005530]">Admission Process</h2>
+                      <p className="text-xs text-slate-500">Official rules from the school admissions circular</p>
                     </div>
                   </div>
-
-                  <div className="space-y-6">
+                  <ul className="space-y-3">
                     {[
-                      {
-                        step: '01',
-                        title: 'Enquiry & Online Registration',
-                        desc: 'Submit the online registration form with the child’s name, date of birth, previous school, and target grade. Our admissions desk responds within 2 working days.',
-                        icon: FileText
-                      },
-                      {
-                        step: '02',
-                        title: 'Interaction & Placement Review',
-                        desc: 'The child meets a teacher for an encouraging, friendly interaction focusing on language comfort, number sense, and social readiness.',
-                        icon: Users
-                      },
-                      {
-                        step: '03',
-                        title: 'Offer of Admission',
-                        desc: 'Upon successful interaction and availability, a formal written offer with fee schedules and uniform lists is issued (valid for 7 working days).',
-                        icon: CheckCircle2
-                      },
-                      {
-                        step: '04',
-                        title: 'Enrolment Confirmation',
-                        desc: 'Complete fee payment, submit original verified documents, collect the welcome kit, and confirm transport routes or after-school activities.',
-                        icon: UserCheck
-                      }
-                    ].map((st) => (
-                      <div key={st.step} className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#b7d0c4] transition-colors">
-                        <div className="shrink-0 w-12 h-12 rounded-2xl bg-[#005530] text-[#8fceb0] flex flex-col items-center justify-center font-heading font-bold text-lg shadow-sm">
-                          {st.step}
-                        </div>
-                        <div>
-                          <h3 className="font-bold font-heading text-[#005530] text-base mb-1">{st.title}</h3>
-                          <p className="text-sm text-slate-600 leading-relaxed">{st.desc}</p>
-                        </div>
-                      </div>
+                      'All admissions are subjected to passing an entrance test and are based on first come first serve basis.',
+                      'The highest scorer will get the first chance.',
+                      'There will be no retest.',
+                      'For FS2 the admission requests are filled and submitted online on the date announced. Only the required number of forms will be accepted and others will be rejected as explained on the website when admissions are opened.',
+                    ].map((rule) => (
+                      <li key={rule} className="flex gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <CheckCircle2 className="w-5 h-5 text-[#005530] shrink-0 mt-0.5" />
+                        <p className="text-sm text-slate-700 leading-relaxed">{rule}</p>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+                </div>
 
-                  <div className="mt-8 p-6 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4] flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div>
-                      <h4 className="font-bold text-[#005530]">Ready to begin enrolment?</h4>
-                      <p className="text-xs text-slate-600">Register online or visit our admissions desk today.</p>
-                    </div>
+                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-4">Requirements for admission test</h2>
+                  <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Candidates must bring the Report Card of the previous school.</li>
+                    <li>If the student wants to transfer in midterm, he/she must bring the latest report card from the current school.</li>
+                  </ol>
+                  <div className="mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-sm leading-relaxed">
+                    Parents are requested to be honest when filling the registration and admission forms because withholding information or giving false information is dishonest.
+                  </div>
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <button
                       onClick={() => go('admissions/register')}
-                      className="shrink-0 bg-[#005530] text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#004428] transition-colors"
+                      className="inline-flex items-center justify-center gap-2 bg-[#005530] text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#004428] transition-colors"
                     >
-                      Start Registration
+                      View required documents
                     </button>
+                    <a
+                      href="/notices/31_10_2026_ADMISSION.pdf"
+                      download="31_10_2026_ADMISSION.pdf"
+                      className="inline-flex items-center justify-center gap-2 border border-[#b7d0c4] text-[#005530] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-[#e6f0eb] transition-colors"
+                    >
+                      <FileText className="w-4 h-4" /> Download admission notice
+                    </a>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Specialized Rich UI Block for Vacancies */}
-            {slug === 'admissions/vacancies' && (
+            {/* Official Documents & Registration */}
+            {slug === 'admissions/register' && (
               <div className="space-y-8">
                 <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+                  <h2 className="text-xl font-bold font-heading text-[#005530] mb-2">Documents required at admission</h2>
+                  <p className="text-sm text-slate-500 mb-6">Both original and photocopy must be produced. All photocopies should be on A4 size paper.</p>
+
+                  <div className="space-y-8">
                     <div>
-                      <h2 className="text-xl font-bold font-heading text-[#005530]">Grade Seat Availability</h2>
-                      <p className="text-xs text-slate-500">Live seat availability for the current academic session</p>
+                      <h3 className="font-bold font-heading text-[#005530] mb-3">Classes FS2, Year 1 and Year 2</h3>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Original Passport with a valid residence visa + 1 Photocopy</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Two Passport size photographs</li>
+                        <li>One photocopy of Father’s passport with valid residence visa</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Copy of Vaccination Card</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                        <li>SIS No. of Nursery if attended in Sharjah or Ajman</li>
+                        <li>Those students who transfer from a school in the UAE must bring their Medical File from the previous school</li>
+                      </ol>
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-[#e6f0eb] text-[#004428] text-xs font-semibold border border-[#b7d0c4] flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#005530] animate-pulse"></span> Academic Year 2026-27
-                    </span>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {[
-                      { grade: 'KG 1', seats: '6 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'KG 2', seats: '4 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 1', seats: '3 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 2', seats: 'Wait-list Only', status: 'Waitlist', color: 'amber' },
-                      { grade: 'Grade 3', seats: '2 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 4', seats: '1 Seat Available', status: 'Limited', color: 'amber' },
-                      { grade: 'Grade 5', seats: 'Wait-list Only', status: 'Waitlist', color: 'amber' },
-                      { grade: 'Grade 6', seats: '4 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 7', seats: '2 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 8', seats: '3 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 9', seats: '2 Seats Available', status: 'Open', color: 'green' },
-                      { grade: 'Grade 10', seats: '1 Seat Available', status: 'Limited', color: 'amber' },
-                      { grade: 'Grade 11', seats: 'Science & Commerce', status: 'Open', color: 'green' },
-                      { grade: 'Grade 12', seats: 'Contact Admissions Desk', status: 'Limited', color: 'blue' },
-                    ].map((v, i) => (
-                      <div key={i} className="p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:border-[#b7d0c4] transition-all shadow-2xs">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-bold text-[#005530] text-sm">{v.grade}</span>
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            v.color === 'green' ? 'bg-[#d4e8dc] text-[#003822]' :
-                            v.color === 'amber' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800'
-                          }`}>
-                            {v.status}
-                          </span>
-                        </div>
-                        <p className="text-xs text-slate-600">{v.seats}</p>
+                    <div>
+                      <h3 className="font-bold font-heading text-[#005530] mb-1">Year 3 to Year 13</h3>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#004428] mb-3">A. Transfer within Ajman &amp; Sharjah</p>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Students coming from other systems (other than British system) must provide a School Leaving Certificate attested by the Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card Attested.</li>
+                        <li>Students coming from the British system must provide a Transfer Certificate Attested by The Ministry of Education + SIS No. (Sharjah + Ajman) + Report Card attested.</li>
+                        <li>Original Passport with a valid residence visa + 1 photocopy of the same</li>
+                        <li>One Photocopy of Father’s Passport with Valid Residence visa</li>
+                        <li>One Passport size photograph of Student</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>Latest Report Card attested by the Ministry of Education</li>
+                        <li>Copy of Vaccination Card</li>
+                        <li>Those students who transfer from a school in the UAE must bring their Medical File from the previous school</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                      </ol>
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-[#004428] mb-3">B. Transfer outside UAE</p>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed mb-4">
+                        <li>Students coming from India, Pakistan, Bangladesh, Sri Lanka or other systems (other than British system) must provide School Leaving Certificate attested + Report Card attested.</li>
+                        <li>Students coming from the British system must provide a Transfer Certificate duly attested.</li>
+                        <li>All candidates of all systems must provide a Report Card duly attested.</li>
+                      </ol>
+                      <div className="p-5 rounded-2xl bg-[#e6f0eb] border border-[#b7d0c4]">
+                        <p className="text-sm font-bold text-[#005530] mb-2">All out of UAE documents must be attested by:</p>
+                        <ol className="list-decimal pl-5 space-y-1.5 text-sm text-slate-700 leading-relaxed">
+                          <li>The Ministry of Education or education Bureau of the country</li>
+                          <li>The Ministry of Foreign Affairs of the country</li>
+                          <li>The Embassy or the Consulate of UAE in the country</li>
+                          <li>The TC / Leaving certificate should mention that the student has passed and been promoted to the next class (the class admission is sought in)</li>
+                        </ol>
                       </div>
-                    ))}
-                  </div>
+                    </div>
 
-                  <div className="mt-8 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-xs leading-relaxed">
-                    <strong>Notice:</strong> Seats are filled on a first-come, first-served basis. Sibling applicants receive priority placement on wait-listed grades.
+                    <div>
+                      <h3 className="font-bold font-heading text-[#005530] mb-3">Additional documents for all admissions from outside the UAE</h3>
+                      <ol className="list-decimal pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
+                        <li>Original Passport with a valid residence visa + 1 Copy</li>
+                        <li>One Photocopy of Father’s Passport with Valid Residence visa</li>
+                        <li>One Passport size photograph of Student</li>
+                        <li>Advance of two months’ fees (cash only)</li>
+                        <li>Original Birth Certificate (must be in English or Arabic) + 1 Photocopy</li>
+                        <li>Original Emirates ID + 1 Photocopy</li>
+                        <li>Latest Report Card of the last class attested in the same manner as the TC</li>
+                        <li>All the photocopies of the above documents should be on A4 size paper</li>
+                      </ol>
+                      <p className="mt-4 text-xs text-slate-500">*NOTE: Subject to change by the Ministry of Education.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -806,7 +848,7 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
             )}
 
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
-            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'information/activities' && slug !== 'information/activities/primary' && (
+            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'admissions/register' && slug !== 'information/activities' && slug !== 'information/activities/primary' && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
                 className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"

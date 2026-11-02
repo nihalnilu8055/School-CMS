@@ -278,6 +278,25 @@ export const INITIAL_NEWS: NewsItem[] = [
 
 export const INITIAL_NOTICES: Notice[] = [
   {
+    id: 3,
+    title: "Admission Notice — 31 October 2026",
+    category: "General Notices",
+    excerpt: "Official admission circular for families. Download the PDF for full details.",
+    summary: "Official admission notice issued on 31 October 2026. Please download the attached circular for complete information. For queries write to admission@ibnseenaschool.net.",
+    content: "<p>Official admission notice issued on 31 October 2026. Please download the attached circular for complete information.</p><p>For admission queries: <a href=\"mailto:admission@ibnseenaschool.net\">admission@ibnseenaschool.net</a></p>",
+    priority: "Important",
+    date: "2026-10-31",
+    release_date: "2026-10-31",
+    expiry_date: "2027-03-31",
+    attachment_url: "/notices/31_10_2026_ADMISSION.pdf",
+    file_url: "/notices/31_10_2026_ADMISSION.pdf",
+    attachment_name: "31_10_2026_ADMISSION.pdf",
+    is_urgent: false,
+    is_pinned: true,
+    status: "published",
+    created_at: "2026-10-31T08:00:00.000Z"
+  },
+  {
     id: 1,
     title: "First Term Fee Payment Schedule & Guidelines (2026-2027)",
     category: "Fee Notices",
