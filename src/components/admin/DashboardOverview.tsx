@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSite } from '../../context/SiteContext';
+import { useAuth } from '../../context/AuthContext';
 import { 
   Newspaper, Users, Mail, Image as ImageIcon, Download, 
   Calendar, ArrowUpRight, Clock, ShieldCheck, Sparkles, CheckCircle 
@@ -11,6 +12,8 @@ interface DashboardOverviewProps {
 
 export const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setActiveModule }) => {
   const { news, staff, messages, galleryItems, downloads, events, auditLogs } = useSite();
+  const { user } = useAuth();
+  const displayName = user?.name?.split(' ')[0] || 'Admin';
 
   const pendingMessages = messages.filter(m => m.reply_status === 'pending');
 
@@ -18,7 +21,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setActiveM
     { label: "Published News", count: news.filter(n => n.status === 'published').length, mod: 'news', icon: Newspaper, bg: 'bg-[#005530]' },
     { label: "Faculty & Staff", count: staff.length, mod: 'staff', icon: Users, bg: 'bg-[#004428]' },
     { label: "Contact Inquiries", count: messages.length, badge: `${pendingMessages.length} pending`, mod: 'messages', icon: Mail, bg: 'bg-[#005530]' },
-    { label: "Media & Photos", count: galleryItems.length, mod: 'gallery', icon: ImageIcon, bg: 'bg-[#005530]' },
+    { label: "Site Photos", count: galleryItems.length, mod: 'media', icon: ImageIcon, bg: 'bg-[#005530]' },
     { label: "Active Downloads", count: downloads.length, mod: 'downloads', icon: Download, bg: 'bg-[#004428]' },
     { label: "School Events", count: events.length, mod: 'events', icon: Calendar, bg: 'bg-[#005530]' },
   ];
@@ -34,7 +37,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({ setActiveM
             School CMS Administration Dashboard
           </div>
           <h2 className="text-3xl font-extrabold font-heading text-white">
-            Welcome Back, Alexander!
+            Welcome Back, {displayName}!
           </h2>
           <p className="text-white/90 text-sm leading-relaxed">
             All system modules are online. You have <strong className="text-white">{pendingMessages.length} pending contact form submissions</strong> awaiting response.

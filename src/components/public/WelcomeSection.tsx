@@ -8,7 +8,10 @@ interface WelcomeSectionProps {
 }
 
 export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ setCurrentTab }) => {
-  const { content } = useSite();
+  const { content, siteImages } = useSite();
+  const mainPhoto = siteImages.welcome_main?.url || '/images/classroom.jpg';
+  const leftPhoto = siteImages.welcome_small_left?.url || '/images/campus.jpg';
+  const rightPhoto = siteImages.welcome_small_right?.url || '/images/lab.jpg';
 
   return (
     <section className="py-16 sm:py-20 bg-white border-b border-[#b7d0c4]">
@@ -18,7 +21,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ setCurrentTab })
             <div className="grid grid-cols-2 gap-3">
               <div className="col-span-2 rounded-[22px] overflow-hidden aspect-[16/10] bg-[#e6f0eb] border border-[#b7d0c4]">
                 <SafeImage
-                  src="/images/classroom.jpg"
+                  src={mainPhoto}
                   alt="Students learning at Ibn Seena English High School"
                   type="academic"
                   className="w-full h-full object-cover"
@@ -26,7 +29,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ setCurrentTab })
               </div>
               <div className="rounded-[20px] overflow-hidden aspect-[4/3] bg-[#e6f0eb] border border-[#b7d0c4]">
                 <SafeImage
-                  src="/images/campus.jpg"
+                  src={leftPhoto}
                   alt="Campus courtyard"
                   type="building"
                   className="w-full h-full object-cover"
@@ -34,7 +37,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ setCurrentTab })
               </div>
               <div className="rounded-[20px] overflow-hidden aspect-[4/3] bg-[#e6f0eb] border border-[#b7d0c4]">
                 <SafeImage
-                  src="/images/lab.jpg"
+                  src={rightPhoto}
                   alt="Science laboratory"
                   type="academic"
                   className="w-full h-full object-cover"

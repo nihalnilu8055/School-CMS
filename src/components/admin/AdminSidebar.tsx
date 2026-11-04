@@ -3,7 +3,7 @@ import { SafeImage } from '../common/SafeImage';
 import { 
   LayoutDashboard, Menu as MenuIcon, FileText, Image as ImageIcon, 
   Newspaper, Users, BookOpen, Download, Mail, Settings, 
-  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, X, Calendar, Bell 
+  Search, ShieldAlert, Sliders, HardDrive, History, LogOut, X, Calendar, Bell, FolderOpen 
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -34,6 +34,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         { key: 'notices', label: 'Notices Manager', icon: Bell },
         { key: 'events', label: 'Events Calendar', icon: Calendar },
         { key: 'gallery', label: 'Gallery & Albums', icon: ImageIcon },
+        { key: 'activityFolders', label: 'Activity Folders', icon: FolderOpen },
       ]
     },
     {
@@ -51,7 +52,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({
         { key: 'pages', label: 'Page Management', icon: FileText },
         { key: 'content', label: 'Frontend Content', icon: Sliders },
         { key: 'menus', label: 'Menu Management', icon: MenuIcon },
-        { key: 'media', label: 'Media Manager', icon: HardDrive },
+        { key: 'media', label: 'Site Photos', icon: HardDrive },
         { key: 'seo', label: 'SEO Settings', icon: Search },
         { key: 'settings', label: 'Site Settings', icon: Settings },
         { key: 'users', label: 'User Accounts', icon: Users },

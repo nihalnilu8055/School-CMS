@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useSite } from '../../context/SiteContext';
+import { useAuth } from '../../context/AuthContext';
 import { User } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import {
@@ -24,6 +25,7 @@ const emptyForm = {
 
 export const UserManager: React.FC = () => {
   const { users, roles, addUser, updateUser, deleteUser } = useSite();
+  const { user: authUser, updateUserProfile } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
@@ -123,6 +125,17 @@ export const UserManager: React.FC = () => {
 
       if (editingUser) {
         updateUser(editingUser.id, payload);
+        if (authUser && authUser.id === editingUser.id) {
+          updateUserProfile({
+            name: payload.name,
+            email: payload.email,
+            role: payload.role,
+            role_id: payload.role_id,
+            phone: payload.phone,
+            avatar_url: payload.avatar_url,
+            is_active: payload.is_active,
+          });
+        }
       } else {
         addUser(payload as Omit<User, 'id' | 'created_at'>);
       }

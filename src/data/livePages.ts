@@ -19,6 +19,7 @@ export const LIVE_PUBLIC_TABS = [
   'notices',
   'notices/general',
   'notices/fee',
+  'gallery',
 ] as const;
 
 export type LivePublicTab = (typeof LIVE_PUBLIC_TABS)[number];

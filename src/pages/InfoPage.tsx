@@ -2,7 +2,9 @@ import React from 'react';
 import { useSite } from '../context/SiteContext';
 import { PAGE_CONTENT } from '../data/pageContent';
 import { relatedNavForSlug, menusToNavGroups, NAV_GROUPS } from '../data/navigation';
+import { HERO_IMAGE_KEYS } from '../data/siteImagePlacements';
 import { PageHero } from '../components/public/PageHero';
+import { ActivityFoldersView } from '../components/public/ActivityFoldersView';
 import { SafeImage } from '../components/common/SafeImage';
 import { NewsItem } from '../types';
 import {
@@ -210,10 +212,10 @@ const go = (tab: string) => {
 };
 
 export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
-  const { pages, menus, events, news, settings } = useSite();
+  const { pages, menus, events, news, settings, siteImages } = useSite();
   const cmsPage = pages.find((page) => page.slug === slug);
   const fallback = PAGE_CONTENT[slug];
-  const isLive = Boolean(cmsPage?.is_published) || (!cmsPage && Boolean(fallback));
+  const isLive = Boolean(cmsPage?.is_published) || (!cmsPage && Boolean(fallback)) || slug.startsWith('information/activities/');
   const cmsGroups = menusToNavGroups(menus);
   const group =
     (cmsGroups.length ? cmsGroups : NAV_GROUPS).find((item) => slug === item.key || slug.startsWith(`${item.key}/`)) ||
@@ -222,8 +224,15 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
   const title = cmsPage?.title || fallback?.title || 'Page';
   const eyebrow = cmsPage?.eyebrow || fallback?.eyebrow || group?.label || 'Ibn Seena English High School';
   const intro = cmsPage?.intro || fallback?.intro || '';
-  
-  const heroImage = ROUTE_HERO_IMAGES[slug] || '/images/campus.jpg';
+
+  const siteImageUrl = (id: string, fallbackUrl: string) => siteImages[id]?.url || fallbackUrl;
+
+  const heroKey = HERO_IMAGE_KEYS[slug];
+  const heroImage = (heroKey && siteImages[heroKey]?.url) || ROUTE_HERO_IMAGES[slug] || '/images/campus.jpg';
+  const isActivityStagePage =
+    slug === 'information/activities/primary' ||
+    slug === 'information/activities/junior' ||
+    slug === 'information/activities/senior';
 
   // Select 1 SPECIFIC/DIFFERENT blog for the right sidebar based on current route
   const publishedNews = news.filter((n) => n.status === 'published');
@@ -787,9 +796,9 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
                   <p className="text-sm text-slate-500 mb-6">Choose Primary, Junior, or Senior to view ceremonies, programmes, and photo updates.</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {[
-                      { key: 'information/activities/primary', name: 'Primary', desc: 'Year 3 investiture and primary stage activities.', image: '/images/activities/investiture-2.jpg' },
-                      { key: 'information/activities/junior', name: 'Junior', desc: 'Junior stage clubs and co-curricular events.', image: '/images/students.jpg' },
-                      { key: 'information/activities/senior', name: 'Senior', desc: 'Senior stage programmes and celebrations.', image: '/images/event-banner.jpg' },
+                      { key: 'information/activities/primary', name: 'Primary', desc: 'Year 3 investiture and primary stage activities.', image: siteImageUrl('stage_primary_card', '/images/activities/investiture-2.jpg') },
+                      { key: 'information/activities/junior', name: 'Junior', desc: 'Junior stage clubs and co-curricular events.', image: siteImageUrl('stage_junior_card', '/images/students.jpg') },
+                      { key: 'information/activities/senior', name: 'Senior', desc: 'Senior stage programmes and celebrations.', image: siteImageUrl('stage_senior_card', '/images/event-banner.jpg') },
                     ].map((stage) => (
                       <button
                         key={stage.key}
@@ -814,41 +823,19 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               </div>
             )}
 
-            {/* Primary activities — Investiture Ceremony gallery */}
+            {/* Primary / Junior / Senior — folder model */}
             {slug === 'information/activities/primary' && (
-              <div className="space-y-8">
-                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">30 September 2026</p>
-                      <h2 className="text-xl font-bold font-heading text-[#005530] mt-1">Primary Investiture Ceremony — Year 3</h2>
-                      <p className="text-sm text-slate-600 mt-2 leading-relaxed max-w-2xl">
-                        Year 3 students were invested as primary leaders. The ceremony included badge pinning, a school-flag procession, and a stage performance for parents and teachers.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      { src: '/images/activities/investiture-1.jpg', caption: 'Stage performance during the investiture programme' },
-                      { src: '/images/activities/investiture-2.jpg', caption: 'Year 3 leaders after the investiture' },
-                      { src: '/images/activities/investiture-3.jpg', caption: 'Welcome board and full hall view' },
-                      { src: '/images/activities/investiture-4.jpg', caption: 'Flag procession through the assembly hall' },
-                      { src: '/images/activities/investiture-5.jpg', caption: 'Badge pinning for a Year 3 student leader' },
-                    ].map((photo) => (
-                      <figure key={photo.src} className="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50">
-                        <div className="aspect-[4/3] overflow-hidden bg-[#e6f0eb]">
-                          <SafeImage src={photo.src} alt={photo.caption} type="academic" className="w-full h-full object-cover" />
-                        </div>
-                        <figcaption className="p-3 text-xs text-slate-600 leading-relaxed">{photo.caption}</figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <ActivityFoldersView stage="primary" stageLabel="Primary" />
+            )}
+            {slug === 'information/activities/junior' && (
+              <ActivityFoldersView stage="junior" stageLabel="Junior" />
+            )}
+            {slug === 'information/activities/senior' && (
+              <ActivityFoldersView stage="senior" stageLabel="Senior" />
             )}
 
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
-            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'admissions/register' && slug !== 'information/activities' && slug !== 'information/activities/primary' && (
+            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'admissions/register' && slug !== 'information/activities' && !isActivityStagePage && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
                 className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"

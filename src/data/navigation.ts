@@ -70,6 +70,7 @@ const FULL_NAV_GROUPS: NavGroup[] = [
       { key: 'notices/fee', label: 'Fee Notices' },
     ],
   },
+  { key: 'gallery', label: 'Gallery' },
 ];
 
 /** Soft-launch menu: Home is separate in the header logo; these are the bar items. */

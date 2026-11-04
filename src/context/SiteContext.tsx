@@ -3,7 +3,8 @@ import {
   User, Role, MenuItem, Page, NewsCategory, NewsItem, 
   Department, StaffMember, GalleryAlbum, GalleryItem, EventItem, 
   AcademicProgram, DownloadItem, BannerSlide, ContactMessage, 
-  SiteSettings, SeoSettings, AuditLog, Notice, FrontendContent 
+  SiteSettings, SeoSettings, AuditLog, Notice, FrontendContent, SiteImageValue, SiteGalleryPhoto,
+  ActivityFolder, ActivityFolderPhoto
 } from '../types';
 import { 
   INITIAL_SETTINGS, INITIAL_SEO, INITIAL_BANNERS, INITIAL_DEPARTMENTS, 
@@ -12,6 +13,8 @@ import {
   INITIAL_DOWNLOADS, INITIAL_MESSAGES, INITIAL_AUDIT_LOGS, INITIAL_USERS, 
   INITIAL_ROLES, INITIAL_PAGES, INITIAL_MENUS, INITIAL_NOTICES, INITIAL_CONTENT 
 } from '../services/api';
+import { buildInitialSiteGalleries, buildInitialSiteImages, SITE_IMAGE_PLACEMENTS } from '../data/siteImagePlacements';
+import { INITIAL_ACTIVITY_FOLDERS } from '../data/activityFolders';
 import { fetchPublicContent } from '../services/backend';
 
 interface SiteContextType {
@@ -35,10 +38,23 @@ interface SiteContextType {
   menus: MenuItem[];
   notices: Notice[];
   content: FrontendContent;
+  siteImages: Record<string, SiteImageValue>;
+  sitePhotoGalleries: Record<string, SiteGalleryPhoto[]>;
+  activityFolders: ActivityFolder[];
 
   // CRUD Operations
   updateSettings: (newSettings: Partial<SiteSettings>) => void;
   updateSeo: (newSeo: Partial<SeoSettings>) => void;
+  updateSiteImage: (id: string, value: Partial<SiteImageValue> & { url?: string }) => void;
+  addSiteGalleryPhoto: (galleryKey: string, photo: { url: string; caption?: string }) => void;
+  updateSiteGalleryPhoto: (galleryKey: string, photoId: number, value: Partial<SiteGalleryPhoto>) => void;
+  deleteSiteGalleryPhoto: (galleryKey: string, photoId: number) => void;
+  addActivityFolder: (folder: Omit<ActivityFolder, 'id' | 'created_at' | 'photos'> & { photos?: ActivityFolderPhoto[] }) => void;
+  updateActivityFolder: (id: number, folder: Partial<ActivityFolder>) => void;
+  deleteActivityFolder: (id: number) => void;
+  addActivityFolderPhoto: (folderId: number, photo: Omit<ActivityFolderPhoto, 'id'>) => void;
+  updateActivityFolderPhoto: (folderId: number, photoId: number, photo: Partial<ActivityFolderPhoto>) => void;
+  deleteActivityFolderPhoto: (folderId: number, photoId: number) => void;
   
   // Banners
   addBanner: (banner: Omit<BannerSlide, 'id'>) => void;
@@ -111,12 +127,12 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Helper to init state with localStorage persistence
   const usePersistentState = <T,>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
     const [state, setState] = useState<T>(() => {
-      const saved = localStorage.getItem(`school_cms_v24_${key}`);
+      const saved = localStorage.getItem(`school_cms_v28_${key}`);
       return saved ? JSON.parse(saved) : initial;
     });
 
     useEffect(() => {
-      localStorage.setItem(`school_cms_v24_${key}`, JSON.stringify(state));
+      localStorage.setItem(`school_cms_v28_${key}`, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];
@@ -142,6 +158,18 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [menus, setMenus] = usePersistentState<MenuItem[]>('menus', INITIAL_MENUS);
   const [notices, setNotices] = usePersistentState<Notice[]>('notices', INITIAL_NOTICES);
   const [content, setContent] = usePersistentState<FrontendContent>('frontend_content', INITIAL_CONTENT);
+  const [siteImages, setSiteImages] = usePersistentState<Record<string, SiteImageValue>>(
+    'site_images',
+    buildInitialSiteImages()
+  );
+  const [sitePhotoGalleries, setSitePhotoGalleries] = usePersistentState<Record<string, SiteGalleryPhoto[]>>(
+    'site_photo_galleries',
+    buildInitialSiteGalleries()
+  );
+  const [activityFolders, setActivityFolders] = usePersistentState<ActivityFolder[]>(
+    'activity_folders',
+    INITIAL_ACTIVITY_FOLDERS
+  );
 
   useEffect(() => {
     setPages((prev) => {
@@ -412,6 +440,154 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     logAction('UPDATE_CONTENT', 'Frontend Content', 'Updated public website copy and homepage sections');
   };
 
+  const updateSiteImage = (id: string, value: Partial<SiteImageValue> & { url?: string }) => {
+    const placement = SITE_IMAGE_PLACEMENTS.find((item) => item.id === id);
+    setSiteImages((prev) => ({
+      ...prev,
+      [id]: {
+        url: value.url ?? prev[id]?.url ?? placement?.defaultUrl ?? '',
+        caption: value.caption ?? prev[id]?.caption ?? placement?.defaultCaption ?? '',
+        updated_at: new Date().toISOString(),
+      },
+    }));
+
+    if (placement?.sync === 'logo' && value.url) {
+      setSettings((prev) => ({ ...prev, logo_url: value.url!, favicon_url: value.url! }));
+    }
+    if (placement?.sync === 'about_banner' && value.url) {
+      setContent((prev) => ({ ...prev, about_banner_image: value.url! }));
+    }
+
+    logAction('UPDATE_SITE_IMAGE', 'Site Photos', `Updated photo: ${placement?.label || id}`);
+  };
+
+  const addSiteGalleryPhoto = (galleryKey: string, photo: { url: string; caption?: string }) => {
+    setSitePhotoGalleries((prev) => {
+      const list = prev[galleryKey] || [];
+      const nextId = list.length > 0 ? Math.max(...list.map((item) => item.id)) + 1 : 1;
+      return {
+        ...prev,
+        [galleryKey]: [
+          ...list,
+          {
+            id: nextId,
+            url: photo.url,
+            caption: photo.caption || '',
+            updated_at: new Date().toISOString(),
+          },
+        ],
+      };
+    });
+    logAction('CREATE_SITE_GALLERY_PHOTO', 'Site Photos', `Added photo to ${galleryKey}`);
+  };
+
+  const updateSiteGalleryPhoto = (galleryKey: string, photoId: number, value: Partial<SiteGalleryPhoto>) => {
+    setSitePhotoGalleries((prev) => ({
+      ...prev,
+      [galleryKey]: (prev[galleryKey] || []).map((item) =>
+        item.id === photoId
+          ? { ...item, ...value, updated_at: new Date().toISOString() }
+          : item
+      ),
+    }));
+    logAction('UPDATE_SITE_GALLERY_PHOTO', 'Site Photos', `Updated photo #${photoId} in ${galleryKey}`);
+  };
+
+  const deleteSiteGalleryPhoto = (galleryKey: string, photoId: number) => {
+    setSitePhotoGalleries((prev) => ({
+      ...prev,
+      [galleryKey]: (prev[galleryKey] || []).filter((item) => item.id !== photoId),
+    }));
+    logAction('DELETE_SITE_GALLERY_PHOTO', 'Site Photos', `Deleted photo #${photoId} from ${galleryKey}`);
+  };
+
+  const slugify = (value: string) =>
+    value
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || `folder-${Date.now()}`;
+
+  const addActivityFolder = (
+    folder: Omit<ActivityFolder, 'id' | 'created_at' | 'photos'> & { photos?: ActivityFolderPhoto[] }
+  ) => {
+    const newId = activityFolders.length > 0 ? Math.max(...activityFolders.map((item) => item.id)) + 1 : 1;
+    const photos = (folder.photos || []).map((photo, index) => ({
+      ...photo,
+      id: photo.id || index + 1,
+    }));
+    setActivityFolders((prev) => [
+      {
+        ...folder,
+        id: newId,
+        slug: folder.slug || slugify(folder.title),
+        cover_image: folder.cover_image || photos[0]?.url || '',
+        photos,
+        created_at: new Date().toISOString(),
+      },
+      ...prev,
+    ]);
+    logAction('CREATE_ACTIVITY_FOLDER', 'Activity Folders', `Created folder: ${folder.title}`);
+  };
+
+  const updateActivityFolder = (id: number, folder: Partial<ActivityFolder>) => {
+    setActivityFolders((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...folder } : item))
+    );
+    logAction('UPDATE_ACTIVITY_FOLDER', 'Activity Folders', `Updated folder #${id}`);
+  };
+
+  const deleteActivityFolder = (id: number) => {
+    setActivityFolders((prev) => prev.filter((item) => item.id !== id));
+    logAction('DELETE_ACTIVITY_FOLDER', 'Activity Folders', `Deleted folder #${id}`);
+  };
+
+  const addActivityFolderPhoto = (folderId: number, photo: Omit<ActivityFolderPhoto, 'id'>) => {
+    setActivityFolders((prev) =>
+      prev.map((folder) => {
+        if (folder.id !== folderId) return folder;
+        const nextId = folder.photos.length > 0 ? Math.max(...folder.photos.map((item) => item.id)) + 1 : 1;
+        const photos = [...folder.photos, { id: nextId, ...photo }];
+        return {
+          ...folder,
+          photos,
+          cover_image: folder.cover_image || photo.url,
+        };
+      })
+    );
+    logAction('CREATE_ACTIVITY_PHOTO', 'Activity Folders', `Added photo to folder #${folderId}`);
+  };
+
+  const updateActivityFolderPhoto = (folderId: number, photoId: number, photo: Partial<ActivityFolderPhoto>) => {
+    setActivityFolders((prev) =>
+      prev.map((folder) => {
+        if (folder.id !== folderId) return folder;
+        return {
+          ...folder,
+          photos: folder.photos.map((item) => (item.id === photoId ? { ...item, ...photo } : item)),
+        };
+      })
+    );
+    logAction('UPDATE_ACTIVITY_PHOTO', 'Activity Folders', `Updated photo #${photoId} in folder #${folderId}`);
+  };
+
+  const deleteActivityFolderPhoto = (folderId: number, photoId: number) => {
+    setActivityFolders((prev) =>
+      prev.map((folder) => {
+        if (folder.id !== folderId) return folder;
+        const photos = folder.photos.filter((item) => item.id !== photoId);
+        return {
+          ...folder,
+          photos,
+          cover_image: folder.cover_image && photos.some((p) => p.url === folder.cover_image)
+            ? folder.cover_image
+            : photos[0]?.url || '',
+        };
+      })
+    );
+    logAction('DELETE_ACTIVITY_PHOTO', 'Activity Folders', `Deleted photo #${photoId} from folder #${folderId}`);
+  };
+
   // Users
   const addUser = (user: Omit<User, 'id' | 'created_at'>) => {
     const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
@@ -448,8 +624,10 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <SiteContext.Provider value={{
       settings, seo, banners, departments, staff, newsCategories, news, events,
-      albums, galleryItems, programs, downloads, messages, auditLogs, users, roles, pages, menus, notices, content,
-      updateSettings, updateSeo, addBanner, updateBanner, deleteBanner, addNews, updateNews, deleteNews, addNewsCategory,
+      albums, galleryItems, programs, downloads, messages, auditLogs, users, roles, pages, menus, notices, content, siteImages, sitePhotoGalleries, activityFolders,
+      updateSettings, updateSeo, updateSiteImage, addSiteGalleryPhoto, updateSiteGalleryPhoto, deleteSiteGalleryPhoto,
+      addActivityFolder, updateActivityFolder, deleteActivityFolder, addActivityFolderPhoto, updateActivityFolderPhoto, deleteActivityFolderPhoto,
+      addBanner, updateBanner, deleteBanner, addNews, updateNews, deleteNews, addNewsCategory,
       addStaff, updateStaff, deleteStaff, addDepartment, updateDepartment, deleteDepartment, addAlbum, deleteAlbum, addGalleryItem, deleteGalleryItem,
       addEvent, updateEvent, deleteEvent, addProgram, updateProgram, deleteProgram, addDownload, deleteDownload,
       submitContactForm, updateMessageStatus, deleteMessage, addPage, updatePage, deletePage, addMenu, updateMenu, deleteMenu, updateContent,

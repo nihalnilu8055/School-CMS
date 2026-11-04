@@ -20,6 +20,7 @@ import { MenuManager } from '../components/admin/MenuManager';
 import { PageManager } from '../components/admin/PageManager';
 import { ContentManager } from '../components/admin/ContentManager';
 import { NoticesManager } from '../components/admin/NoticesManager';
+import { ActivityFoldersManager } from '../components/admin/ActivityFoldersManager';
 import { useAuth } from '../context/AuthContext';
 
 interface AdminDashboardPageProps {
@@ -45,6 +46,8 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
         return <StaffManager />;
       case 'gallery':
         return <GalleryManager />;
+      case 'activityFolders':
+        return <ActivityFoldersManager />;
       case 'events':
         return <EventsManager />;
       case 'academics':
@@ -56,7 +59,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onNaviga
       case 'settings':
         return <SettingsManager />;
       case 'media':
-        return <MediaManager />;
+        return <MediaManager onNavigate={setActiveModule} />;
       case 'seo':
         return <SeoManager />;
       case 'users':

@@ -347,3 +347,41 @@ export interface Notice {
   status: NoticeStatus;
   created_at: string;
 }
+
+/** Editable website photo slot value (managed in Site Photos). */
+export interface SiteImageValue {
+  url: string;
+  caption?: string;
+  updated_at: string;
+}
+
+/** Photo inside a growing site gallery (e.g. Primary Investiture). */
+export interface SiteGalleryPhoto {
+  id: number;
+  url: string;
+  caption?: string;
+  updated_at: string;
+}
+
+export type ActivityStage = 'primary' | 'junior' | 'senior';
+
+export interface ActivityFolderPhoto {
+  id: number;
+  url: string;
+  caption?: string;
+}
+
+/** Event/activity photo folder for Primary, Junior, or Senior pages. */
+export interface ActivityFolder {
+  id: number;
+  stage: ActivityStage;
+  title: string;
+  slug: string;
+  byline?: string;
+  event_date: string;
+  cover_image: string;
+  description?: string;
+  photos: ActivityFolderPhoto[];
+  is_published: boolean;
+  created_at: string;
+}

@@ -8,7 +8,7 @@ import { Compass, Target, Quote, ArrowRight } from 'lucide-react';
 import { resolveFacilities } from './FacilitiesPage';
 
 export const AboutUsPage: React.FC = () => {
-  const { staff, settings, pages, content } = useSite();
+  const { staff, settings, pages, content, siteImages } = useSite();
   const aboutPage = pages.find((page) => page.slug === 'about' && page.is_published);
   const aboutCopy = PAGE_CONTENT.about;
   const mission = PAGE_CONTENT['about/mission'];
@@ -31,7 +31,7 @@ export const AboutUsPage: React.FC = () => {
         eyebrow={settings.school_name}
         title="About Our School"
         intro={aboutPage?.intro || aboutCopy?.intro || 'The school was built in 1978 under the patronage of the ruler of Sharjah, H.H. Sheikh Sultan Bin Mohd. Al Qassimi.'}
-        image={content.about_banner_image}
+        image={siteImages.about_banner?.url || content.about_banner_image}
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 md:grid-cols-2 gap-6">
