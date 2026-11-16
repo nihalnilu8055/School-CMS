@@ -80,6 +80,7 @@ const SOFT_LAUNCH_NAV_GROUPS: NavGroup[] = [
     key: 'information',
     label: 'General Information',
     children: [
+      { key: 'information/calendar', label: 'Academic Calendar' },
       { key: 'information/activities', label: 'Co-curricular Activities' },
       { key: 'information/activities/primary', label: 'Primary' },
       { key: 'information/activities/junior', label: 'Junior' },
@@ -92,6 +93,13 @@ const SOFT_LAUNCH_NAV_GROUPS: NavGroup[] = [
     children: [
       { key: 'admissions/process', label: 'Admission Process' },
       { key: 'admissions/register', label: 'Documents & Registration' },
+    ],
+  },
+  {
+    key: 'fees',
+    label: 'Fees & Transport',
+    children: [
+      { key: 'fees/rules', label: 'Rules and Regulations' },
     ],
   },
   {

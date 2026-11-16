@@ -834,8 +834,114 @@ export const InfoPage: React.FC<InfoPageProps> = ({ slug }) => {
               <ActivityFoldersView stage="senior" stageLabel="Senior" />
             )}
 
+            {/* Official Academic Calendar PDF */}
+            {slug === 'information/calendar' && (
+              <div className="space-y-8">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm space-y-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#004428]">Official circular</p>
+                      <h2 className="text-xl font-bold font-heading text-[#005530] mt-1">School Academic Calendar 2026–27</h2>
+                      <p className="text-sm text-slate-600 mt-2 max-w-2xl">
+                        Download or view the official calendar PDF for term dates, holidays, and school events.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2 shrink-0">
+                      <a
+                        href="/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-[#005530] text-white text-xs font-semibold px-4 py-2.5 rounded-xl"
+                      >
+                        <FileText className="w-4 h-4" /> View PDF
+                      </a>
+                      <a
+                        href="/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf"
+                        download="SCHOOL_ACADEMIC_CALANDER_2026-27.pdf"
+                        className="inline-flex items-center gap-2 bg-[#e6f0eb] text-[#005530] border border-[#b7d0c4] text-xs font-semibold px-4 py-2.5 rounded-xl"
+                      >
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                  <div className="rounded-2xl overflow-hidden border border-[#b7d0c4] bg-[#e6f0eb] min-h-[70vh]">
+                    <iframe
+                      title="School Academic Calendar 2026-27"
+                      src="/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf"
+                      className="w-full h-[70vh] bg-white"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Rules and Regulations */}
+            {slug === 'fees/rules' && (
+              <div className="space-y-6">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm space-y-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#d4e8dc] text-[#005530] flex items-center justify-center">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold font-heading text-[#005530]">Rules and Regulations</h2>
+                      <p className="text-xs text-slate-500">Fee payment rules and school regulations for families</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4">
+                    {[
+                      {
+                        title: 'Fee payment schedule',
+                        body: 'Tuition and transport fees are collected term-wise as announced in Fee Notices. First Term fees for 2026–27 must be settled as per the published schedule. Keep receipts for every payment.',
+                      },
+                      {
+                        title: 'Admission fee advance',
+                        body: 'At admission, an advance of two months’ fees is collected in cash only, with the documents listed under Vacancy & Admissions. Registration / admission charges are non-refundable unless a circular states otherwise.',
+                      },
+                      {
+                        title: 'Late payment',
+                        body: 'Pay on or before the due date in Fee Notices. After the due date a reminder is issued. Late fees or temporary withholding of report cards / certificates may apply as per the current circular.',
+                      },
+                      {
+                        title: 'Sibling concession',
+                        body: 'A tuition concession may be offered for the third and subsequent sibling studying at the same time, subject to that year’s policy. Transport and one-time fees are usually charged in full. Confirm with accounts.',
+                      },
+                      {
+                        title: 'Accounts office',
+                        body: 'Accounts assists during school working hours (Monday to Thursday as published). For written queries, include the student’s full name, class, and receipt number.',
+                      },
+                      {
+                        title: 'General school regulations',
+                        body: 'Wear the approved uniform, arrive on time for assembly, and follow classroom and bus safety rules. Leave applications go through the class teacher / office. Mobile phones and prohibited items need permission. Serious misconduct is handled under school discipline policy.',
+                      },
+                    ].map((item) => (
+                      <article key={item.title} className="rounded-2xl border border-[#b7d0c4] bg-[#e6f0eb]/40 p-5">
+                        <h3 className="font-bold font-heading text-[#005530] text-base">{item.title}</h3>
+                        <p className="text-sm text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="rounded-2xl bg-[#005530] text-white p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-white/70">Latest circulars</p>
+                      <p className="text-sm mt-1 text-white/90">Check Fee Notices for exact due dates each term.</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => go('notices/fee')}
+                      className="inline-flex items-center gap-2 bg-white text-[#005530] text-xs font-semibold px-4 py-2.5 rounded-xl"
+                    >
+                      Open Fee Notices <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Main Page HTML Content (Clean, elegant, no extra image section inside) */}
-            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'admissions/register' && slug !== 'information/activities' && !isActivityStagePage && (
+            {slug !== 'about/mission' && slug !== 'admissions' && slug !== 'admissions/process' && slug !== 'admissions/register' && slug !== 'information/activities' && slug !== 'information/calendar' && slug !== 'fees/rules' && !isActivityStagePage && (
             <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm space-y-6">
               <div
                 className="space-y-6 text-slate-700 [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:font-heading [&_h2]:text-[#005530] [&_h2]:mt-4 [&_p]:leading-relaxed [&_p]:text-[15px] [&_p]:text-slate-600 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-2"

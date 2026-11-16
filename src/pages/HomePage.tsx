@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeroSlider } from '../components/public/HeroSlider';
 import { WelcomeSection } from '../components/public/WelcomeSection';
+import { AcademicCalendarHighlight } from '../components/public/AcademicCalendarHighlight';
 import { NewsSection } from '../components/public/NewsSection';
 import { EventsSection } from '../components/public/EventsSection';
 import { PhotoGalleryPreview } from '../components/public/PhotoGalleryPreview';
@@ -22,6 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-0">
       <HeroSlider setCurrentTab={setCurrentTab} onOpenAdmissionModal={onOpenAdmissionModal} />
       <WelcomeSection setCurrentTab={setCurrentTab} />
+      <AcademicCalendarHighlight setCurrentTab={setCurrentTab} />
       {!SOFT_LAUNCH && (
         <>
           <NewsSection setCurrentTab={setCurrentTab} onSelectNewsItem={onSelectNewsItem} />

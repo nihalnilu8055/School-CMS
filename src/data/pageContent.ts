@@ -199,19 +199,15 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   'information/calendar': {
     title: 'Academic Calendar',
     eyebrow: 'General Information',
-    intro: 'The academic year is organised around two terms, assessment windows, and community events. Dates below are demo data for 2026–27.',
+    intro: 'Official School Academic Calendar for 2026–27. Download the PDF for the complete list of term dates, holidays, and school events.',
     sections: [
       {
-        heading: 'Term dates (demo)',
-        body: 'Term 1: 1 September 2026 to 17 December 2026. Winter break: 18 December 2026 to 4 January 2027. Term 2: 5 January 2027 to 25 June 2027. Spring break: 22 March 2027 to 2 April 2027. Last working day for students: 25 June 2027.',
+        heading: 'Official calendar PDF',
+        body: 'The School Academic Calendar 2026–27 is published by Ibn Seena English High School. Use the download button on this page (or the Home page banner) to open the official PDF. If any date changes during the year, a General Notice will be issued.',
       },
       {
-        heading: 'Key events',
-        body: 'Parent orientation: 8 September. National Day assembly: 2 December. Sports Day: 12 February. Science Fair: 18 March. Annual Day: 15 May. Report-card days are published two weeks in advance through General Notices.',
-      },
-      {
-        heading: 'How updates are issued',
-        body: 'If a holiday or exam date changes, the school posts a notice and updates this page. Please check Notices before planning travel during term time.',
+        heading: 'How to use this calendar',
+        body: 'Plan travel and family events around published holidays and exam windows. For last-minute changes, check Notices and messages from class teachers. For calendar questions, contact the school office during working hours.',
       },
     ],
   },
@@ -319,19 +315,31 @@ export const PAGE_CONTENT: Record<string, InfoPageContent> = {
   'fees/rules': {
     title: 'Rules and Regulations',
     eyebrow: 'Fees & Transport',
-    intro: 'Fee and transport rules are published so families can plan. The points below are demo regulations for this website.',
+    intro: 'Fee payment rules and school regulations for families at Ibn Seena English High School. Always follow the latest Fee Notice for exact due dates.',
     sections: [
       {
-        heading: 'Payment schedule',
-        body: 'Tuition is collected in three instalments: at confirmation of admission, before 10 October, and before 10 February. Transport is billed term-wise. Activity and examination fees are billed when the event is announced.',
+        heading: 'Fee payment schedule',
+        body: 'Tuition and transport fees are collected term-wise as announced in the Fee Notices. First Term fees for 2026–27 must be settled as per the published schedule (see Fee Notices). Online payment may be available when the portal is open. Keep receipts for every payment.',
       },
       {
-        heading: 'Late payment and refunds',
-        body: 'A reminder is sent after the due date. A late fee of a small fixed amount (see the current Fee Notice) applies after seven days. Registration fees are non-refundable. Tuition refunds for mid-year withdrawal follow the circular issued each June.',
+        heading: 'Admission fee advance',
+        body: 'At the time of admission, an advance of two months’ fees is collected in cash only, along with the required documents listed under Vacancy & Admissions. Registration / admission charges are non-refundable unless a circular states otherwise.',
+      },
+      {
+        heading: 'Late payment',
+        body: 'Parents are requested to pay on or before the due date published in Fee Notices. After the due date, a reminder is issued. Late fees or temporary withholding of report cards / certificates may apply as per the current circular.',
       },
       {
         heading: 'Sibling concession',
-        body: 'A 10% concession on tuition is offered for the third and subsequent sibling studying at the same time. Transport and one-time fees are charged in full. Concessions are reviewed each academic year.',
+        body: 'A concession on tuition may be offered for the third and subsequent sibling studying at the same time, subject to school policy for that academic year. Transport and one-time fees are usually charged in full. Confirm the current concession with the accounts office.',
+      },
+      {
+        heading: 'Accounts office',
+        body: 'The accounts desk assists with fee queries during school working hours (Monday to Thursday as published). For written queries, contact the school office with the student’s full name, class, and receipt number.',
+      },
+      {
+        heading: 'General school regulations',
+        body: 'Students must wear the approved school uniform, arrive on time for assembly, and follow classroom and bus safety rules. Leave applications should go through the class teacher / office. Mobile phones and prohibited items are not allowed without permission. Serious misconduct is handled under school discipline policy.',
       },
     ],
   },

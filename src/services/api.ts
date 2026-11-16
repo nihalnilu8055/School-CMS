@@ -278,6 +278,25 @@ export const INITIAL_NEWS: NewsItem[] = [
 
 export const INITIAL_NOTICES: Notice[] = [
   {
+    id: 4,
+    title: "School Academic Calendar 2026–27",
+    category: "General Notices",
+    excerpt: "Official academic calendar for the 2026–27 school year. Download the PDF for term dates and holidays.",
+    summary: "Ibn Seena English High School Academic Calendar 2026–27 is now available. Please download the attached PDF for complete dates.",
+    content: "<p>The official School Academic Calendar for 2026–27 is published for parents and students.</p><p>Download the PDF from this notice or from the Home page calendar banner.</p>",
+    priority: "Important",
+    date: "2026-09-01",
+    release_date: "2026-09-01",
+    expiry_date: "2027-07-31",
+    attachment_url: "/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf",
+    file_url: "/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf",
+    attachment_name: "SCHOOL_ACADEMIC_CALANDER_2026-27.pdf",
+    is_urgent: false,
+    is_pinned: true,
+    status: "published",
+    created_at: "2026-09-01T08:00:00.000Z"
+  },
+  {
     id: 3,
     title: "Admission Notice — 31 October 2026",
     category: "General Notices",
@@ -618,6 +637,7 @@ export const INITIAL_PROGRAMS: AcademicProgram[] = [
 ];
 
 export const INITIAL_DOWNLOADS: DownloadItem[] = [
+  { id: 4, title: "School Academic Calendar 2026–27", file_url: "/downloads/SCHOOL_ACADEMIC_CALANDER_2026-27.pdf", file_type: "PDF Document", file_size: "360 KB", category: "General", downloads_count: 0, created_at: "2026-09-01" },
   { id: 1, title: "Ibn Seena School Prospectus & Curriculum Guide 2026-27", file_url: "#", file_type: "PDF Document", file_size: "4.5 MB", category: "General", downloads_count: 1850, created_at: "2026-08-10" },
   { id: 2, title: "First Term Fee Structure & Payment Regulations", file_url: "#", file_type: "PDF Document", file_size: "1.2 MB", category: "Forms", downloads_count: 1420, created_at: "2026-09-01" },
   { id: 3, title: "Mid-Term Examination Schedule & Regulations", file_url: "#", file_type: "PDF Document", file_size: "980 KB", category: "Exam Timetable", downloads_count: 2100, created_at: "2026-09-15" }
