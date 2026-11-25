@@ -1,9 +1,26 @@
 import { Router } from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { pool } from '../db';
 import { supabase } from '../supabase';
 import { fetchPublicContent } from '../publicContent';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const activityFoldersFile = path.join(__dirname, '../data/activity-folders.json');
+
 const router = Router();
+
+router.get('/activity-folders', (_req, res) => {
+  try {
+    if (!fs.existsSync(activityFoldersFile)) return res.json([]);
+    const parsed = JSON.parse(fs.readFileSync(activityFoldersFile, 'utf8'));
+    res.json(Array.isArray(parsed) ? parsed : []);
+  } catch {
+    res.json([]);
+  }
+});
 
 router.get('/content', async (_req, res) => {
   try {

@@ -50,6 +50,12 @@ try {
     join(outDir, '.htaccess'),
     `RewriteEngine On
 RewriteBase /
+
+# Keep uploaded media and PHP CMS APIs as real files
+RewriteRule ^uploads/ - [L]
+RewriteRule ^api/ - [L]
+RewriteRule ^data/ - [L]
+
 RewriteRule ^index\\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -58,6 +64,12 @@ RewriteRule . /index.html [L]
 `
   );
   log('htaccess written');
+
+  mkdirSync(join(outDir, 'uploads'), { recursive: true });
+  mkdirSync(join(outDir, 'data'), { recursive: true });
+  writeFileSync(join(outDir, 'uploads', 'index.html'), '');
+  writeFileSync(join(outDir, 'data', 'index.html'), '');
+  log('uploads/data folders ready');
 
   if (existsSync(zipProject)) rmSync(zipProject, { force: true });
   if (existsSync(zipDesktop)) rmSync(zipDesktop, { force: true });

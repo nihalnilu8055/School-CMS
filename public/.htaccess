@@ -1,5 +1,11 @@
 RewriteEngine On
 RewriteBase /
+
+# Keep uploaded media and PHP CMS APIs as real files
+RewriteRule ^uploads/ - [L]
+RewriteRule ^api/ - [L]
+RewriteRule ^data/ - [L]
+
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

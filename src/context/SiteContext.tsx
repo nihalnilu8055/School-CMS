@@ -15,7 +15,23 @@ import {
 } from '../services/api';
 import { buildInitialSiteGalleries, buildInitialSiteImages, SITE_IMAGE_PLACEMENTS } from '../data/siteImagePlacements';
 import { INITIAL_ACTIVITY_FOLDERS } from '../data/activityFolders';
-import { fetchPublicContent } from '../services/backend';
+import { fetchActivityFolders, fetchPublicContent, saveActivityFolders } from '../services/backend';
+
+const STORAGE_PREFIX = 'school_cms_v30_';
+
+const durableMediaUrl = (url?: string) => {
+  if (!url || url.startsWith('data:')) return '';
+  return url;
+};
+
+const sanitizeActivityFolders = (folders: ActivityFolder[]): ActivityFolder[] =>
+  folders.map((folder) => ({
+    ...folder,
+    cover_image: durableMediaUrl(folder.cover_image) || durableMediaUrl(folder.photos?.[0]?.url) || '',
+    photos: (folder.photos || [])
+      .map((photo) => ({ ...photo, url: durableMediaUrl(photo.url) }))
+      .filter((photo) => Boolean(photo.url)),
+  }));
 
 interface SiteContextType {
   settings: SiteSettings;
@@ -127,12 +143,18 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Helper to init state with localStorage persistence
   const usePersistentState = <T,>(key: string, initial: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
     const [state, setState] = useState<T>(() => {
-      const saved = localStorage.getItem(`school_cms_v29_${key}`);
-      return saved ? JSON.parse(saved) : initial;
+      const saved = localStorage.getItem(`${STORAGE_PREFIX}${key}`)
+        ?? localStorage.getItem(`school_cms_v29_${key}`);
+      if (!saved) return initial;
+      try {
+        return JSON.parse(saved) as T;
+      } catch {
+        return initial;
+      }
     });
 
     useEffect(() => {
-      localStorage.setItem(`school_cms_v29_${key}`, JSON.stringify(state));
+      localStorage.setItem(`${STORAGE_PREFIX}${key}`, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];
@@ -166,10 +188,51 @@ export const SiteProvider: React.FC<{ children: React.ReactNode }> = ({ children
     'site_photo_galleries',
     buildInitialSiteGalleries()
   );
-  const [activityFolders, setActivityFolders] = usePersistentState<ActivityFolder[]>(
+  const [activityFolders, setActivityFoldersRaw] = usePersistentState<ActivityFolder[]>(
     'activity_folders',
     INITIAL_ACTIVITY_FOLDERS
   );
+  const [activityFoldersReady, setActivityFoldersReady] = useState(false);
+
+  const setActivityFolders: React.Dispatch<React.SetStateAction<ActivityFolder[]>> = (value) => {
+    setActivityFoldersRaw((prev) => {
+      const next = typeof value === 'function' ? value(prev) : value;
+      return sanitizeActivityFolders(next);
+    });
+  };
+
+  useEffect(() => {
+    setActivityFoldersRaw((prev) => sanitizeActivityFolders(prev));
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchActivityFolders()
+      .then((remote) => {
+        if (cancelled) return;
+        if (remote && remote.length > 0) {
+          setActivityFoldersRaw(sanitizeActivityFolders(remote));
+        }
+      })
+      .catch(() => {
+        /* Keep local folders if the API is offline. */
+      })
+      .finally(() => {
+        if (!cancelled) setActivityFoldersReady(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!activityFoldersReady) return;
+    const durable = sanitizeActivityFolders(activityFolders);
+    const timer = window.setTimeout(() => {
+      void saveActivityFolders(durable);
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [activityFolders, activityFoldersReady]);
 
   useEffect(() => {
     setPages((prev) => {

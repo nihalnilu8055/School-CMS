@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Upload, FileText, X } from 'lucide-react';
-import { describeFileType, formatFileSize, readFileAsDataUrl } from '../../utils/files';
+import { uploadMediaFile } from '../../utils/mediaUpload';
 
 interface FileUploadFieldProps {
   label: string;
@@ -10,8 +10,6 @@ interface FileUploadFieldProps {
   hint?: string;
   required?: boolean;
 }
-
-const MAX_BYTES = 8 * 1024 * 1024;
 
 export const FileUploadField: React.FC<FileUploadFieldProps> = ({
   label,
@@ -28,22 +26,14 @@ export const FileUploadField: React.FC<FileUploadFieldProps> = ({
 
   const applyFile = async (file?: File) => {
     if (!file) return;
-    if (file.size > MAX_BYTES) {
-      setError('Please choose a file under 8 MB.');
-      return;
-    }
     setBusy(true);
     setError('');
     try {
-      const url = await readFileAsDataUrl(file);
+      const { url, meta } = await uploadMediaFile(file);
       setFileName(file.name);
-      onChange(url, {
-        name: file.name,
-        size: formatFileSize(file.size),
-        type: describeFileType(file),
-      });
-    } catch {
-      setError('Could not read that file. Try another one.');
+      onChange(url, meta);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not upload that file. Try another one.');
     } finally {
       setBusy(false);
     }
@@ -64,7 +54,7 @@ export const FileUploadField: React.FC<FileUploadFieldProps> = ({
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="inline-flex items-center gap-2 bg-[#005530] hover:bg-[#004428] text-white font-semibold text-xs px-3.5 py-2 rounded-lg"
+            className="inline-flex items-center justify-center gap-2 bg-[#005530] hover:bg-[#004428] text-white font-semibold text-xs px-3.5 py-2 rounded-lg"
           >
             <Upload className="w-4 h-4" />
             {busy ? 'Uploading…' : 'Choose file'}
@@ -101,6 +91,9 @@ export const FileUploadField: React.FC<FileUploadFieldProps> = ({
             {fileName}
           </p>
         )}
+        {value && !value.startsWith('data:') && (
+          <p className="text-[11px] text-[#004428] break-all">Saved path: {value}</p>
+        )}
         <input
           type="text"
           value={value.startsWith('data:') ? '' : value}
@@ -108,10 +101,12 @@ export const FileUploadField: React.FC<FileUploadFieldProps> = ({
             setFileName('');
             onChange(e.target.value);
           }}
-          placeholder="Or paste an image / file URL"
+          placeholder="Or paste an image / file URL (e.g. /uploads/photo.jpg)"
           className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#b7d0c4] text-sm text-slate-900"
         />
-        {hint && <p className="text-[11px] text-slate-500">{hint}</p>}
+        <p className="text-[11px] text-slate-500">
+          {hint || 'Files are uploaded to the server (/uploads) so every visitor sees the real photo.'}
+        </p>
         {error && <p className="text-[11px] text-red-600 font-semibold">{error}</p>}
       </div>
     </div>

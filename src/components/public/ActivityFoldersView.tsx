@@ -68,6 +68,7 @@ export const ActivityFoldersView: React.FC<ActivityFoldersViewProps> = ({ stage,
                     src={photo.url}
                     alt={photo.caption || openFolder.title}
                     type="academic"
+                    fallbackSrc={photo.url}
                     className="w-full h-full object-cover hover:scale-[1.02] transition duration-300"
                   />
                 </button>
@@ -116,9 +117,10 @@ export const ActivityFoldersView: React.FC<ActivityFoldersViewProps> = ({ stage,
           >
             <div className="relative h-44 overflow-hidden bg-[#e6f0eb]">
               <SafeImage
-                src={folder.cover_image || folder.photos[0]?.url || '/images/campus.jpg'}
+                src={folder.cover_image || folder.photos[0]?.url || ''}
                 alt={folder.title}
                 type="academic"
+                fallbackSrc={folder.cover_image || folder.photos[0]?.url || ''}
                 className="w-full h-full object-cover group-hover:scale-[1.03] transition duration-300"
               />
               <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/95 text-[10px] font-bold uppercase tracking-wide text-[#005530] border border-[#b7d0c4]">

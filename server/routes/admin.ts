@@ -3,10 +3,12 @@ import { pool } from '../db';
 import { supabase } from '../supabase';
 import multer from 'multer';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const activityFoldersFile = path.join(__dirname, '../data/activity-folders.json');
 
 const router = Router();
 
@@ -77,6 +79,19 @@ router.post('/upload', upload.single('file'), (req, res) => {
     original_name: req.file.originalname,
     size: req.file.size
   });
+});
+
+router.post('/activity-folders', (req, res) => {
+  try {
+    if (!Array.isArray(req.body)) {
+      return res.status(400).json({ message: 'Invalid JSON body' });
+    }
+    fs.mkdirSync(path.dirname(activityFoldersFile), { recursive: true });
+    fs.writeFileSync(activityFoldersFile, JSON.stringify(req.body, null, 2));
+    res.json({ success: true, count: req.body.length });
+  } catch (err) {
+    res.status(500).json({ message: 'Unable to save activity folders' });
+  }
 });
 
 export default router;
