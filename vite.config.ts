@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import { viteCmsApi } from './scripts/vite-cms-api.mjs'
+import { viteCmsApi } from './scripts/vite-cms-api.ts'
 
 // https://vite.dev/config/
 export default defineConfig({

@@ -1,6 +1,8 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
 import { join, extname } from 'path';
 import { randomBytes } from 'crypto';
+import type { IncomingMessage, ServerResponse } from 'http';
+import type { Plugin } from 'vite';
 
 const UPLOAD_MAX = 8 * 1024 * 1024;
 const ALLOWED = new Set([
@@ -8,17 +10,23 @@ const ALLOWED = new Set([
   '.pdf', '.doc', '.docx', '.xls', '.xlsx',
 ]);
 
-function readBody(req) {
+type MultipartPart = {
+  name: string;
+  filename: string;
+  content: Buffer;
+};
+
+function readBody(req: IncomingMessage): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-    const chunks = [];
-    req.on('data', (chunk) => chunks.push(chunk));
+    const chunks: Buffer[] = [];
+    req.on('data', (chunk: Buffer) => chunks.push(chunk));
     req.on('end', () => resolve(Buffer.concat(chunks)));
     req.on('error', reject);
   });
 }
 
-function parseMultipart(buffer, boundary) {
-  const parts = [];
+function parseMultipart(buffer: Buffer, boundary: string): MultipartPart[] {
+  const parts: MultipartPart[] = [];
   const delim = Buffer.from(`--${boundary}`);
   let start = buffer.indexOf(delim) + delim.length;
   while (start < buffer.length) {
@@ -44,13 +52,13 @@ function parseMultipart(buffer, boundary) {
   return parts;
 }
 
-function sendJson(res, status, payload) {
+function sendJson(res: ServerResponse, status: number, payload: unknown) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.end(JSON.stringify(payload));
 }
 
-async function handleUpload(req, res, uploadsDir) {
+async function handleUpload(req: IncomingMessage, res: ServerResponse, uploadsDir: string) {
   const contentType = req.headers['content-type'] || '';
   const boundaryMatch = /boundary=(.+)$/i.exec(contentType);
   if (!boundaryMatch) {
@@ -80,11 +88,8 @@ async function handleUpload(req, res, uploadsDir) {
   });
 }
 
-/**
- * Local Vite middleware so activity photo uploads work without PHP/Node.
- * Writes files into public/uploads and folders into public/data.
- */
-export function viteCmsApi() {
+/** Local Vite middleware for activity photo uploads and folder JSON. */
+export function viteCmsApi(): Plugin {
   return {
     name: 'vite-cms-api',
     configureServer(server) {
@@ -133,7 +138,8 @@ export function viteCmsApi() {
             return sendJson(res, 200, { success: true, count: parsed.length });
           }
         } catch (err) {
-          return sendJson(res, 500, { message: err?.message || 'CMS API failed' });
+          const message = err instanceof Error ? err.message : 'CMS API failed';
+          return sendJson(res, 500, { message });
         }
 
         return next();
