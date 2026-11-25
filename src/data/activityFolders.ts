@@ -44,6 +44,23 @@ export const INITIAL_ACTIVITY_FOLDERS: ActivityFolder[] = [
       { id: 5, url: '/images/activities/investiture-5.jpg', caption: 'Badge pinning for a Year 3 student leader' },
     ],
   },
+  {
+    id: 10,
+    stage: 'senior',
+    title: 'Islamic Activity',
+    slug: 'islamic-activity',
+    byline: 'Senior',
+    event_date: '2026-11-01',
+    cover_image: '/images/activities/islamic-activity/01.jpg',
+    description: 'Senior Islamic Activity programmes and photo updates.',
+    is_published: true,
+    created_at: '2026-11-25T04:57:34.629Z',
+    photos: [
+      { id: 1, url: '/images/activities/islamic-activity/01.jpg', caption: 'Islamic Activity photo 1' },
+      { id: 2, url: '/images/activities/islamic-activity/02.jpg', caption: 'Islamic Activity photo 2' },
+      { id: 3, url: '/images/activities/islamic-activity/03.jpg', caption: 'Islamic Activity photo 3' },
+    ],
+  },
 ];
 
 export const formatActivityDate = (value: string) => {

@@ -79,24 +79,24 @@
     "slug": "islamic-activity",
     "byline": "Senior",
     "event_date": "2026-11-01",
-    "cover_image": "/uploads/1795582633361-149da371.jpg",
+    "cover_image": "/images/activities/islamic-activity/01.jpg",
     "description": "Senior Islamic Activity programmes and photo updates.",
     "is_published": true,
     "created_at": "2026-11-25T04:57:34.629Z",
     "photos": [
       {
         "id": 1,
-        "url": "/uploads/1795582633361-149da371.jpg",
+        "url": "/images/activities/islamic-activity/01.jpg",
         "caption": "Islamic Activity photo 1"
       },
       {
         "id": 2,
-        "url": "/uploads/1795582633395-8fef5fa0.jpg",
+        "url": "/images/activities/islamic-activity/02.jpg",
         "caption": "Islamic Activity photo 2"
       },
       {
         "id": 3,
-        "url": "/uploads/1795582633421-6b13987c.jpg",
+        "url": "/images/activities/islamic-activity/03.jpg",
         "caption": "Islamic Activity photo 3"
       }
     ]

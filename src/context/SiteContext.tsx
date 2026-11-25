@@ -17,7 +17,7 @@ import { buildInitialSiteGalleries, buildInitialSiteImages, SITE_IMAGE_PLACEMENT
 import { INITIAL_ACTIVITY_FOLDERS } from '../data/activityFolders';
 import { fetchActivityFolders, fetchPublicContent, saveActivityFolders } from '../services/backend';
 
-const STORAGE_PREFIX = 'school_cms_v30_';
+const STORAGE_PREFIX = 'school_cms_v31_';
 
 const durableMediaUrl = (url?: string) => {
   if (!url || url.startsWith('data:')) return '';
